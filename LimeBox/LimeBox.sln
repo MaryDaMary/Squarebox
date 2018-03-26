@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.2015
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LimeBox", "LimeBox\LimeBox.csproj", "{0507E573-7786-4228-958F-DBB67281A90C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LimeBox", "LimeBox\LimeBox.csproj", "{5F3796A4-A50A-4A61-8B1C-7DEC598267B1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{0507E573-7786-4228-958F-DBB67281A90C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0507E573-7786-4228-958F-DBB67281A90C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0507E573-7786-4228-958F-DBB67281A90C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0507E573-7786-4228-958F-DBB67281A90C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F3796A4-A50A-4A61-8B1C-7DEC598267B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F3796A4-A50A-4A61-8B1C-7DEC598267B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F3796A4-A50A-4A61-8B1C-7DEC598267B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F3796A4-A50A-4A61-8B1C-7DEC598267B1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {2690BFC4-EEB1-447D-965C-DFE0149442BF}
+		SolutionGuid = {670B73E5-B16B-4447-B89F-56D5DC887791}
 	EndGlobalSection
 EndGlobal
