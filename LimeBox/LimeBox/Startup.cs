@@ -16,6 +16,8 @@ namespace LimeBox
 {
     public class Startup
     {
+        static public string connString;
+
         private readonly IConfiguration configuration;
 
         public Startup(IConfiguration configuration)
@@ -30,7 +32,7 @@ namespace LimeBox
         {
 
             
-            var connString = configuration.GetConnectionString("DefaultConnection");
+            connString = configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<IdentityDbContext>(o => o.UseSqlServer(connString));
 
             services.AddIdentity<IdentityUser, IdentityRole>(o =>
