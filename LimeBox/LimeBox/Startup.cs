@@ -6,6 +6,8 @@ using LimeBox.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -17,9 +19,19 @@ namespace LimeBox
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            var connString = @"Server=tcp:pinkpear.database.windows.net,1433;Initial Catalog=Lime;Persist Security Info=False;User ID={your_username};Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
-            //services.AddDbContext<>(o => o.UseSqlServer(connString));
+            var connString = @"";
+            services.AddDbContext<IdentityDbContext>(o => o.UseSqlServer(connString));
+
+            services.AddIdentity<IdentityUser, IdentityRole>(o =>
+            {
+                o.Password.RequireNonAlphanumeric = false;
+                o.Password.RequiredLength = 6;
+            })
+           .AddEntityFrameworkStores<IdentityDbContext>()
+           .AddDefaultTokenProviders();
+
             services.AddTransient<Repository>();
+            services.AddTransient<AccountRepository>();
             services.AddMvc();
         }
 
@@ -30,7 +42,7 @@ namespace LimeBox
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            app.UseAuthentication();
             app.UseStaticFiles();
             app.UseMvcWithDefaultRoute();
         }
