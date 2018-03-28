@@ -15,9 +15,8 @@ namespace LimeBox.Models
             this.context = context;
         }
 
-        public List<Boxes> GenerateBoxes(string nameOfBox, int value)
+        public void GenerateBoxes(string nameOfBox, decimal price)
         {
-            List<Boxes> newArray = new List<Boxes>();
             //av 100 boxar så är:
             //standard 80st
             //premium 15st
@@ -31,15 +30,15 @@ namespace LimeBox.Models
                     valueNumber = 3;
                 else if (numberIsInArray(random15, i))
                     valueNumber = 2;
-                newArray.Add(new Boxes
+                context.Add(new Boxes
                 {
                     BoxId = i,
                     BoxType = nameOfBox,
                     BoxValue = valueNumber,
-                    BoxPrice = value,
+                    BoxPrice = price,
                 });
             }
-            return newArray;
+            context.SaveChanges();
         }
 
         private int[] GenerateRandomNumbers(int amount)

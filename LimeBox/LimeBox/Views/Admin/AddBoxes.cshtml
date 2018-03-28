@@ -1,0 +1,15 @@
+﻿@model AdminAddBoxesVM
+
+<form asp-controller="Admin" asp-action="AddBoxes" method="post">
+    <label asp-for="@Model.BoxType" ></label>
+    <input placeholder="Namn på box" asp-for="@Model.BoxType" />
+    <br />
+    <span asp-validation-for="@Model.BoxType"></span>
+    <br />
+    <label asp-for="@Model.BoxPrice"></label>
+    <input placeholder="Namn på box" asp-for="@Model.BoxPrice" />
+    <br />
+    <span asp-validation-for="@Model.BoxPrice"></span>
+    <br />
+    <button type="submit">Skapa</button>
+</form>
