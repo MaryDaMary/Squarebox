@@ -31,14 +31,18 @@ a:hover {
 .div {
   border: 2px solid black;
   /*width: 800px;*/
-  height: 400px;
+  height: 500px;
   overflow: scroll;
-  background-color: #c9c7c9;
+  /*background-color: #334e35;*/
   display: grid;
-  grid-template-columns: 20% 20% 20% 20% 20%;
+  grid-template-columns: 33% 33% 33%;
   grid-template-rows: 50% 50%;
   text-align: center;
-  color: #fff; }
+  color: #292828;
+  font-family: 'Antipasto Pro';
+  font-size: 28px;
+  background-image: url(https://media.gettyimages.com/photos/rose-gold-abstract-background-picture-id617761806?b=1&k=6&m=617761806&s=612x612&w=0&h=G6qIwBe-5FfLzvRltylySx-Nr4BME-TAAZrm32z9ubc=);
+  background-size: 100%; }
 
 img {
   width: 50%;
@@ -56,3 +60,9 @@ li {
   color: black;
   font-family: 'Gill Sans Nova';
   font-size: 20px; }
+
+p {
+  color: white; }
+
+h1 {
+  color: white; }
