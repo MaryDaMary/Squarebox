@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using LimeBox.Models;
+using LimeBox.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -23,6 +24,21 @@ namespace LimeBox.Controllers
         {
             var foo = await accountRepository.TryLoginAsync();
             return View();
+        }
+
+        [HttpGet]
+        public IActionResult Create(string returnUrl )
+        {
+            return View(new AccountCreateVM
+            {
+                ReturnUrl = returnUrl
+            });
+        }
+        [HttpPost]
+
+        public IActionResult Create(AccountCreateVM model)
+        {
+            return RedirectToAction(nameof(Index));
         }
     }
 }
