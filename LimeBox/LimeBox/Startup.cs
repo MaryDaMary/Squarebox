@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using LimeBox.Models;
 using LimeBox.Models.Entities;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -36,6 +37,11 @@ namespace LimeBox
             connString = configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<IdentityDbContext>(o => o.UseSqlServer(connString));
             services.AddDbContext<LimeContext>(o => o.UseSqlServer(connString));
+
+            services.AddAuthentication(
+                CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(o => o.LoginPath = "/Account/Login");
+               
 
             services.AddIdentity<IdentityUser, IdentityRole>(o =>
             {
