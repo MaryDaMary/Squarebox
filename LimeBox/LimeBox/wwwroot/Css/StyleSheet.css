@@ -1,10 +1,22 @@
-﻿body {
-  background-color: lightblue; }
+﻿.Header {
+  width: 40%;
+  height: 130px;
+  background-color: #292828;
+  margin-bottom: 4px; }
 
-.Header {
-  width: 25%;
-  height: 150px;
-  background-color: lightblue; }
+#wrap {
+  width: 1200px;
+  margin: 0 auto; }
 
-.Class {
+.navbar-custom {
   background-color: #292828; }
+
+/* change the brand and text color */
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-text {
+  color: #fff; }
+
+/* change the color of active or hovered links */
+.navbar-custom .nav-item.active .nav-link,
+.navbar-custom .nav-item:hover .nav-link {
+  color: #ff6a00; }
