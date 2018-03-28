@@ -6,5 +6,12 @@
   height: 150px;
   background-color: lightblue; }
 
-.Class {
-  background-color: #292828; }
+.div {
+  border: 1px solid black;
+  width: 800px;
+  height: 600px;
+  overflow: scroll;
+  align-content: center; }
+
+img {
+  width: 50%; }
