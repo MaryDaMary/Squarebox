@@ -11,17 +11,17 @@ namespace LimeBox.Controllers
 {
     public class AccountController : Controller
     {
-        AccountRepository repository;
+        AccountRepository accountRepository;
 
-        public AccountController(AccountRepository repository)
+        public AccountController(AccountRepository accountRepository)
         {
-            this.repository = repository;
+            this.accountRepository = accountRepository;
         }
 
         // GET: /<controller>/
         public async Task<IActionResult> Index()
         {
-            var foo = await repository.TryLoginAsync();
+            var foo = await accountRepository.TryLoginAsync();
             return View();
         }
     }
