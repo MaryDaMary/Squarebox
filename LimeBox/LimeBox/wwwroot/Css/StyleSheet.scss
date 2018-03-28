@@ -27,16 +27,25 @@
 }
 
 .div {
-    border: 1px solid black;
-    width: 800px;
-    height: 600px;
+    border: 3px solid black;
+    /*width: 800px;*/
+    height: 400px;
     overflow: scroll;
-    align-content:center;
+    background-color:#c9c7c9;
+    display: grid;
+    grid-template-columns:20% 20% 20% 20% 20%;
+    grid-template-rows: 50% 50%;
+    text-align:center;
+    
 }
-img{
+img {
     width:50%;
-/* change the color of active or hovered links */
-.navbar-custom .nav-item.active .nav-link,
-.navbar-custom .nav-item:hover .nav-link {
-    color: rgb(255, 106, 0);
+    padding: 10px;
+    /* change the color of active or hovered links */
+    .navbar-custom .nav-item.active .nav-link,
+    .navbar-custom .nav-item:hover .nav-link {
+        color: rgb(255, 106, 0);
+    }
+
+
 }

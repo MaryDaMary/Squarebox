@@ -33,5 +33,10 @@ namespace LimeBox.Controllers
                 boxes = testList
             });
         }
+        public IActionResult AboutUs()
+        {
+            return View();
+        }
+
     }
 }
