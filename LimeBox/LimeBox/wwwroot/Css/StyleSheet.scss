@@ -27,7 +27,7 @@
 }
 
 .div {
-    border: 3px solid black;
+    border: 2px solid black;
     /*width: 800px;*/
     height: 400px;
     overflow: scroll;
@@ -48,4 +48,13 @@ img {
     }
 
 
+}
+footer{
+    margin-top:10px;
+    border:2px solid;
+}
+li{
+    color:black;
+    font-family:'Gill Sans Nova';
+    font-size:20px;
 }
