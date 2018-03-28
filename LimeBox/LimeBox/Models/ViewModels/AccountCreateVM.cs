@@ -7,11 +7,12 @@ using System.Threading.Tasks;
 
 namespace LimeBox.Models.ViewModels
 {
-    public class AccountCreatVM
+    public class AccountCreateVM
     {
+        public string ReturnUrl { get; set; }
         public CreateFormVM CreateForm { get; set; }
 
-        [Bind(Prefix = nameof(AccountCreatVM.CreateForm))]
+        [Bind(Prefix = nameof(AccountCreateVM.CreateForm))]
         public class CreateFormVM
         {
             [Display(Name = "Användarnamn")]
