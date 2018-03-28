@@ -1,9 +1,10 @@
-﻿body { 
+﻿body {
+    background-color: #292828;
+   
 }
 
 .Header {
-    width: 40%;
-    height: 130px;
+    width: 25%;
     background-color: #292828;
     margin-bottom: 4px;
 }
@@ -16,11 +17,24 @@
 }
 
 .navbar-custom {
-    background-color: #292828;
+    background-color: #141414;
 }
 /* change the brand and text color */
 .navbar-custom .navbar-brand,
 .navbar-custom .navbar-text {
+    color: #fff;
+}
+
+a{
+    color: #fff;
+}
+
+.nav > li > a:focus, .nav > li > a:hover {
+    text-decoration: none;
+    background-color: rgba(0, 0, 0, 0.45);
+}
+
+a:hover{
     color: #fff;
 }
 
@@ -34,6 +48,7 @@
     grid-template-columns:20% 20% 20% 20% 20%;
     grid-template-rows: 50% 50%;
     text-align:center;
+    color: #fff;
     
 }
 img {
