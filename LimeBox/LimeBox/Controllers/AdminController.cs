@@ -10,24 +10,34 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LimeBox.Controllers
 {
-    public class HomeController : Controller
+
+    public class AdminController : Controller
     {
         Repository repository;
 
-        public HomeController(Repository repository)
+        public AdminController(Repository repository)
         {
             this.repository = repository;
         }
-
 
         // GET: /<controller>/
         public IActionResult Index()
         {
             return View();
         }
-        public IActionResult Test()
+        [HttpGet]
+        public IActionResult AddBoxes()
         {
             return View();
+        }
+        [HttpPost]
+        public IActionResult AddBoxes(AdminAddBoxesVM model)
+        {
+            if (!ModelState.IsValid)
+                return View(model);
+
+            repository.GenerateBoxes(model.BoxType, (decimal)model.BoxPrice);
+            return RedirectToAction(nameof(Index));
         }
     }
 }

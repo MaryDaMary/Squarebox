@@ -34,8 +34,8 @@ namespace LimeBox
 
             
             connString = configuration.GetConnectionString("DefaultConnection");
-            services.AddDbContext<IdentityDbContext>(o => o.UseSqlServer(connString));
             services.AddDbContext<LimeContext>(o => o.UseSqlServer(connString));
+            services.AddDbContext<IdentityDbContext>(o => o.UseSqlServer(connString));
 
             services.AddIdentity<IdentityUser, IdentityRole>(o =>
             {
