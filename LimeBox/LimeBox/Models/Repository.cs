@@ -8,16 +8,16 @@ namespace LimeBox.Models
 {
     public class Repository
     {
-        private readonly LimeContext context;
+        LimeContext context;
 
         public Repository(LimeContext context)
         {
             this.context = context;
         }
 
-        public void GenerateBoxes(string nameOfBox, int value)
+        public List<Boxes> GenerateBoxes(string nameOfBox, int value)
         {
-
+            List<Boxes> newArray = new List<Boxes>();
             //av 100 boxar så är:
             //standard 80st
             //premium 15st
@@ -30,14 +30,16 @@ namespace LimeBox.Models
                 if (numberIsInArray(random5, i))
                     valueNumber = 3;
                 else if (numberIsInArray(random15, i))
-
-                context.Add(new Boxes
+                    valueNumber = 2;
+                newArray.Add(new Boxes
                 {
                     BoxId = i,
                     BoxType = nameOfBox,
-                    BoxValue = valueNumber
+                    BoxValue = valueNumber,
+                    BoxPrice = value,
                 });
             }
+            return newArray;
         }
 
         private int[] GenerateRandomNumbers(int amount)
