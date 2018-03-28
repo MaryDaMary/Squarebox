@@ -4,40 +4,40 @@ using System.Linq;
 using System.Threading.Tasks;
 using LimeBox.Models;
 using LimeBox.Models.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace LimeBox.Controllers
 {
-    public class AccountController : Controller
+    [Authorize(Roles = "Admin")]
+    public class AdminController : Controller
     {
-        AccountRepository accountRepository;
+        Repository repository;
 
-        public AccountController(AccountRepository accountRepository)
+        public AdminController(Repository repository)
         {
-            this.accountRepository = accountRepository;
+            this.repository = repository;
         }
 
         // GET: /<controller>/
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            var foo = await accountRepository.TryLoginAsync();
             return View();
         }
-
         [HttpGet]
-        public IActionResult Create(string returnUrl )
+        public IActionResult AddBoxes()
         {
-            return View(new AccountCreateVM
-            {
-                ReturnUrl = returnUrl
-            });
+            return View();
         }
         [HttpPost]
-
-        public IActionResult Create(AccountCreateVM model)
+        public IActionResult AddBoxes(AdminAddBoxesVM model)
         {
+            if (!ModelState.IsValid)
+                return View(model);
+
+            repository.GenerateBoxes(model.BoxType, (decimal)model.BoxPrice);
             return RedirectToAction(nameof(Index));
         }
     }

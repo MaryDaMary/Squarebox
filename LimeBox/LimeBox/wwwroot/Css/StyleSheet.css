@@ -1,10 +1,45 @@
-﻿body {
-  background-color: lightblue; }
+﻿.Header {
+  width: 40%;
+  height: 130px;
+  background-color: #292828;
+  margin-bottom: 4px; }
 
-.Header {
-  width: 25%;
-  height: 150px;
-  background-color: lightblue; }
+#wrap {
+  width: 1200px;
+  margin: 0 auto; }
 
-.Class {
+.navbar-custom {
   background-color: #292828; }
+
+/* change the brand and text color */
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-text {
+  color: #fff; }
+
+.div {
+  border: 2px solid black;
+  /*width: 800px;*/
+  height: 400px;
+  overflow: scroll;
+  background-color: #c9c7c9;
+  display: grid;
+  grid-template-columns: 20% 20% 20% 20% 20%;
+  grid-template-rows: 50% 50%;
+  text-align: center; }
+
+img {
+  width: 50%;
+  padding: 10px;
+  /* change the color of active or hovered links */ }
+  img .navbar-custom .nav-item.active .nav-link,
+  img .navbar-custom .nav-item:hover .nav-link {
+    color: #ff6a00; }
+
+footer {
+  margin-top: 10px;
+  border: 2px solid; }
+
+li {
+  color: black;
+  font-family: 'Gill Sans Nova';
+  font-size: 20px; }

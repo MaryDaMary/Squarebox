@@ -1,0 +1,6 @@
+﻿@model TestVM
+
+@foreach (var item in Model.boxes)
+{
+        @item.BoxId @item.BoxValue @item.BoxType @item.BoxPrice <br />
+}
