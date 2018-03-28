@@ -10,5 +10,6 @@ namespace LimeBox.Models.Entities
         public string BoxType { get; set; }
         public int BoxValue { get; set; }
         public bool Bought { get; set; }
+        public decimal BoxPrice { get; set; }
     }
 }
