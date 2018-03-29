@@ -47,6 +47,7 @@ namespace LimeBox
             {
                 o.Password.RequireNonAlphanumeric = false;
                 o.Password.RequiredLength = 6;
+               
             })
            .AddEntityFrameworkStores<IdentityDbContext>()
            .AddDefaultTokenProviders();
