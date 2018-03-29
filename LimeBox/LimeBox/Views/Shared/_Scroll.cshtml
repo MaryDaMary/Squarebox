@@ -1,5 +1,7 @@
-﻿
-    <div class="div" onscroll="myFunction()">
+﻿<link rel="stylesheet" href="https://unpkg.com/simplebar@latest/dist/simplebar.css" />
+
+
+    <div id="data-simplebar">
         <div>
             <img src="~/Images/oldpink.png" />
             <p>Skönhetsboxen</p>
@@ -8,7 +10,7 @@
             <img src="~/Images/olive.png" />
             <p>Ekoboxen</p>
         </div>
-        
+
         <div>
             <img src="~/Images/yellow.png" />
             <p>Gotteboxen</p>
@@ -25,13 +27,6 @@
             <img src="~/Images/purple.png" />
             <p>Underhållningsboxen</p>
         </div>
-    </div>
+        </div>
 
-
-    <script>
-     
-        var x = 0;
-        function myFunction() {
-            document.getElementById("demo").innerHTML = x += 1;            
-        }
-    </script>
+    <script src="https://unpkg.com/simplebar@latest/dist/simplebar.js"></script>
