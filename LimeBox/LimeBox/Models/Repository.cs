@@ -15,7 +15,7 @@ namespace LimeBox.Models
             this.context = context;
         }
 
-        public void GenerateBoxes(string nameOfBox, decimal price)
+        public void GenerateBoxes(int boxTypeId, decimal price)
         {
             //av 100 boxar så är:
             //standard 80st
@@ -33,7 +33,7 @@ namespace LimeBox.Models
                 context.Add(new Boxes
                 {
                     BoxId = i,
-                    BoxType = nameOfBox,
+                    BoxTypeId = boxTypeId,
                     BoxValue = valueNumber,
                     BoxPrice = price,
                 });

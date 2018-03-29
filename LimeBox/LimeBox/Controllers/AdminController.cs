@@ -37,7 +37,7 @@ namespace LimeBox.Controllers
             if (!ModelState.IsValid)
                 return View(model);
 
-            repository.GenerateBoxes(model.BoxType, (decimal)model.BoxPrice);
+            repository.GenerateBoxes(-1, (decimal)model.BoxPrice);
             return RedirectToAction(nameof(Index));
         }
     }
