@@ -44,7 +44,8 @@ namespace LimeBox.Controllers
         public IActionResult CheckOut()
         {
             var cart = ShoppingCart.GetCart();
-            return View(new HomeCheckoutVM { Boxes = cart });
+
+            return View(new HomeCheckoutVM { Boxes = cart});
         }
 
         [HttpPost]

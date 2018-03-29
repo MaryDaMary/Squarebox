@@ -48,5 +48,7 @@ namespace LimeBox.Models.ViewModels
         [Phone]
         //[Required(ErrorMessage = "Fyll i telefonnummer")]
         public int PhoneNumber { get; set; }
+
+
     }
 }
