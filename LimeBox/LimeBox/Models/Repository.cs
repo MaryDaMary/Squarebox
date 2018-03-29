@@ -8,7 +8,7 @@ namespace LimeBox.Models
 {
     public class Repository
     {
-        LimeContext context;
+        public LimeContext context;
 
         public Repository(LimeContext context)
         {
