@@ -1,10 +1,10 @@
 ﻿body {
-  background-color: #292828;
+  background-color: #888888;
   color: white; }
 
 .Header {
   width: 25%;
-  background-color: #292828;
+  /*background-color: #292828;*/
   margin-bottom: 4px; }
 
 .CheckOut {
@@ -21,7 +21,7 @@
   margin: 0 auto; }
 
 .navbar-custom {
-  background-color: #141414; }
+  background-color: #292828; }
 
 /* change the brand and text color */
 .navbar-custom .navbar-brand,
@@ -39,7 +39,7 @@ a:hover {
   color: #fff; }
 
 #data-simplebar {
-  border: 2px solid black;
+  border: 1px solid #292828;
   height: 500px;
   overflow: auto;
   display: grid;
@@ -49,11 +49,26 @@ a:hover {
   color: #292828;
   font-family: fantasy;
   font-size: 28px;
-  background-image: url(https://www.pixelstalk.net/wp-content/uploads/2016/09/1920x1200-Aluminum-Background.jpg);
+  background-image: url(https://cdn.shutterstock.com/shutterstock/videos/1653193/thumb/1.jpg);
   background-size: 100%; }
 
+.boxinfo {
+  border: 1px solid #292828;
+  height: fit-content;
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+  text-align: center;
+  font-family: fantasy;
+  font-size: 28px;
+  color: #292828;
+  background-color: #f8f4d3; }
+
+.box {
+  width: 30%;
+  padding: 10px; }
+
 img {
-  width: 50%;
+  width: 45%;
   padding: 10px;
   /* change the color of active or hovered links */ }
   img .navbar-custom .nav-item.active .nav-link,
@@ -71,15 +86,3 @@ li {
   color: black;
   font-family: 'Gill Sans Nova';
   font-size: 20px; }
-
-p {
-  color: #292828;
-  /*background-color: rgba(210, 216, 210, 0.4);*/
-  margin: 15px;
-  margin-left: 0px; }
-
-h1 {
-  color: white; }
-
-div {
-  color: white; }

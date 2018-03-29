@@ -39,7 +39,7 @@ namespace LimeBox.Controllers
         {
             return View();
         }
-
+       
         [HttpGet]
         public IActionResult CheckOut()
         {
