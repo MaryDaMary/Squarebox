@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LimeBox.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
         Repository repository;
@@ -36,8 +36,8 @@ namespace LimeBox.Controllers
         {
             if (!ModelState.IsValid)
                 return View(model);
-
-            repository.GenerateBoxes(-1, (decimal)model.BoxPrice);
+            int nr = repository.CreateBoxType(model.BoxType);
+            repository.GenerateBoxes(nr, (decimal)model.BoxPrice, model.BoxImage);
             return RedirectToAction(nameof(Index));
         }
     }

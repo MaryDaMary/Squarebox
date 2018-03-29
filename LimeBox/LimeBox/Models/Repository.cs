@@ -16,7 +16,7 @@ namespace LimeBox.Models
             this.context = context;
         }
 
-        public void GenerateBoxes(int boxTypeId, decimal price)
+        public void GenerateBoxes(int boxTypeId, decimal price, string ImageUrl)
         {
             //av 100 boxar så är:
             //standard 80st
@@ -37,9 +37,18 @@ namespace LimeBox.Models
                     BoxTypeId = boxTypeId,
                     BoxValue = valueNumber,
                     BoxPrice = price,
+                    BoxImage = ImageUrl
                 });
             }
             context.SaveChanges();
+        }
+
+        internal int CreateBoxType(string boxType)
+        {
+            BoxTypes box = new BoxTypes { BoxType = boxType };
+            context.BoxTypes.Add(box);
+            context.SaveChanges();
+            return box.Id;
         }
 
         private int[] GenerateRandomNumbers(int amount)
@@ -80,12 +89,19 @@ namespace LimeBox.Models
             {
                 OrderRows orderRow = new OrderRows
                 {
-                    BoxId = item.BoxId,
+                    BoxId = item.Id,
                     Order = order
                 };
-                item.Bought = true;
+                ItemIsBought(item);
                 context.OrderRows.Add(orderRow);
             }
+            context.SaveChanges();
+        }
+
+        private void ItemIsBought(Boxes item)
+        {
+            var box = FindBoxById(item.Id);
+            box.Bought = true;
             context.SaveChanges();
         }
 

@@ -17,5 +17,9 @@ namespace LimeBox.Models.ViewModels
         [Display(Name = "Pris")]
         [DataType(DataType.Currency, ErrorMessage = "Måste vara en siffra")]
         public decimal? BoxPrice { get; set; }
+
+        [Required(ErrorMessage = "Du måste ha en bild")]
+        [Display(Name = "Bild Url")]
+        public string BoxImage { get; set; }
     }
 }
