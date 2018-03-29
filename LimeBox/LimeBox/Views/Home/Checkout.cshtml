@@ -1,0 +1,17 @@
+﻿@model HomeCheckoutVM
+
+
+<div>
+    <div style="overflow: auto; height: 400px; width:50%">
+        @foreach (var item in Model.Boxes)
+        {
+            <div>
+                @item.BoxType @item.BoxId @item.BoxPrice
+                <hr />
+            </div>
+        }
+    </div>
+    <div>
+            
+    </div>
+</div>

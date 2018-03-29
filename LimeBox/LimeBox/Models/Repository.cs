@@ -90,5 +90,11 @@ namespace LimeBox.Models
             }
             return false;
         }
+
+        public Boxes FindBoxById(int id)
+        {
+            return context.Boxes.Find(id);
+        }
+
     }
 }
