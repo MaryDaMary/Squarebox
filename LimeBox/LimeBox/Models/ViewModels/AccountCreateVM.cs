@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 
 namespace LimeBox.Models.ViewModels
 {
-    [Bind(Prefix = nameof(AccountCreateVM.CreateForm))]
     public class AccountCreateVM
     {
         public string ReturnUrl { get; set; }
@@ -22,6 +21,7 @@ namespace LimeBox.Models.ViewModels
             public string UserName { get; set; }
 
             [Display(Name = "Lösenord")]
+            [DataType(DataType.Password)]
             [Required(ErrorMessage = "Fyll i lösenord")]
             public string PassWord { get; set; }
 
