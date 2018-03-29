@@ -1,11 +1,22 @@
 ﻿body {
     background-color: #292828;
+    color:#fff;
 }
 
 .Header {
     width: 25%;
     background-color: #292828;
     margin-bottom: 4px;
+}
+
+.CheckOut {
+    display: inline;
+    height: 50px;
+    width: 50px;
+    float: right;
+    position: relative;
+    right: -5px;
+    bottom: -70px;
 }
 
 #wrap{

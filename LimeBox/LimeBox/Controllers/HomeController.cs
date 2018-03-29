@@ -19,8 +19,6 @@ namespace LimeBox.Controllers
             this.repository = repository;
         }
 
-
-        // GET: /<controller>/
         public IActionResult Index()
         {
             return View();
@@ -34,5 +32,11 @@ namespace LimeBox.Controllers
             return View();
         }
 
+        [HttpGet]
+        public IActionResult CheckOut()
+        {
+            var cart = ShoppingCart.GetCart();
+            return View(new HomeCheckoutVM { Boxes = cart });
+        }
     }
 }
