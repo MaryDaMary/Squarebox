@@ -1,20 +1,29 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using LimeBox.Models.Entities;
+using LimeBox.Models.ViewModels;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using static LimeBox.Models.ViewModels.AccountCreateVM;
+using static Microsoft.AspNetCore.Hosting.Internal.HostingApplication;
 
 namespace LimeBox.Models
 {
     public class AccountRepository
     {
+        LimeContext context;
+
         UserManager<IdentityUser> userManager;
         SignInManager<IdentityUser> signInManager;
         RoleManager<IdentityRole> roleManager;
         IdentityDbContext identityDbContext;
 
+
         public AccountRepository(
+            LimeContext context,
+
             UserManager<IdentityUser> userManager,
             SignInManager<IdentityUser> signInManager,
             RoleManager<IdentityRole> roleManager,
@@ -25,6 +34,7 @@ namespace LimeBox.Models
             this.signInManager = signInManager;
             this.roleManager = roleManager;
             this.identityDbContext = identityDbContext;
+            this.context = context;
         }
 
         public async Task<bool> TryLoginAsync()
@@ -33,10 +43,31 @@ namespace LimeBox.Models
             var createSchemaResult = await identityDbContext.Database.EnsureCreatedAsync();
 
             // Create a hard coded user (first time)
+            //var createResult = await userManager.CreateAsync(new IdentityUser("user"), "Password_123"));
 
             //var loginResult = await signInManager.PasswordSignInAsync(viewModel.Username, viewModel.Password, false, false);
             //return loginResult.Succeeded;
             return true;
+        }
+
+        public async Task AddNewUserAsync(CreateFormVM model)
+        {
+            //var newUser = new IdentityUser(model.UserName);
+            var newUser = new IdentityUser { UserName = model.UserName, Email = model.Email, PhoneNumber = model.PhoneNumber};
+
+            var createResult = await userManager.CreateAsync(newUser,model.PassWord);
+
+            context.Users.Add(new Users
+            {
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+                Address = model.Address,
+                PostalCode = model.PostalCode,
+                City = model.City,
+                AspNetId = newUser.Id
+                
+            });
+            await context.SaveChangesAsync();
         }
     }
 }

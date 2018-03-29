@@ -34,10 +34,12 @@ namespace LimeBox.Controllers
                 ReturnUrl = returnUrl
             });
         }
-        [HttpPost]
 
-        public IActionResult Create(AccountCreateVM model)
+        [HttpPost]
+        public async Task<IActionResult> Create(AccountCreateVM.CreateFormVM model)
         {
+            await accountRepository.AddNewUserAsync(model);
+
             return RedirectToAction(nameof(Index));
         }
     }

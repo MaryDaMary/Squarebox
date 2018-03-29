@@ -5,6 +5,11 @@ namespace LimeBox.Models.Entities
 {
     public partial class Users
     {
+        public Users()
+        {
+
+        }
+
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
