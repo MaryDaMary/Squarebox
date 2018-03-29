@@ -1,8 +1,8 @@
 ﻿@model HomeCheckoutVM
 
 
-<div>
-    <div style="overflow: auto; height: 400px; width:50%">
+<div style="display:flex;">
+    <div style="overflow: auto; height: 400px; width:50%; padding:20px;">
         @foreach (var item in Model.Boxes)
         {
             <div>
@@ -11,7 +11,48 @@
             </div>
         }
     </div>
-    <div>
-            
+    <div style="padding:20px;">
+        <form asp-controller="Home" asp-action="CheckOut" method="post">
+
+            @*<label asp-for="UserName"></label>
+            <input placeholder="Användarnamn" asp-for="UserName" />
+            <span asp-validation-for="UserName"></span>
+
+            <label asp-for="PassWord"></label>
+            <input type="password" placeholder="Lösenord" asp-for="PassWord" />
+            <span asp-validation-for="PassWord"></span>
+
+            </br>*@
+            <label asp-for="FirstName"></label>
+            <input placeholder="Förnamn" asp-for="FirstName" />
+            <span asp-validation-for="FirstName"></span>
+
+            <label asp-for="LastName"></label>
+            <input placeholder="Efternamn" asp-for="LastName" />
+            <span asp-validation-for="LastName"></span>
+
+            <br />
+            <label asp-for="Address"></label>
+            <input placeholder="Adress" asp-for="Address" />
+            <span asp-validation-for="Address"></span>
+            <br />
+            <label asp-for="PostalCode"></label>
+            <input placeholder="Postnummer" asp-for="PostalCode" />
+            <span asp-validation-for="PostalCode"></span>
+
+            <label asp-for="City"></label>
+            <input placeholder="Ort" asp-for="City" />
+            <span asp-validation-for="City"></span>
+            <br />
+            <label asp-for="Email"></label>
+            <input placeholder="E-post" asp-for="Email" />
+            <span asp-validation-for="Email"></span>
+            <br />
+            <label asp-for="PhoneNumber"></label>
+            <input placeholder="Telefonnummer" asp-for="PhoneNumber" />
+            <span asp-validation-for="PhoneNumber"></span>
+            <br />
+            <input type="submit" value="Slutför köp" />
+        </form>
     </div>
 </div>

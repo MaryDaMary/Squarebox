@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 
 namespace LimeBox.Models.ViewModels
 {
-    [Bind(Prefix = nameof(AccountCreateVM.CreateForm))]
     public class AccountCreateVM
     {
         public string ReturnUrl { get; set; }

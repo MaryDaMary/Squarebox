@@ -46,5 +46,26 @@ namespace LimeBox.Controllers
             var cart = ShoppingCart.GetCart();
             return View(new HomeCheckoutVM { Boxes = cart });
         }
+
+        [HttpPost]
+        public IActionResult CheckOut(HomeCheckoutVM model)
+        {
+            if (ModelState.IsValid)
+            {
+                model.Boxes = ShoppingCart.GetCart();
+                return View(model);
+            }
+
+            model.Boxes = ShoppingCart.GetCart();
+            repository.CreateOrder(model);
+            return RedirectToAction(nameof(Conformation));
+        }
+
+        [HttpGet]
+        public IActionResult Conformation()
+        {
+            
+            return Content("Tack för ditt köp");
+        }
     }
 }
