@@ -1,4 +1,5 @@
 ﻿using LimeBox.Models.Entities;
+using LimeBox.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -59,6 +60,33 @@ namespace LimeBox.Models
             }
 
             return numbers;
+        }
+
+        internal void CreateOrder(HomeCheckoutVM model)
+        {
+            var cart = ShoppingCart.GetCart();
+            Orders order = new Orders
+            {
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+                Email = model.Email,
+                PhoneNumber = model.PhoneNumber,
+                Address = model.Address,
+                City = model.City,
+                PostalCode = model.PostalCode,
+            };
+            context.Orders.Add(order);
+            foreach (var item in cart)
+            {
+                OrderRows orderRow = new OrderRows
+                {
+                    BoxId = item.BoxId,
+                    Order = order
+                };
+                item.Bought = true;
+                context.OrderRows.Add(orderRow);
+            }
+            context.SaveChanges();
         }
 
         private int[] GenerateRandomNumbers(int amount, int[] array)
