@@ -1,5 +1,5 @@
 ﻿body {
-  background-color: #888888;
+  background-color: #464545;
   color: white; }
 
 .Header {
@@ -15,6 +15,9 @@
   position: relative;
   right: -5px;
   bottom: -70px; }
+
+input {
+  color: black; }
 
 #wrap {
   width: 1200px;
@@ -49,7 +52,7 @@ a:hover {
   color: #292828;
   font-family: fantasy;
   font-size: 28px;
-  background-image: url(https://cdn.shutterstock.com/shutterstock/videos/1653193/thumb/1.jpg);
+  background-image: url(https://media.gettyimages.com/photos/blurred-silver-background-picture-id521203451?b=1&k=6&m=521203451&s=612x612&w=0&h=ctlNrH5ZOqdf5QTts4LivvVLK9aYlPiBm6WQLp1VMeo=);
   background-size: 100%; }
 
 .boxinfo {
@@ -61,7 +64,7 @@ a:hover {
   font-family: fantasy;
   font-size: 28px;
   color: #292828;
-  background-color: #f8f4d3; }
+  background-color: #d3c694; }
 
 .box {
   width: 30%;
@@ -80,12 +83,14 @@ img {
 
 footer {
   margin-right: 30px;
-  margin-top: 20px;
+  margin-top: 50px;
   margin-bottom: 20px;
   word-spacing: 1px;
   text-align: center; }
 
 li {
-  color: black;
   font-family: 'Gill Sans Nova';
   font-size: 20px; }
+
+.contactus {
+  padding: 10px; }
