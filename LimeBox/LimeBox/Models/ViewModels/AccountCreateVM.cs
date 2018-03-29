@@ -22,6 +22,7 @@ namespace LimeBox.Models.ViewModels
             public string UserName { get; set; }
 
             [Display(Name = "Lösenord")]
+            [DataType(DataType.Password)]
             [Required(ErrorMessage = "Fyll i lösenord")]
             public string PassWord { get; set; }
 
