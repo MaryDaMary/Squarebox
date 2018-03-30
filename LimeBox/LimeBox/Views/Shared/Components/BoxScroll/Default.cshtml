@@ -1,17 +1,22 @@
 ﻿@model GetBoxDataBaseVM[]
 
 
-	<div id="data-simplebar">
+<div id="data-simplebar">
 
-@foreach (var item in Model )
-{
+	@foreach (var item in Model)
+	{
 		<div>
-			<a asp-area="" asp-controller="Home" asp-action="Index" asp-route-id="@item.Id">@item.Name @item.Image</a>
+			<a asp-area="" asp-controller="Home" asp-action="Index" asp-route-id="@item.Id">
+				@item.Name
+				<img src="@item.Image" />
+			</a>
 		</div>
-}
-	</div>
-		
+	}
+	@*<img src="~/Images/olive.png" />*@
+</div>
 
 
-	@*<img src="~/Images/oldpink.png" />
-			<p>Skönhetsboxen</p>*@
+
+
+@*<img src="~/Images/oldpink.png" />
+	<p>Skönhetsboxen</p>*@

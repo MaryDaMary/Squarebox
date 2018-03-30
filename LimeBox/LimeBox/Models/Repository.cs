@@ -37,7 +37,7 @@ namespace LimeBox.Models
                     BoxTypeId = boxTypeId,
                     BoxValue = valueNumber,
                     BoxPrice = price,
-                    BoxImage = ImageUrl
+                    
                 });
             }
             context.SaveChanges();
@@ -148,7 +148,7 @@ namespace LimeBox.Models
                 {
                     Id = s.Id,
                     Name = s.BoxType,
-                    Image = s.Image
+                    Image = s.BoxImage
                 });
            
             return boxTypes.ToArray();
