@@ -7,9 +7,12 @@ namespace LimeBox.Models.Entities
     {
         public int Id { get; set; }
         public int BoxId { get; set; }
-        public string BoxType { get; set; }
         public int BoxValue { get; set; }
         public bool Bought { get; set; }
         public decimal BoxPrice { get; set; }
+        public string BoxImage { get; set; }
+        public int BoxTypeId { get; set; }
+
+        public BoxTypes BoxType { get; set; }
     }
 }

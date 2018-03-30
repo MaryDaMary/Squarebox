@@ -1,7 +1,7 @@
 ﻿@model AdminAddBoxesVM
 
 <form asp-controller="Admin" asp-action="AddBoxes" method="post">
-    <label asp-for="@Model.BoxType" ></label>
+    <label asp-for="@Model.BoxType"></label>
     <input placeholder="Namn på box" asp-for="@Model.BoxType" />
     <br />
     <span asp-validation-for="@Model.BoxType"></span>
@@ -10,6 +10,11 @@
     <input placeholder="Namn på box" asp-for="@Model.BoxPrice" />
     <br />
     <span asp-validation-for="@Model.BoxPrice"></span>
+    <br />
+    <label asp-for="@Model.BoxImage"></label>
+    <input placeholder="Bild Url" asp-for="@Model.BoxImage" />
+    <br />
+    <span asp-validation-for="@Model.BoxImage"></span>
     <br />
     <button type="submit">Skapa</button>
 </form>

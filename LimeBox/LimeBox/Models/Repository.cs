@@ -16,7 +16,7 @@ namespace LimeBox.Models
             this.context = context;
         }
 
-        public void GenerateBoxes(string nameOfBox, decimal price)
+        public void GenerateBoxes(int boxTypeId, decimal price, string ImageUrl)
         {
             //av 100 boxar så är:
             //standard 80st
@@ -34,15 +34,22 @@ namespace LimeBox.Models
                 context.Add(new Boxes
                 {
                     BoxId = i,
-                    BoxType = nameOfBox,
+                    BoxTypeId = boxTypeId,
                     BoxValue = valueNumber,
                     BoxPrice = price,
+                    BoxImage = ImageUrl
                 });
             }
             context.SaveChanges();
         }
 
-       
+        internal int CreateBoxType(string boxType)
+        {
+            BoxTypes box = new BoxTypes { BoxType = boxType };
+            context.BoxTypes.Add(box);
+            context.SaveChanges();
+            return box.Id;
+        }
 
         private int[] GenerateRandomNumbers(int amount)
         {
@@ -62,6 +69,40 @@ namespace LimeBox.Models
             }
 
             return numbers;
+        }
+
+        internal void CreateOrder(HomeCheckoutVM model)
+        {
+            var cart = ShoppingCart.GetCart();
+            Orders order = new Orders
+            {
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+                Email = model.Email,
+                PhoneNumber = model.PhoneNumber,
+                Address = model.Address,
+                City = model.City,
+                PostalCode = model.PostalCode,
+            };
+            context.Orders.Add(order);
+            foreach (var item in cart)
+            {
+                OrderRows orderRow = new OrderRows
+                {
+                    BoxId = item.Id,
+                    Order = order
+                };
+                ItemIsBought(item);
+                context.OrderRows.Add(orderRow);
+            }
+            context.SaveChanges();
+        }
+
+        private void ItemIsBought(Boxes item)
+        {
+            var box = FindBoxById(item.Id);
+            box.Bought = true;
+            context.SaveChanges();
         }
 
         private int[] GenerateRandomNumbers(int amount, int[] array)
