@@ -19,9 +19,12 @@ namespace LimeBox.Controllers
             this.repository = repository;
         }
 
+        [HttpGet]
         public IActionResult Index()
         {
-            return View();
+            var boxes = repository.GetBoxesVM();
+
+            return View(boxes);
         }
         public IActionResult Test()
         {
@@ -68,5 +71,8 @@ namespace LimeBox.Controllers
             
             return Content("Tack för ditt köp");
         }
+
+
+        
     }
 }

@@ -140,5 +140,14 @@ namespace LimeBox.Models
             return context.Boxes.Find(id);
         }
 
+
+        public List<Boxes> GetBoxesVM()
+        {
+            var boxes =  context.Boxes;
+
+
+
+            return boxes.ToList();
+        }
     }
 }
