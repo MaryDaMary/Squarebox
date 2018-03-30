@@ -165,8 +165,7 @@ namespace LimeBox.Models
                   BoxTypeName = s.BoxTypes.BoxType,
                   BoxImg = s.BoxTypes.BoxImage
 
-              });
-            
+              });        
 
             return boxes.ToArray();
         }
