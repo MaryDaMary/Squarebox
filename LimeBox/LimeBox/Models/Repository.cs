@@ -141,16 +141,30 @@ namespace LimeBox.Models
         }
 
 
-        public NavBarVM[] GetBoxesNavBar()
+        public GetBoxDataBaseVM[] GetBoxesDataBase()
         {
             var boxTypes = context.BoxTypes
-                .Select(s => new NavBarVM
+                .Select(s => new GetBoxDataBaseVM
                 {
                     Id = s.Id,
-                    Name = s.BoxType
+                    Name = s.BoxType,
+                    Image = s.Image
                 });
            
             return boxTypes.ToArray();
         }
+
+        //public GetBoxDataBaseVM[] GetBoxesScroll()
+        //{
+        //    var boxTypes = context.BoxTypes
+        //        .Select(s => new GetBoxDataBaseVM
+        //        {
+        //            Id = s.Id,
+        //            Name = s.BoxType,
+        //            Image = s.BoxImage
+        //        });
+
+        //    return boxTypes.ToArray();
+        //}
     }
 }

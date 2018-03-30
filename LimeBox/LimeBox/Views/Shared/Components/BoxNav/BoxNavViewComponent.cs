@@ -7,18 +7,18 @@ using System.Threading.Tasks;
 
 namespace LimeBox.Views.Shared.Components.BoxList
 {
-    public class BoxListViewComponent : ViewComponent
+    public class BoxNavViewComponent : ViewComponent
     {
         private Repository repository;
 
-        public BoxListViewComponent(Repository repository)
+        public BoxNavViewComponent(Repository repository)
         {
             this.repository = repository;
         }
 
         public IViewComponentResult Invoke()
         {
-            return View(repository.GetBoxesNavBar());
+            return View(repository.GetBoxesDataBase());
         }
     }
 }
