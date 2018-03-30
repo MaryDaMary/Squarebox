@@ -5,9 +5,10 @@ using System.Threading.Tasks;
 
 namespace LimeBox.Models.ViewModels
 {
-    public class NavBarVM
+    public class GetBoxDataBaseVM
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public string Image { get; set; }
     }
 }

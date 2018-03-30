@@ -10,7 +10,6 @@ namespace LimeBox.Models.Entities
         public int BoxValue { get; set; }
         public bool Bought { get; set; }
         public decimal BoxPrice { get; set; }
-        public string BoxImage { get; set; }
         public int BoxTypeId { get; set; }
 
         public BoxTypes BoxType { get; set; }

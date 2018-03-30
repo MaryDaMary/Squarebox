@@ -22,10 +22,14 @@ namespace LimeBox.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            var boxes = repository.GetBoxesNavBar();
+            var boxes = repository.GetBoxesDataBase();
 
             return View(boxes);
         }
+
+
+
+
         public IActionResult Test()
         {
             return View();

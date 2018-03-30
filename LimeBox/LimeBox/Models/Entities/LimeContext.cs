@@ -16,8 +16,8 @@ namespace LimeBox.Models.Entities
         {
             if (!optionsBuilder.IsConfigured)
             {
-//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer(Startup.connString);
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+                optionsBuilder.UseSqlServer(@"Server=tcp:pinkpear.database.windows.net,1433;Initial Catalog=Lime;Persist Security Info=False;User ID=Squarebox;Password=Limebox2;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
             }
         }
 
@@ -28,11 +28,6 @@ namespace LimeBox.Models.Entities
                 entity.ToTable("Boxes", "Lime");
 
                 entity.Property(e => e.BoxId).HasColumnName("Box_Id");
-
-                entity.Property(e => e.BoxImage)
-                    .IsRequired()
-                    .HasColumnName("Box_Image")
-                    .HasMaxLength(1000);
 
                 entity.Property(e => e.BoxPrice)
                     .HasColumnName("Box_Price")
@@ -52,6 +47,10 @@ namespace LimeBox.Models.Entities
             modelBuilder.Entity<BoxTypes>(entity =>
             {
                 entity.ToTable("Box_Types", "Lime");
+
+                entity.Property(e => e.BoxImage)
+                    .HasColumnName("Box_Image")
+                    .HasMaxLength(1000);
 
                 entity.Property(e => e.BoxType)
                     .IsRequired()

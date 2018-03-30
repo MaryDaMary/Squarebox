@@ -36,6 +36,7 @@ namespace LimeBox.Controllers
         {
             if (!ModelState.IsValid)
                 return View(model);
+
             int nr = repository.CreateBoxType(model.BoxType);
             repository.GenerateBoxes(nr, (decimal)model.BoxPrice, model.BoxImage);
             return RedirectToAction(nameof(Index));
