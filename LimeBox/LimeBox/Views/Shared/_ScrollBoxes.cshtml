@@ -1,0 +1,28 @@
+﻿@model ManyBoxesVM[]
+<link rel="stylesheet" href="https://unpkg.com/simplebar@latest/dist/simplebar.css" />
+
+@*@await Component.InvokeAsync("BoxScroll")*@
+
+<div id="data-simplebar">
+
+	@foreach (var item in Model)
+	{
+
+		<div>
+			<a asp-area="" asp-controller="Home" asp-action="ManyBoxes" asp-route-id="@item.BoxId">
+				<img src="@item.BoxImg" />
+				<br/>
+				@item.BoxTypeName
+				# @item.BoxId
+			</a>
+
+		</div>
+	}
+	</div>
+
+	@*<div id="data-simplebar">
+			test
+			@Model.Name
+			<img src="@Model.Image" />
+		</div>*@
+	<script src="https://unpkg.com/simplebar@latest/dist/simplebar.js"></script>

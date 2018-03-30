@@ -6,13 +6,15 @@
 	@foreach (var item in Model)
 	{
 		<div>
-			<a asp-area="" asp-controller="Home" asp-action="Index" asp-route-id="@item.Id">
+			<a asp-area="" asp-controller="Home" asp-action="ManyBoxes" asp-route-id="@item.Id">
 				@item.Name
 				<img src="@item.Image" />
 			</a>
+
 		</div>
 	}
-	@*<img src="~/Images/olive.png" />*@
+
+
 </div>
 
 

@@ -27,6 +27,13 @@ namespace LimeBox.Controllers
             return View(boxes);
         }
 
+        [HttpGet]
+        public IActionResult ManyBoxes(int Id)
+        {
+            var boxes = repository.GetManyBoxesVM(Id);
+
+            return View(boxes);    
+        }
 
 
 
