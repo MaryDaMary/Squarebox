@@ -14,7 +14,7 @@ namespace LimeBox.Controllers
     {
         Repository repository;
 
-        public HomeController(Repository repository)
+        public HomeController(Repository repository) 
         {
             this.repository = repository;
         }
@@ -22,7 +22,7 @@ namespace LimeBox.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            var boxes = repository.GetBoxesVM();
+            var boxes = repository.GetBoxesNavBar();
 
             return View(boxes);
         }

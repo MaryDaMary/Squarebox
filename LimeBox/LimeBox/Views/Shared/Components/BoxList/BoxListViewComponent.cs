@@ -16,9 +16,9 @@ namespace LimeBox.Views.Shared.Components.BoxList
             this.repository = repository;
         }
 
-        public IViewComponentResult InvokeAsync()
+        public IViewComponentResult Invoke()
         {
-            return View( repository.GetBoxesVM());
+            return View(repository.GetBoxesNavBar());
         }
     }
 }

@@ -141,13 +141,16 @@ namespace LimeBox.Models
         }
 
 
-        public List<Boxes> GetBoxesVM()
+        public NavBarVM[] GetBoxesNavBar()
         {
-            var boxes =  context.Boxes;
-
-
-
-            return boxes.ToList();
+            var boxTypes = context.BoxTypes
+                .Select(s => new NavBarVM
+                {
+                    Id = s.Id,
+                    Name = s.BoxType
+                });
+           
+            return boxTypes.ToArray();
         }
     }
 }
