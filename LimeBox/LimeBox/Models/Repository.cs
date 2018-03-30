@@ -1,4 +1,5 @@
 ﻿using LimeBox.Models.Entities;
+using LimeBox.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,6 +41,8 @@ namespace LimeBox.Models
             }
             context.SaveChanges();
         }
+
+       
 
         private int[] GenerateRandomNumbers(int amount)
         {
@@ -96,5 +99,14 @@ namespace LimeBox.Models
             return context.Boxes.Find(id);
         }
 
+
+        public List<Boxes> GetBoxesVM()
+        {
+            var boxes =  context.Boxes;
+
+
+
+            return boxes.ToList();
+        }
     }
 }
