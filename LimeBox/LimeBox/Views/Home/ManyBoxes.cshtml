@@ -5,12 +5,14 @@
 <div id="divResult"></div>
 
 
-<div class="boxinfo">
+<div class="boxinfo2">
 
     <div>
         <img src="@Model.BoxImage">
-		<h2>@Model.Boxtype</h2>
-		<br/>
+        </div>       
+    <div>
+        <br />
+        <h2>@Model.Boxtype</h2>
         @Model.BoxDescription
     </div>
 
@@ -21,17 +23,17 @@
 <link rel="stylesheet" href="https://unpkg.com/simplebar@latest/dist/simplebar.css" />
 
 
-<div id="data-simplebar">
+<div id="data-simplebar2">
 
     @foreach (var item in Model.Items)
     {
 
         <div>
-            <a asp-area="" asp-controller="Home" asp-action="ManyBoxes" asp-route-id="@item.BoxId">
+            <a class="boxName" asp-controller="Home" asp-action="ManyBoxes" asp-route-id="@item.BoxId">
                 <img src="@item.BoxImg" />
                 <br />
-                @item.BoxTypeName
-                # @item.BoxId
+                @*<h2> @item.BoxTypeName</h2>*@
+                <h2> # @item.BoxId</h2>
             </a>
 
         </div>

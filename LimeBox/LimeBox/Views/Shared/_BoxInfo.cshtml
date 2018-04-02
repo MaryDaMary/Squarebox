@@ -1,20 +1,31 @@
-﻿    <div class="boxinfo">
+﻿
+
+<div class="boxinfo">
+
+    <div style="grid-column: span 3; font-family:Gabriola;font-size:35px; padding-top:20px;">
+       
+            Alla dina favoritboxar samlade. Välj ditt lyckonummer på valfri box, är turen på sin sida idag?
+        
+        </div>
     <div>
-        <a asp-controller="Home" asp-action="ReadMore">   <img src="~/Images/bronsbox1.png" />  </a>
-        <a asp-controller="Home" asp-action="ReadMore">   <p style="color:#000">Standard</p>  </a>
+        <a asp-controller="Home" asp-action="ReadMore">   <img class="box" src="~/Images/bronsbox1.png" />  </a>
+        <a asp-controller="Home" asp-action="ReadMore">   <h2><strong>Standard</strong></h2>  </a>
     </div>
 
     <div>
-        <a asp-controller="Home" asp-action="ReadMore">  <img src="~/Images/silverbox1.png" />  </a>
-        <a asp-controller="Home" asp-action="ReadMore">   <p style="color:#000">Premium</p>  </a>
+        <a asp-controller="Home" asp-action="ReadMore">  <img class="box" src="~/Images/silverbox1.png" />  </a>
+        <a asp-controller="Home" asp-action="ReadMore">   <h2>Premium</h2>  </a>
     </div>
     <div>
-   
-        <a asp-controller="Home" asp-action="ReadMore"> <img src="~/Images/guldbox1.png" />   </a>
-        <a asp-controller="Home" asp-action="ReadMore">   <p style="color:#000">Deluxe</p>  </a>
+
+        <a asp-controller="Home" asp-action="ReadMore"> <img class="box" src="~/Images/guldbox1.png" />   </a>
+        <a style="color:#464545" asp-controller="Home" asp-action="ReadMore">   <h2>Deluxe</h2>  </a>
     </div>
-        <a style="grid-column:span 3; text-align:right; color:#292828; font-size:12px;" asp-controller="Home" asp-action="ReadMore">Läs mer...</a>
-    
-    </div>
+
+
+    <a style="grid-column:span 3; text-align:right; color:#464545; font-size:20px;font-family:'Champagne & Limousines'; font-weight: bold;" asp-controller="Home" asp-action="ReadMore">Mer info!</a>
+
+</div>
+
 
 
