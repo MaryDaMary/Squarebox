@@ -7,21 +7,13 @@
 	@foreach (var item in Model)
 	{
 		<div>
-            <a asp-area="" asp-controller="Home" asp-action="ManyBoxes" asp-route-id="@item.Id">
+			<a asp-area="" asp-controller="Home" asp-action="ManyBoxes" asp-route-id="@item.Id">
 
-                <img src="@item.Image" />
-                <br/>
-                @item.Name
-            </a>
-
+				<img src="@item.Image" />
+				<br/>
+				@item.Name
+			</a>
 		</div>
 	}
 
-
 </div>
-
-
-
-
-@*<img src="~/Images/oldpink.png" />
-	<p>Skönhetsboxen</p>*@

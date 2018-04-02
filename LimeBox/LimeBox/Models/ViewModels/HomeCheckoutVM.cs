@@ -9,7 +9,7 @@ namespace LimeBox.Models.ViewModels
 {
     public class HomeCheckoutVM
     {
-        public List<BoxType> Boxes { get; set; }
+        public List<Boxes> Boxes { get; set; }
 
         //[Display(Name = "Användarnamn")]
         //[Required(ErrorMessage = "Fyll i användarnamn")]
