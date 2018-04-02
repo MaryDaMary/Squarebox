@@ -10,7 +10,7 @@ namespace LimeBox.Models.ViewModels
     {
 
 
-        public List<BoxType> Boxes { get; set; }
+        public List<BoxTypes> Boxes { get; set; }
     }
 }
 

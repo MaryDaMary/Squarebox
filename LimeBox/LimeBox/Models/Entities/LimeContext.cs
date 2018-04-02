@@ -6,7 +6,7 @@ namespace LimeBox.Models.Entities
 {
     public partial class LimeContext : DbContext
     {
-        public virtual DbSet<BoxType> Boxes { get; set; }
+        public virtual DbSet<Boxes> Boxes { get; set; }
         public virtual DbSet<BoxTypes> BoxTypes { get; set; }
         public virtual DbSet<OrderRows> OrderRows { get; set; }
         public virtual DbSet<Orders> Orders { get; set; }
@@ -16,14 +16,14 @@ namespace LimeBox.Models.Entities
         {
             if (!optionsBuilder.IsConfigured)
             {
-//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer(@"Server=tcp:pinkpear.database.windows.net,1433;Initial Catalog=Lime;Persist Security Info=False;User ID=Squarebox;Password=Limebox2;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+                optionsBuilder.UseSqlServer(Startup.connString);
             }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<BoxType>(entity =>
+            modelBuilder.Entity<Boxes>(entity =>
             {
                 entity.ToTable("Boxes", "Lime");
 
@@ -37,7 +37,7 @@ namespace LimeBox.Models.Entities
 
                 entity.Property(e => e.BoxValue).HasColumnName("Box_Value");
 
-                entity.HasOne(d => d.BoxTypes)
+                entity.HasOne(d => d.BoxType)
                     .WithMany(p => p.Boxes)
                     .HasForeignKey(d => d.BoxTypeId)
                     .OnDelete(DeleteBehavior.ClientSetNull)

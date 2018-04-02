@@ -7,13 +7,13 @@ namespace LimeBox.Models.Entities
     {
         public BoxTypes()
         {
-            Boxes = new HashSet<BoxType>();
+            Boxes = new HashSet<Boxes>();
         }
 
         public int Id { get; set; }
         public string BoxType { get; set; }
         public string BoxImage { get; set; }
 
-        public ICollection<BoxType> Boxes { get; set; }
+        public ICollection<Boxes> Boxes { get; set; }
     }
 }

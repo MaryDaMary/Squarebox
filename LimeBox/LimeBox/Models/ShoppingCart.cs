@@ -8,19 +8,19 @@ namespace LimeBox.Models
 {
     public class ShoppingCart
     {
-        static List<BoxType> cart = new List<BoxType>();
+        static List<Boxes> cart = new List<Boxes>();
 
-        static public void AddToCart(BoxType box)
+        static public void AddToCart(Boxes box)
         {
             cart.Add(box);
         }
 
-        static public void RemoveFromCart(BoxType box)
+        static public void RemoveFromCart(Boxes box)
         {
             cart.RemoveAll(b => b.Id == box.Id);
         }
 
-        static public List<BoxType> GetCart()
+        static public List<Boxes> GetCart()
         {
             return cart;
         }

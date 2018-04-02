@@ -8,6 +8,6 @@ namespace LimeBox.Models.ViewModels
 {
     public class TestVM
     {
-        public List<BoxType> boxes;
+        public List<BoxTypes> boxes;
     }
 }
