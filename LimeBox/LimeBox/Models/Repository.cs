@@ -103,8 +103,6 @@ namespace LimeBox.Models
             var box = FindBoxById(item.Id);
             box.Bought = true;
 
-
-
             context.SaveChanges();
         }
 
@@ -159,12 +157,16 @@ namespace LimeBox.Models
 
         public ManyBoxesVM GetManyBoxesVM(int Id)
         {
+            var boxType = context.BoxTypes.Find(Id);
             return new ManyBoxesVM
             {
-                Name = "GotteBoxen",
-                Description="Godis",
-                Image="Bild",
+
+                BoxDescription = boxType.BoxDescription,
+                Boxtype = boxType.BoxType,
+                BoxImage = boxType.BoxImage,
+                 
                 Items = context.Boxes
+
             .Where(b => b.BoxTypeId == Id)
               //vi vill bara ha boxar som har det id:et
               .Select(s => new ManyBoxesItemVM

@@ -13,6 +13,7 @@ namespace LimeBox.Models.Entities
         public int Id { get; set; }
         public string BoxType { get; set; }
         public string BoxImage { get; set; }
+        public string BoxDescription { get; set; }
 
         public ICollection<Boxes> Boxes { get; set; }
     }

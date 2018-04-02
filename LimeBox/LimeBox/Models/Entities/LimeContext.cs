@@ -48,7 +48,12 @@ namespace LimeBox.Models.Entities
             {
                 entity.ToTable("Box_Types", "Lime");
 
+                entity.Property(e => e.BoxDescription)
+                    .HasColumnName("Box_Description")
+                    .HasMaxLength(1000);
+
                 entity.Property(e => e.BoxImage)
+                    .IsRequired()
                     .HasColumnName("Box_Image")
                     .HasMaxLength(1000);
 

@@ -9,9 +9,9 @@ namespace LimeBox.Models.ViewModels
     public class ManyBoxesVM
     {
      
-        public string Description { get; set; }
-        public string Name { get; set; }
-        public string Image { get; set; }
+        public string BoxDescription { get; set; }
+        public string Boxtype { get; set; }
+        public string BoxImage { get; set; }
 
         public ManyBoxesItemVM[] Items { get; set; }
 
