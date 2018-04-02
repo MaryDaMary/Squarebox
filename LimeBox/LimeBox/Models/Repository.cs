@@ -31,7 +31,7 @@ namespace LimeBox.Models
                     valueNumber = 3;
                 else if (numberIsInArray(random15, i))
                     valueNumber = 2;
-                context.Add(new Boxes
+                context.Add(new BoxType
                 {
                     BoxId = i,
                     BoxTypeId = boxTypeId,
@@ -98,7 +98,7 @@ namespace LimeBox.Models
             context.SaveChanges();
         }
 
-        private void ItemIsBought(Boxes item)
+        private void ItemIsBought(BoxType item)
         {
             var box = FindBoxById(item.Id);
             box.Bought = true;
@@ -135,7 +135,7 @@ namespace LimeBox.Models
             return false;
         }
 
-        public Boxes FindBoxById(int id)
+        public BoxType FindBoxById(int id)
         {
             return context.Boxes.Find(id);
         }
@@ -152,6 +152,22 @@ namespace LimeBox.Models
                 });
            
             return boxTypes.ToArray();
+        }
+
+        public ManyBoxesVM[] GetManyBoxesVM(int Id)
+        {
+            var boxes = context.Boxes
+            .Where(b => b.BoxTypeId == Id)
+            //vi vill bara ha boxar som har det id:et
+              .Select(s => new ManyBoxesVM
+              {
+                  BoxId = s.BoxId,
+                  BoxTypeName = s.BoxTypes.BoxType,
+                  BoxImg = s.BoxTypes.BoxImage
+
+              });        
+
+            return boxes.ToArray();
         }
 
         //public GetBoxDataBaseVM[] GetBoxesScroll()

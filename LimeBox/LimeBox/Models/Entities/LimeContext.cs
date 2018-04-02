@@ -6,7 +6,7 @@ namespace LimeBox.Models.Entities
 {
     public partial class LimeContext : DbContext
     {
-        public virtual DbSet<Boxes> Boxes { get; set; }
+        public virtual DbSet<BoxType> Boxes { get; set; }
         public virtual DbSet<BoxTypes> BoxTypes { get; set; }
         public virtual DbSet<OrderRows> OrderRows { get; set; }
         public virtual DbSet<Orders> Orders { get; set; }
@@ -23,7 +23,7 @@ namespace LimeBox.Models.Entities
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Boxes>(entity =>
+            modelBuilder.Entity<BoxType>(entity =>
             {
                 entity.ToTable("Boxes", "Lime");
 
@@ -37,7 +37,7 @@ namespace LimeBox.Models.Entities
 
                 entity.Property(e => e.BoxValue).HasColumnName("Box_Value");
 
-                entity.HasOne(d => d.BoxType)
+                entity.HasOne(d => d.BoxTypes)
                     .WithMany(p => p.Boxes)
                     .HasForeignKey(d => d.BoxTypeId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
