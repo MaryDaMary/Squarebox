@@ -157,20 +157,25 @@ namespace LimeBox.Models
             return boxTypes.ToArray();
         }
 
-        public ManyBoxesVM[] GetManyBoxesVM(int Id)
+        public ManyBoxesVM GetManyBoxesVM(int Id)
         {
-            var boxes = context.Boxes
+            return new ManyBoxesVM
+            {
+                Name = "GotteBoxen",
+                Description="Godis",
+                Image="Bild",
+                Items = context.Boxes
             .Where(b => b.BoxTypeId == Id)
-            //vi vill bara ha boxar som har det id:et
-              .Select(s => new ManyBoxesVM
+              //vi vill bara ha boxar som har det id:et
+              .Select(s => new ManyBoxesItemVM
               {
                   BoxId = s.BoxId,
                   BoxTypeName = s.BoxType.BoxType,
                   BoxImg = s.BoxType.BoxImage
 
-              });        
-
-            return boxes.ToArray();
+              }).ToArray()
+            };
+            
         }
 
         //public GetBoxDataBaseVM[] GetBoxesScroll()

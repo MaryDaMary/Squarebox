@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace LimeBox.Models.ViewModels
 {
-    public class ManyBoxesVM
+    public class SpecificBoxInfoVM
     {
-     
-        public string Description { get; set; }
-        public string Name { get; set; }
-        public string Image { get; set; }
+        public string BoxTypeName { get; set; }
+       
+        public string BoxImg { get; set; }
 
-        public ManyBoxesItemVM[] Items { get; set; }
+        public string Description { get; set; }
+
 
     }
 }

@@ -1,6 +1,37 @@
-﻿<button id="RemovFromCart">Remove from cart</button>
+﻿@model ManyBoxesVM
+<button id="RemovFromCart">Remove from cart</button>
 <button id="AddToCart">Add to cart</button>
 <div id="divResult"></div>
-@Html.Partial("_BoxInfo")
-<br/>
-@Html.Partial("_ScrollBoxes")
+
+
+<div class="boxinfo">
+
+    <div>
+        @Model.Description
+        @Model.Name
+        @Model.Image
+    </div>
+
+</div>
+<br />
+
+
+<link rel="stylesheet" href="https://unpkg.com/simplebar@latest/dist/simplebar.css" />
+
+
+<div id="data-simplebar">
+
+    @foreach (var item in Model.Items)
+    {
+
+        <div>
+            <a asp-area="" asp-controller="Home" asp-action="ManyBoxes" asp-route-id="@item.BoxId">
+                <img src="@item.BoxImg" />
+                <br />
+                @item.BoxTypeName
+                # @item.BoxId
+            </a>
+
+        </div>
+    }
+</div>
