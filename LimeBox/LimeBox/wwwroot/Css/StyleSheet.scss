@@ -63,6 +63,21 @@ a:hover{
     background-image: url(https://media.gettyimages.com/photos/blurred-silver-background-picture-id521203451?b=1&k=6&m=521203451&s=612x612&w=0&h=ctlNrH5ZOqdf5QTts4LivvVLK9aYlPiBm6WQLp1VMeo=);
     background-size: 100%;
 }
+#data-simplebar2 {
+    border: 1px solid #292828;
+    height: 500px;
+    overflow: auto;
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-rows: 50% 50%;
+    text-align: center;
+    color: #292828;
+    font-family: fantasy;
+    font-size: 28px;
+    background-image: url(https://media.gettyimages.com/photos/blurred-silver-background-picture-id521203451?b=1&k=6&m=521203451&s=612x612&w=0&h=ctlNrH5ZOqdf5QTts4LivvVLK9aYlPiBm6WQLp1VMeo=);
+    background-size: 100%;
+    color: #292828;
+}
 .boxinfo {
     border: 1px solid #292828;
     height: fit-content;
@@ -76,9 +91,23 @@ a:hover{
     background-image: url(https://media.gettyimages.com/photos/blurred-silver-background-picture-id521203451?b=1&k=6&m=521203451&s=612x612&w=0&h=ctlNrH5ZOqdf5QTts4LivvVLK9aYlPiBm6WQLp1VMeo=);
     background-size: 100%;
 }
+.boxinfo2 {
+    border: 1px solid #292828;
+    height: fit-content;
+    display: grid;
+    grid-template-columns: 40% 60%;
+    text-align: center;
+    font-family:'Gill Sans Nova';
+    font-size:20px;
+    color: #292828;
+    /*background-color: #d3c694;*/
+    background-image: url(https://media.gettyimages.com/photos/blurred-silver-background-picture-id521203451?b=1&k=6&m=521203451&s=612x612&w=0&h=ctlNrH5ZOqdf5QTts4LivvVLK9aYlPiBm6WQLp1VMeo=);
+    background-size: 100%;
+}
 .box{
     width:30%;
     padding:10px;
+    color: black;
 }
 
 input{
@@ -109,4 +138,10 @@ li{
 
 .contactus{
     padding:10px;
+}
+h2 {
+    font-family: fantasy;
+    font-size: 28px;
+    color: #464545;
+    margin:0px;
 }
