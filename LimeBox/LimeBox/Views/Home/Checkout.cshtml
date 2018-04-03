@@ -2,86 +2,85 @@
 
 
 <div style="display:flex;">
-    <div style="overflow: auto; height: 400px; width:50%; padding:20px;">
+    <div class="CheckOutBoxes">
         @foreach (var item in Model.Boxes)
         {
             <div>
                 <img src="@item.BoxType.BoxImage" /> @item.BoxType.BoxType #@item.BoxId <br />
-                @item.BoxPrice
+                @item.BoxPrice :-
                 <img style="height: 20px; width: 20px; padding:unset;" onclick="RemoveFromCart(@item.Id)" src="https://iaia.edu/wp-content/uploads/class_x_letter_icon.png" />
-                <hr />
             </div>
         }
     </div>
-    <div style="padding:20px;">
-		<form asp-controller="Home" asp-action="CheckOut" method="post">
-			<div class="form-row">
-				<span class="form-group col-md-6">
-					<label for="inputFirstName4" asp-for="FirstName"></label>
-					<input class="form-control" id="inputFirstName4" placeholder="Förnamn" asp-for="FirstName" />
-					<span asp-validation-for="FirstName"></span>
-				</span>
-				<span class="form-group col-md-6">
-					<label for="inputLastName4" asp-for="LastName"></label>
-					<input class="form-control" id="inputLastName4" placeholder="Efternamn" asp-for="LastName" />
-					<span asp-validation-for="LastName"></span>
-				</span>
-			</div>
+    <div style="padding:20px; margin-left: auto; margin-right: auto;">
+        <form asp-controller="Home" asp-action="CheckOut" method="post">
+            <div class="form-row">
+                <span class="form-group col-md-6">
+                    <label for="inputFirstName4" asp-for="FirstName"></label>
+                    <input class="form-control" id="inputFirstName4" placeholder="Förnamn" asp-for="FirstName" />
+                    <span asp-validation-for="FirstName"></span>
+                </span>
+                <span class="form-group col-md-6">
+                    <label for="inputLastName4" asp-for="LastName"></label>
+                    <input class="form-control" id="inputLastName4" placeholder="Efternamn" asp-for="LastName" />
+                    <span asp-validation-for="LastName"></span>
+                </span>
+            </div>
 
-			<br />
-			<div class="form-row">
-				<span class="form-group col-md-12">
-					<label for="inputAddress" asp-for="Address"></label>
-					<input type="text" class="form-control" id="inputAddress" placeholder="Adress" asp-for="Address" />
-					<span asp-validation-for="Address"></span>
-				</span>
-			</div>
-			<br />
-			<div class="form-row">
-				<span class="form-group col-md-6">
-					<label for="inputZip" asp-for="PostalCode"></label>
-					<input type="text" class="form-control" id="inputZip" placeholder="Postnummer" asp-for="PostalCode" />
-					<span asp-validation-for="PostalCode"></span>
-				</span>
+            <br />
+            <div class="form-row">
+                <span class="form-group col-md-12">
+                    <label for="inputAddress" asp-for="Address"></label>
+                    <input type="text" class="form-control" id="inputAddress" placeholder="Adress" asp-for="Address" />
+                    <span asp-validation-for="Address"></span>
+                </span>
+            </div>
+            <br />
+            <div class="form-row">
+                <span class="form-group col-md-6">
+                    <label for="inputZip" asp-for="PostalCode"></label>
+                    <input type="text" class="form-control" id="inputZip" placeholder="Postnummer" asp-for="PostalCode" />
+                    <span asp-validation-for="PostalCode"></span>
+                </span>
 
-				<span class="form-group col-md-6">
-					<label for="inputCity" asp-for="City"></label>
-					<input type="text" class="form-control" id="inputCity" placeholder="Ort" asp-for="City" />
-					<span asp-validation-for="City"></span>
-				</span>
-			</div>
+                <span class="form-group col-md-6">
+                    <label for="inputCity" asp-for="City"></label>
+                    <input type="text" class="form-control" id="inputCity" placeholder="Ort" asp-for="City" />
+                    <span asp-validation-for="City"></span>
+                </span>
+            </div>
 
-			<br />
-			<div class="form-row">
-				<span class="form-group col-md-6">
-					<label for="inputEmail4" asp-for="Email"></label>
-					<input class="form-control" id="inputEmail4" placeholder="E-post" asp-for="Email" />
-					<span asp-validation-for="Email"></span>
-				</span>
+            <br />
+            <div class="form-row">
+                <span class="form-group col-md-6">
+                    <label for="inputEmail4" asp-for="Email"></label>
+                    <input class="form-control" id="inputEmail4" placeholder="E-post" asp-for="Email" />
+                    <span asp-validation-for="Email"></span>
+                </span>
 
-				<span class="form-group col-md-6">
-					<label for="inputPhone4" asp-for="PhoneNumber"></label>
-					<input class="form-control" id="inputPhone4" placeholder="Telefonnummer" asp-for="PhoneNumber" />
-					<span asp-validation-for="PhoneNumber"></span>
-					<br />
-				</span>
-			</div>
-			<br />
-			<div class="form-group col-md-12">
-				<div class="form-row">
-					<input class="form-control" type="submit" value="Slutför köp" />
-				</div>
-			</div>
-		</form>
-	</div>
+                <span class="form-group col-md-6">
+                    <label for="inputPhone4" asp-for="PhoneNumber"></label>
+                    <input class="form-control" id="inputPhone4" placeholder="Telefonnummer" asp-for="PhoneNumber" />
+                    <span asp-validation-for="PhoneNumber"></span>
+                    <br />
+                </span>
+            </div>
+            <br />
+            <div class="form-group col-md-12">
+                <div class="form-row">
+                    <input class="form-control" type="submit" value="Slutför köp" />
+                </div>
+            </div>
+        </form>
+    </div>
 
 </div>
 @*<label asp-for="UserName"></label>
-	<input placeholder="Användarnamn" asp-for="UserName" />
-	<span asp-validation-for="UserName"></span>
+    <input placeholder="Användarnamn" asp-for="UserName" />
+    <span asp-validation-for="UserName"></span>
 
-	<label asp-for="PassWord"></label>
-	<input type="password" placeholder="Lösenord" asp-for="PassWord" />
-	<span asp-validation-for="PassWord"></span>
+    <label asp-for="PassWord"></label>
+    <input type="password" placeholder="Lösenord" asp-for="PassWord" />
+    <span asp-validation-for="PassWord"></span>
 
-	</br>*@
+    </br>*@
