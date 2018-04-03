@@ -33,13 +33,13 @@ body {
   margin-bottom: 4px; }
 
 .CheckOut {
-  display: inline;
-  height: 50px;
-  width: 50px;
-  float: right;
-  position: relative;
-  right: -5px;
-  bottom: -70px; }
+  /*display: inline;
+    height: 50px;
+    width: 50px;
+    float: right;
+    position: relative;
+    right: -5px;
+    bottom: -70px;*/ }
 
 input {
   color: black; }
@@ -147,3 +147,12 @@ li {
 h2 {
   color: #464545;
   margin: 0px; }
+
+.headerDiv {
+  display: flex;
+  flex-direction: row;
+  align-content: space-between;
+  justify-content: space-between; }
+
+.logoDiv {
+  width: 50%; }
