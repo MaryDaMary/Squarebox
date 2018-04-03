@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Principal;
 using System.Threading.Tasks;
 using static LimeBox.Models.ViewModels.AccountCreateVM;
 using static Microsoft.AspNetCore.Hosting.Internal.HostingApplication;
@@ -16,6 +17,26 @@ namespace LimeBox.Models
         LimeContext context;
 
         UserManager<IdentityUser> userManager;
+
+        internal AccountLoginVM GetLoginVM(IIdentity user)
+        {
+            var ret = new AccountLoginVM
+            {
+                IsLoggedIn = user.IsAuthenticated
+            };
+
+            if (user.IsAuthenticated)
+            {
+                ret.Username = user.Name;
+            }
+            else
+            {
+
+            }
+
+            return ret;
+        }
+
         SignInManager<IdentityUser> signInManager;
         RoleManager<IdentityRole> roleManager;
         IdentityDbContext identityDbContext;
@@ -53,9 +74,9 @@ namespace LimeBox.Models
         public async Task AddNewUserAsync(CreateFormVM model)
         {
             //var newUser = new IdentityUser(model.UserName);
-            var newUser = new IdentityUser { UserName = model.UserName, Email = model.Email, PhoneNumber = model.PhoneNumber};
+            var newUser = new IdentityUser { UserName = model.UserName, Email = model.Email, PhoneNumber = model.PhoneNumber };
 
-            var createResult = await userManager.CreateAsync(newUser,model.PassWord);
+            var createResult = await userManager.CreateAsync(newUser, model.PassWord);
 
             context.Users.Add(new Users
             {
@@ -65,9 +86,16 @@ namespace LimeBox.Models
                 PostalCode = model.PostalCode,
                 City = model.City,
                 AspNetId = newUser.Id
-                
+
             });
             await context.SaveChangesAsync();
+        }
+
+        public async Task<bool> TryLoginAsync(AccountLoginVM viewModel)
+        {
+
+            var loginResult = await signInManager.PasswordSignInAsync(viewModel.Username, viewModel.Password, false, false);
+            return loginResult.Succeeded;
         }
     }
 }
