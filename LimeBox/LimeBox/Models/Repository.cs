@@ -138,7 +138,10 @@ namespace LimeBox.Models
 
         public Boxes FindBoxById(int id)
         {
-            return context.Boxes.Find(id);
+            var box = context.Boxes.Find(id);
+            var boxType = context.BoxTypes.Find(box.BoxTypeId);
+            box.BoxType = boxType;
+            return box;
         }
 
 
@@ -173,8 +176,8 @@ namespace LimeBox.Models
               {
                   BoxId = s.BoxId,
                   BoxTypeName = s.BoxType.BoxType,
-                  BoxImg = s.BoxType.BoxImage
-
+                  BoxImg = s.BoxType.BoxImage,  
+                  Id = s.Id
               }).OrderBy(o => o.BoxId).ToArray()
             };
             

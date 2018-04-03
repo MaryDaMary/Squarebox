@@ -2,16 +2,17 @@
 
 
 <div style="display:flex;">
-	<div style="overflow: auto; height: 400px; width:50%; padding:20px;">
-		@foreach (var item in Model.Boxes)
-		{
-			<div>
-				<img src="~/Images/green.png" /> @item.BoxTypeId #@item.BoxId @item.BoxPrice
-				<hr />
-			</div>
-		}
-	</div>
-	<div style="padding:20px;">
+    <div style="overflow: auto; height: 400px; width:50%; padding:20px;">
+        @foreach (var item in Model.Boxes)
+        {
+            <div>
+                <img src="@item.BoxType.BoxImage" /> @item.BoxType.BoxType #@item.BoxId <br />
+                @item.BoxPrice
+                <hr />
+            </div>
+        }
+    </div>
+    <div style="padding:20px;">
 		<form asp-controller="Home" asp-action="CheckOut" method="post">
 			<div class="form-row">
 				<span class="form-group col-md-6">
