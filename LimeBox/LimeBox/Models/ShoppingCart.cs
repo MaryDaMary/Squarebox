@@ -11,8 +11,19 @@ namespace LimeBox.Models
         static List<Boxes> cart = new List<Boxes>();
 
         static public void AddToCart(Boxes box)
-        {   
-            cart.Add(box);
+        {
+            if (!ExistInList(box))
+                cart.Add(box);
+        }
+
+        private static bool ExistInList(Boxes box)
+        {
+            foreach (var item in cart)
+            {
+                if (item.Id == box.Id)
+                    return true;
+            }
+            return false;
         }
 
         static public void RemoveFromCart(Boxes box)
