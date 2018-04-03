@@ -1,27 +1,33 @@
 ﻿
 
-$("#RemovFromCart").click(() => {
+function RemoveFromCart(id) {
+    alert("Test")
     $.ajax({
-        url: 'Cart/RemoveFromCart',
-        data: { "id": "1" },
+        url: '/Cart/RemoveFromCart',
+        data: { "id": id },
         success: function (msg) {
-            $("#divResult").html("success");
+            alert("Success!")
+            //$("#divResult").html("success");
         },
         error: function (e) {
-            $("#divResult").html("Something Wrong.");
+            alert("Something went wrong!")
+            //$("#divResult").html("Something Wrong.");
         }
     });
-});
+};
 
-$("#AddToCart").click(() => {
+function AddToCart(id) {
     $.ajax({
-        url: 'Cart/AddToCart',
-        data: id,
+        url: '/Cart/AddToCart',
+        data: { "id": id },
         success: function (msg) {
-            $("#divResult").html("success");
+            alert("Success!")
+            //$("#divResult").html("success");
         },
         error: function (e) {
-            $("#divResult").html("Something Wrong.");
+            console.log(e);
+            alert("Something went wrong!")
+            //$("#divResult").html("Something Wrong.");
         }
     });
-});
+};

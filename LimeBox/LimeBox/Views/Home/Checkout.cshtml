@@ -6,7 +6,8 @@
         @foreach (var item in Model.Boxes)
         {
             <div>
-                <img src="~/Images/green.png" /> @item.BoxTypeId #@item.BoxId @item.BoxPrice
+                <img src="@item.BoxType.BoxImage" /> @item.BoxType.BoxType #@item.BoxId <br />
+                @item.BoxPrice
                 <hr />
             </div>
         }
