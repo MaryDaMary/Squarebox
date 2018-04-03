@@ -16,7 +16,7 @@ $("#RemovFromCart").click(() => {
 $("#AddToCart").click(() => {
     $.ajax({
         url: 'Cart/AddToCart',
-        data: { "id": "1" },
+        data: id,
         success: function (msg) {
             $("#divResult").html("success");
         },
