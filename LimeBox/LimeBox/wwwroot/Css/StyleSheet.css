@@ -7,7 +7,25 @@ body {
   color: white;
   font-family: Champagne;
   /*font-family: 'Gill Sans Nova';*/
-  font-size: 18px; }
+  font-size: 18px;
+  display: grid; }
+
+.CheckOutBoxes {
+  overflow: auto;
+  height: 400px;
+  width: 50%;
+  padding: 20px; }
+  .CheckOutBoxes img {
+    height: 100px;
+    width: 100px; }
+  .CheckOutBoxes div {
+    margin: 2px;
+    border: solid #323030;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    box-shadow: inset 0 0 20px black; }
 
 .Header {
   width: 25%;
