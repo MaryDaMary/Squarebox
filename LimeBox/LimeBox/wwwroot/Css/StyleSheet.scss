@@ -1,7 +1,13 @@
-﻿body {
+﻿@font-face {
+    font-family: Champagne;
+    src: url('../Champagne & Limousines Bold.ttf');
+}
+
+body {
     background-color: #464545;
     color: white;
-    font-family: 'Gill Sans Nova';
+    font-family: Champagne;
+    /*font-family: 'Gill Sans Nova';*/
     font-size:18px;
 }
 
