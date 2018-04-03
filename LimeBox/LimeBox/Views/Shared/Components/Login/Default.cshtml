@@ -13,9 +13,15 @@
         <br />
         <input type="submit" value="Login" />
     </form>
+
 }
 else
 {
-    <div>You are logged in as @Model.Username</div>
+    <div>You are logged in as @Model.Username
+        
+    <a asp-controller="Account" asp-action="Logout" asp-route-returnUrl="@Model.ReturnUrl">Logout</a>
+        </div>
+
+    
 }
 

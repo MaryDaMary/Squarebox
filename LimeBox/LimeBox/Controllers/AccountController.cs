@@ -46,8 +46,43 @@ namespace LimeBox.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        
+        [HttpGet]
+        public IActionResult Login(string returnUrl)
+        {
+            var model = new AccountLoginVM { ReturnUrl = returnUrl };
+            return View(model);
+        }
 
-        
+        [HttpPost]
+       
+        public async Task<IActionResult> Login(AccountLoginVM viewModel)
+        {
+            if (!ModelState.IsValid)
+                return View(viewModel);
+
+            // Check if credentials is valid (and set auth cookie)
+            if (!await accountRepository.TryLoginAsync(viewModel))
+            {
+                // Show login error
+                ModelState.AddModelError(nameof(AccountLoginVM.Username), "Invalid credentials");
+                return View(viewModel);
+            }
+
+            // Redirect user
+            if (string.IsNullOrWhiteSpace(viewModel.ReturnUrl))
+                return RedirectToAction(nameof(HomeController.Index));
+            else
+                return Redirect(viewModel.ReturnUrl);
+        }
+
+        [HttpGet]
+        [ValidateAntiForgeryToken]
+        public  IActionResult Logout()
+        {
+           
+            return RedirectToAction(nameof(HomeController.Index));
+        }
+
+
     }
 }
