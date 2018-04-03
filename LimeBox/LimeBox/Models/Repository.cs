@@ -175,7 +175,7 @@ namespace LimeBox.Models
                   BoxTypeName = s.BoxType.BoxType,
                   BoxImg = s.BoxType.BoxImage
 
-              }).ToArray()
+              }).OrderBy(o => o.BoxId).ToArray()
             };
             
         }
