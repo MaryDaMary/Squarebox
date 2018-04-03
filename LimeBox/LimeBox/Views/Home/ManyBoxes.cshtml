@@ -1,8 +1,8 @@
 ﻿@model ManyBoxesVM
 
-<button id="RemovFromCart">Remove from cart</button>
+@*<button id="RemovFromCart">Remove from cart</button>
 <button id="AddToCart">Add to cart</button>
-<div id="divResult"></div>
+<div id="divResult"></div>*@
 
 
 <div class="boxinfo2">
@@ -32,7 +32,7 @@
             @*<a class="boxName" asp-controller="Home" asp-action="ManyBoxes" asp-route-id="@item.BoxId">*@
                 <img onclick="AddToCart(@item.Id)" src="@item.BoxImg" />
                 <br />
-                @*<h2> @item.BoxTypeName</h2>*@
+            
                 <h2> # @item.BoxId</h2>
            @* </a>*@
 
