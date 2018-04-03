@@ -2,6 +2,7 @@
     background-color: #464545;
     color: white;
     font-family: 'Gill Sans Nova';
+    font-size:18px;
 }
 
 .Header {
@@ -69,7 +70,6 @@ a:hover{
     overflow: auto;
     display: grid;
     grid-template-columns: 25% 25% 25% 25%;
-    grid-template-rows: 50% 50%;
     text-align: center;
     color: #292828;
     font-size: 28px;

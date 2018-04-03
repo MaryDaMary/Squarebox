@@ -36,12 +36,12 @@ namespace LimeBox.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(AccountCreateVM.CreateFormVM model)
+        public async Task<IActionResult> Create(AccountCreateVM model)
         {
             if (!ModelState.IsValid)
                 return View(model);
 
-            await accountRepository.AddNewUserAsync(model);
+            await accountRepository.AddNewUserAsync(model.CreateForm);
 
             return RedirectToAction(nameof(Index));
         }

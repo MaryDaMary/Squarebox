@@ -11,7 +11,7 @@ namespace LimeBox.Models
         static List<Boxes> cart = new List<Boxes>();
 
         static public void AddToCart(Boxes box)
-        {
+        {   
             cart.Add(box);
         }
 

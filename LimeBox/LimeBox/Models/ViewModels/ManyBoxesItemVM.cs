@@ -11,6 +11,6 @@ namespace LimeBox.Models.ViewModels
         public string BoxTypeName { get; set; }
         public int BoxId { get; set; }
         public string BoxImg { get; set; }
-        
+        public int Id { get; set; }
     }
 }
