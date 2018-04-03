@@ -76,11 +76,11 @@ namespace LimeBox.Controllers
         }
 
         [HttpGet]
-        [ValidateAntiForgeryToken]
-        public  IActionResult Logout()
+        public async Task<IActionResult> Logout()
         {
-           
-            return RedirectToAction(nameof(HomeController.Index));
+             await accountRepository.TryLogOutAsync();
+            //_logger.LogInformation("User logged out.");
+            return RedirectToAction(nameof(HomeController));
         }
 
 

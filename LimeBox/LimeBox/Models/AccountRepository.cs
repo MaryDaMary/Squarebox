@@ -71,6 +71,12 @@ namespace LimeBox.Models
             return true;
         }
 
+        public async Task TryLogOutAsync()
+        {
+            await signInManager.SignOutAsync();
+
+        }
+
         public async Task AddNewUserAsync(CreateFormVM model)
         {
             //var newUser = new IdentityUser(model.UserName);
