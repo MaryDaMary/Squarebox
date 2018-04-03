@@ -33,7 +33,7 @@ namespace LimeBox.Models.ViewModels
 
         [Display(Name = "Postnummer")]
         //[Required(ErrorMessage = "Fyll i postnummer")]
-        public int PostalCode { get; set; }
+        public int? PostalCode { get; set; }
 
         [Display(Name = "Ort")]
         //[Required(ErrorMessage = "Fyll i ort")]
@@ -47,7 +47,7 @@ namespace LimeBox.Models.ViewModels
         [Display(Name = "Telefonnummer")]
         [Phone]
         //[Required(ErrorMessage = "Fyll i telefonnummer")]
-        public int PhoneNumber { get; set; }
+        public int? PhoneNumber { get; set; }
 
 
     }

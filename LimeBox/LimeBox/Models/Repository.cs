@@ -79,10 +79,10 @@ namespace LimeBox.Models
                 FirstName = model.FirstName,
                 LastName = model.LastName,
                 Email = model.Email,
-                PhoneNumber = model.PhoneNumber,
+                PhoneNumber = model.PhoneNumber.Value,
                 Address = model.Address,
                 City = model.City,
-                PostalCode = model.PostalCode,
+                PostalCode = model.PostalCode.Value,
             };
             context.Orders.Add(order);
             foreach (var item in cart)
