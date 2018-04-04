@@ -4,11 +4,16 @@
 //});
 
 
-//$("ShowBox").click(() => {
+//$("#data-simplebar2").click(() => {
 //    alert("test");
 //    $(this).fadeTo("slow", 0.33)
 //    $("#ShowBox").fadeTo("slow", 0.5);
 //})
+$(document).on("click", "#ShowBox", function () {
+    $(this).fadeTo("slow", 0.5);
+});
+
+
 
 function AddToCart(id) {
     $.ajax({
@@ -18,10 +23,10 @@ function AddToCart(id) {
         },
         error: function (e) {
             console.log(e);
-            alert("Something went wrong!")
+            alert("Something went wrong!");
         }
     });
-};
+}
 
 function RemoveFromCart(id) {
     $.ajax({
@@ -31,7 +36,7 @@ function RemoveFromCart(id) {
             location.reload();
         },
         error: function (e) {
-            alert("Something went wrong!")
+            alert("Something went wrong!");
         }
     });
-};
+}
