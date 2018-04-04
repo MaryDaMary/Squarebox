@@ -60,14 +60,8 @@ namespace LimeBox.Models
 
         public async Task<bool> TryLoginAsync()
         {
-            // Create DB schema (first time)
             var createSchemaResult = await identityDbContext.Database.EnsureCreatedAsync();
 
-            // Create a hard coded user (first time)
-            //var createResult = await userManager.CreateAsync(new IdentityUser("user"), "Password_123"));
-
-            //var loginResult = await signInManager.PasswordSignInAsync(viewModel.Username, viewModel.Password, false, false);
-            //return loginResult.Succeeded;
             return true;
         }
 
