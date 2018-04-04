@@ -70,7 +70,7 @@ namespace LimeBox.Controllers
 
             // Redirect user
             if (string.IsNullOrWhiteSpace(viewModel.ReturnUrl))
-                return RedirectToAction(nameof(HomeController.Index));
+                return RedirectToAction(nameof(HomeController.Index),"Home");
             else
                 return Redirect(viewModel.ReturnUrl);
         }
@@ -80,7 +80,7 @@ namespace LimeBox.Controllers
         {
              await accountRepository.TryLogOutAsync();
             //_logger.LogInformation("User logged out.");
-            return RedirectToAction(nameof(HomeController));
+            return RedirectToAction(nameof(HomeController.Index),"Home");
         }
 
 
