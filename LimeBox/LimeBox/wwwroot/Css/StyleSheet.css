@@ -2,6 +2,15 @@
   font-family: Champagne;
   src: url("../Champagne & Limousines Bold.ttf"); }
 
+::-webkit-scrollbar {
+  width: 0px;
+  /* remove scrollbar space */
+  background: transparent;
+  /* optional: just make scrollbar invisible */ }
+
+::-webkit-scrollbar-thumb {
+  background: #FF0000; }
+
 body {
   background-color: #464545;
   color: white;
@@ -25,13 +34,14 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    box-shadow: inset 0 0 20px black; }
+    box-shadow: inset 0 0 20px black;
+    background-color: rgba(0, 0, 0, 0.2); }
 
 .logInHeader {
   display: flex; }
   .logInHeader div {
     margin-top: auto;
-    margin-bottom: auto; }
+    margin-bottom: 2px; }
 
 .Header {
   height: 70px;
@@ -90,7 +100,8 @@ a:hover {
   color: #292828;
   font-size: 28px;
   background-image: url(https://media.gettyimages.com/photos/blurred-silver-background-picture-id521203451?b=1&k=6&m=521203451&s=612x612&w=0&h=ctlNrH5ZOqdf5QTts4LivvVLK9aYlPiBm6WQLp1VMeo=);
-  background-size: 100%; }
+  background-size: 100%;
+  border-radius: 20px; }
 
 #data-simplebar2 {
   border: 1px solid #292828;
@@ -103,12 +114,13 @@ a:hover {
   font-size: 28px;
   background-image: url(https://media.gettyimages.com/photos/blurred-silver-background-picture-id521203451?b=1&k=6&m=521203451&s=612x612&w=0&h=ctlNrH5ZOqdf5QTts4LivvVLK9aYlPiBm6WQLp1VMeo=);
   background-size: 100%;
-  color: #292828; }
+  color: #292828;
+  border-radius: 20px; }
 
 .boxinfo {
   border: 1px solid #292828;
   height: fit-content;
-  display: grid;
+  display: none;
   grid-template-columns: 33% 33% 33%;
   text-align: center;
   color: #292828;
@@ -126,7 +138,14 @@ a:hover {
   color: #292828;
   /*background-color: #d3c694;*/
   background-image: url(https://media.gettyimages.com/photos/blurred-silver-background-picture-id521203451?b=1&k=6&m=521203451&s=612x612&w=0&h=ctlNrH5ZOqdf5QTts4LivvVLK9aYlPiBm6WQLp1VMeo=);
-  background-size: 100%; }
+  background-size: 100%;
+  border-radius: 20px; }
+  .boxinfo2 img {
+    background-color: rgba(38, 25, 25, 0.29);
+    border: solid solid rgba(0, 0, 0, 0.27);
+    border-radius: 25px;
+    margin-top: 10px;
+    margin-bottom: 10px; }
 
 .box {
   width: 30%;
@@ -170,3 +189,21 @@ h2 {
 .logoDiv {
   width: 30%;
   display: flex; }
+
+#ShowBox {
+  cursor: -webkit-grab; }
+
+.ConfDiv {
+  width: 70%;
+  background-color: rgba(0, 0, 0, 0.25);
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 50px;
+  box-shadow: 0 0 20px #ae8111;
+  padding: 40px; }
+  .ConfDiv h1 {
+    font-size: 80px;
+    text-shadow: 0 0 15px #ae8110; }
+  .ConfDiv img {
+    width: 40%; }

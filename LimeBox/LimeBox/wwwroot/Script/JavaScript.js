@@ -1,18 +1,6 @@
-﻿//$("data-simplebar2").click(function (event) {
-//    var target = $(event.target);
-//    target.fadeTo("slow", 0.5);
-//});
-
-
-//$("#data-simplebar2").click(() => {
-//    alert("test");
-//    $(this).fadeTo("slow", 0.33)
-//    $("#ShowBox").fadeTo("slow", 0.5);
-//})
-$(document).on("click", "#ShowBox", function () {
+﻿$(document).on("click", "#ShowBox", function () {
     $(this).fadeTo("slow", 0.5);
 });
-
 
 
 function AddToCart(id) {

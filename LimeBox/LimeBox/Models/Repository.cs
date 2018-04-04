@@ -100,20 +100,30 @@ namespace LimeBox.Models
 
         internal void CreateOrder(HomeCheckoutVM model, ClaimsPrincipal user)
         {
-            var currentUserAspId = userManager.GetUserId(user);
-            var currentUser = context.Users.Single(u => u.AspNetId == currentUserAspId);
+            string currentUserAspId;
+            Users currentUser;
+            if (user.Identity.IsAuthenticated)
+            {
+                currentUserAspId = userManager.GetUserId(user);
+                currentUser = context.Users.Single(u => u.AspNetId == currentUserAspId);
+            }
+            else
+                currentUser = new Users { Id = -1 };
+
             var cart = ShoppingCart.GetCart();
             Orders order = new Orders
             {
                 FirstName = model.FirstName,
                 LastName = model.LastName,
                 Email = model.Email,
-                PhoneNumber = model.PhoneNumber.Value,
+                PhoneNumber = model.PhoneNumber,
                 Address = model.Address,
                 City = model.City,
-                PostalCode = model.PostalCode.Value,
-                UserId = currentUser.Id
+                PostalCode = model.PostalCode.Value
             };
+            if (user.Identity.IsAuthenticated)
+                order.Id = currentUser.Id;
+
             context.Orders.Add(order);
             foreach (var item in cart)
             {
@@ -126,6 +136,7 @@ namespace LimeBox.Models
                 context.OrderRows.Add(orderRow);
             }
             context.SaveChanges();
+            cart.Clear();
         }
 
         private void ItemIsBought(Boxes item)

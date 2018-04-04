@@ -64,7 +64,7 @@ namespace LimeBox.Controllers
         [HttpPost]
         public IActionResult CheckOut(HomeCheckoutVM model)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid || ShoppingCart.IsEmpty() )
             {
                 model.Boxes = ShoppingCart.GetCart();
                 return View(model);
@@ -72,14 +72,13 @@ namespace LimeBox.Controllers
 
             model.Boxes = ShoppingCart.GetCart();
             repository.CreateOrder(model, User);
-            return RedirectToAction(nameof(Conformation));
+            return RedirectToAction(nameof(Confirmation));
         }
 
         [HttpGet]
-        public IActionResult Conformation()
+        public IActionResult Confirmation()
         {
-
-            return Content("Tack för ditt köp");
+            return View();
         }
 
 

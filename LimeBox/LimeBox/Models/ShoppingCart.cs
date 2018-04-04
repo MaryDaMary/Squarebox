@@ -35,5 +35,13 @@ namespace LimeBox.Models
         {
             return cart;
         }
+
+        internal static bool IsEmpty()
+        {
+            if (cart.Count <= 0)
+                return true;
+            else
+                return false;
+        }
     }
 }
