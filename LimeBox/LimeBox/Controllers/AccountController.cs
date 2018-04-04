@@ -53,10 +53,12 @@ namespace LimeBox.Controllers
             return View(model);
         }
 
+        
         [HttpPost]
-       
-        public async Task<IActionResult> Login(AccountLoginVM viewModel)
+        
+         public async Task<IActionResult> Login(AccountLoginVM viewModel)
         {
+
             if (!ModelState.IsValid)
                 return View(viewModel);
 
@@ -70,19 +72,25 @@ namespace LimeBox.Controllers
 
             // Redirect user
             if (string.IsNullOrWhiteSpace(viewModel.ReturnUrl))
-                return RedirectToAction(nameof(HomeController.Index),"Home");
+                return RedirectToAction(nameof(AccountController.Login));
             else
                 return Redirect(viewModel.ReturnUrl);
         }
 
+
+
         [HttpGet]
         public async Task<IActionResult> Logout()
         {
-             await accountRepository.TryLogOutAsync();
+            
+            await accountRepository.TryLogOutAsync();
             //_logger.LogInformation("User logged out.");
-            return RedirectToAction(nameof(HomeController.Index),"Home");
+
+            return RedirectToAction(nameof(HomeController.Index), "Home");
+           
         }
 
 
+       
     }
 }
