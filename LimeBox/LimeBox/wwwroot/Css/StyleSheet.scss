@@ -35,6 +35,15 @@ body {
     }
 }
 
+.logInHeader {
+    display: flex;
+
+    div {
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+}
+
 .Header {
     width: 25%;
     /*background-color: #292828;*/
@@ -42,8 +51,14 @@ body {
 }
 
 .CheckOut {
-    /*display: inline;
-    height: 50px;
+    display: flex;
+
+    a {
+        height: fit-content;
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+    /*height: 50px;
     width: 50px;
     float: right;
     position: relative;
@@ -175,12 +190,15 @@ h2 {
     color: #464545;
     margin: 0px;
 }
-.headerDiv{
-	display:flex;
-	flex-direction:row;
-	align-content:space-between;
-	justify-content:space-between;
-	}
-.logoDiv{
-	width:50%;
-	}
+
+.headerDiv {
+    display: flex;
+    flex-direction: row;
+    align-content: space-between;
+    justify-content: space-between;
+}
+
+.logoDiv {
+    width: 50%;
+    display: flex;
+}

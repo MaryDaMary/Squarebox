@@ -182,18 +182,5 @@ namespace LimeBox.Models
             };
             
         }
-
-        //public GetBoxDataBaseVM[] GetBoxesScroll()
-        //{
-        //    var boxTypes = context.BoxTypes
-        //        .Select(s => new GetBoxDataBaseVM
-        //        {
-        //            Id = s.Id,
-        //            Name = s.BoxType,
-        //            Image = s.BoxImage
-        //        });
-
-        //    return boxTypes.ToArray();
-        //}
     }
 }
