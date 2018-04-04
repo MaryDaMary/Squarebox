@@ -1,8 +1,11 @@
 ﻿using LimeBox.Models.Entities;
 using LimeBox.Models.ViewModels;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace LimeBox.Models
@@ -10,10 +13,12 @@ namespace LimeBox.Models
     public class Repository
     {
         public LimeContext context;
+        private readonly UserManager<IdentityUser> userManager;
 
-        public Repository(LimeContext context)
+        public Repository(LimeContext context, UserManager<IdentityUser> userManager)
         {
             this.context = context;
+            this.userManager = userManager;
         }
 
         public void GenerateBoxes(int boxTypeId, decimal price, string ImageUrl)
@@ -37,7 +42,7 @@ namespace LimeBox.Models
                     BoxTypeId = boxTypeId,
                     BoxValue = valueNumber,
                     BoxPrice = price,
-                    
+
                 });
             }
             context.SaveChanges();
@@ -49,6 +54,28 @@ namespace LimeBox.Models
             context.BoxTypes.Add(box);
             context.SaveChanges();
             return box.Id;
+        }
+
+        internal async Task<HomeCheckoutVM> GetHomeCheckoutVM(ClaimsPrincipal user)
+        {
+            if (user.Identity.IsAuthenticated)
+            {
+                var currentUserAspId = userManager.GetUserId(user);
+                var currentUser = await context.Users.SingleAsync(u => u.AspNetId == currentUserAspId);
+                return new HomeCheckoutVM
+                {
+                    Boxes = ShoppingCart.GetCart(),
+                    FirstName = currentUser.FirstName,
+                    LastName = currentUser.LastName,
+                    Address = currentUser.Address,
+                    City = currentUser.City,
+                    PostalCode = currentUser.PostalCode
+                };
+            }
+            return new HomeCheckoutVM
+            {
+                Boxes = ShoppingCart.GetCart()
+            };
         }
 
         private int[] GenerateRandomNumbers(int amount)
@@ -71,8 +98,10 @@ namespace LimeBox.Models
             return numbers;
         }
 
-        internal void CreateOrder(HomeCheckoutVM model)
+        internal void CreateOrder(HomeCheckoutVM model, ClaimsPrincipal user)
         {
+            var currentUserAspId = userManager.GetUserId(user);
+            var currentUser = context.Users.Single(u => u.AspNetId == currentUserAspId);
             var cart = ShoppingCart.GetCart();
             Orders order = new Orders
             {
@@ -83,6 +112,7 @@ namespace LimeBox.Models
                 Address = model.Address,
                 City = model.City,
                 PostalCode = model.PostalCode.Value,
+                UserId = currentUser.Id
             };
             context.Orders.Add(order);
             foreach (var item in cart)
@@ -154,7 +184,7 @@ namespace LimeBox.Models
                     Name = s.BoxType,
                     Image = s.BoxImage
                 });
-           
+
             return boxTypes.ToArray();
         }
 
@@ -167,7 +197,7 @@ namespace LimeBox.Models
                 BoxDescription = boxType.BoxDescription,
                 Boxtype = boxType.BoxType,
                 BoxImage = boxType.BoxImage,
-                 
+
                 Items = context.Boxes
 
             .Where(b => b.BoxTypeId == Id && b.Bought == false)
@@ -176,11 +206,11 @@ namespace LimeBox.Models
               {
                   BoxId = s.BoxId,
                   BoxTypeName = s.BoxType.BoxType,
-                  BoxImg = s.BoxType.BoxImage,  
+                  BoxImg = s.BoxType.BoxImage,
                   Id = s.Id
               }).OrderBy(o => o.BoxId).ToArray()
             };
-            
+
         }
     }
 }
