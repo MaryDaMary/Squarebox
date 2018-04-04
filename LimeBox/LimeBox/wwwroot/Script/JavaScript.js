@@ -23,10 +23,10 @@ function AddToCart(id) {
         },
         error: function (e) {
             console.log(e);
-            alert("Something went wrong!")
+            alert("Something went wrong!");
         }
     });
-};
+}
 
 function RemoveFromCart(id) {
     $.ajax({
@@ -36,7 +36,7 @@ function RemoveFromCart(id) {
             location.reload();
         },
         error: function (e) {
-            alert("Something went wrong!")
+            alert("Something went wrong!");
         }
     });
-};
+}

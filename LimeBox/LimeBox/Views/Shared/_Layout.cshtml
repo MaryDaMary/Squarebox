@@ -12,15 +12,15 @@
 <body>
 	<div id="wrap">
 		<header class="headerDiv">
-			<div class="logoDiv">
-				<a href="/home/">
-					<img class="Header" src="https://i.imgur.com/hWtHTvl.png" alt="loggan" />
-				</a>
-			</div>
+            <div class="logoDiv">
+                <a href="/home/">
+                    <img class="Header" src="~/Images/SBLogoWhite.png" alt="loggan" />
+                </a>
+            </div>
 			<div class="logInHeader">
 				@await Component.InvokeAsync("Login")
 			</div>
-			<div>
+			<div style="padding-top: 19px">
 				@await Component.InvokeAsync("CheckOut")
 			</div>
 		</header>

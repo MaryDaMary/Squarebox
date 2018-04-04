@@ -27,9 +27,9 @@ namespace LimeBox.Models
             for (int i = 1; i <= 100; i++)
             {
                 int valueNumber = 1;
-                if (numberIsInArray(random5, i))
+                if (NumberIsInArray(random5, i))
                     valueNumber = 3;
-                else if (numberIsInArray(random15, i))
+                else if (NumberIsInArray(random15, i))
                     valueNumber = 2;
                 context.Add(new Boxes
                 {
@@ -63,7 +63,7 @@ namespace LimeBox.Models
                 {
                     randomNumber = random.Next(1, 100 + 1);
 
-                } while (numberIsInArray(numbers, randomNumber));
+                } while (NumberIsInArray(numbers, randomNumber));
 
                 numbers[i] = randomNumber;
             }
@@ -118,7 +118,7 @@ namespace LimeBox.Models
                 {
                     randomNumber = random.Next(1, 100 + 1);
 
-                } while (numberIsInArray(numbers, randomNumber) || numberIsInArray(array, randomNumber));
+                } while (NumberIsInArray(numbers, randomNumber) || NumberIsInArray(array, randomNumber));
 
                 numbers[i] = randomNumber;
             }
@@ -126,7 +126,7 @@ namespace LimeBox.Models
             return numbers;
         }
 
-        private bool numberIsInArray(int[] numbers, int number)
+        private bool NumberIsInArray(int[] numbers, int number)
         {
             for (int i = 0; i < numbers.Length; i++)
             {
