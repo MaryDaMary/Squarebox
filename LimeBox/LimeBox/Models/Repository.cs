@@ -170,7 +170,7 @@ namespace LimeBox.Models
                  
                 Items = context.Boxes
 
-            .Where(b => b.BoxTypeId == Id)
+            .Where(b => b.BoxTypeId == Id && b.Bought == false)
               //vi vill bara ha boxar som har det id:et
               .Select(s => new ManyBoxesItemVM
               {
