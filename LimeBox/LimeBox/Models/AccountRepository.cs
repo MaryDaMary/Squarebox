@@ -20,7 +20,7 @@ namespace LimeBox.Models
 
         UserManager<IdentityUser> userManager;
 
-        internal AccountLoginVM GetLoginVM(IIdentity user)
+        public AccountLoginVM GetLoginVM(IIdentity user)
         {
             var ret = new AccountLoginVM
             {
@@ -33,7 +33,7 @@ namespace LimeBox.Models
             }
             else
             {
-
+                
             }
 
             return ret;
@@ -62,6 +62,7 @@ namespace LimeBox.Models
 
         public async Task<bool> TryLoginAsync()
         {
+
             var createSchemaResult = await identityDbContext.Database.EnsureCreatedAsync();
 
             return true;
