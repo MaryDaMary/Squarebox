@@ -129,7 +129,8 @@ a:hover {
   text-align: center;
   font-size: 20px;
   background-color: #61786a;
-  border-radius: 20px; }
+  border-radius: 20px;
+  margin-top: 25px; }
   .boxinfo2 img {
     background-color: rgba(38, 25, 25, 0.29);
     box-shadow: 0 0 3px 0px black;
