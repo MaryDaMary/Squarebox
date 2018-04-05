@@ -120,13 +120,14 @@ a:hover {
 .boxinfo {
   border: 1px solid #292828;
   height: fit-content;
-  display: none;
+  display: grid;
   grid-template-columns: 33% 33% 33%;
   text-align: center;
   color: #292828;
   /*background-color: #d3c694;*/
   background-image: url(https://media.gettyimages.com/photos/blurred-silver-background-picture-id521203451?b=1&k=6&m=521203451&s=612x612&w=0&h=ctlNrH5ZOqdf5QTts4LivvVLK9aYlPiBm6WQLp1VMeo=);
-  background-size: 100%; }
+  background-size: 100%;
+  border-radius: 20px; }
 
 .boxinfo2 {
   border: 1px solid #292828;
