@@ -2,7 +2,8 @@
 
 @if (!Model.IsLoggedIn)
 {
-    <form asp-controller="Account" asp-action="Login" asp-route-returnUrl="@Model.ReturnUrl">
+    <form asp-controller="Account" asp-action="Login" >
+       
         <div class="form-row">
             <div class="form-group col-md-4">
                 <label for="inputUsername4"></label>
@@ -29,7 +30,7 @@ else
     <div>
         Du är inloggad som:  @Model.Username
 
-        <a style="color: lime" asp-controller="Account" asp-action="Logout" asp-route-returnUrl="@Model.ReturnUrl">Logga ut</a>
+        <a style="color: lime" asp-controller="Account" asp-action="Logout" >Logga ut</a>
     </div>
 
 
