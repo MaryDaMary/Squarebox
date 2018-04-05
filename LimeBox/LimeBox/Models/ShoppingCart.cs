@@ -43,5 +43,15 @@ namespace LimeBox.Models
             else
                 return false;
         }
+
+        internal static decimal SumCart()
+        {
+            decimal sum = 0;
+            foreach (var item in cart)
+            {
+                sum += item.BoxPrice;
+            }
+            return sum;
+        }
     }
 }

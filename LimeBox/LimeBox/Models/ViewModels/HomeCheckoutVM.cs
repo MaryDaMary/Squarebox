@@ -10,6 +10,7 @@ namespace LimeBox.Models.ViewModels
     public class HomeCheckoutVM
     {
         public List<Boxes> Boxes { get; set; }
+        public decimal Sum { get; set; }
 
         //[Display(Name = "Användarnamn")]
         //[Required(ErrorMessage = "Fyll i användarnamn")]
@@ -48,7 +49,6 @@ namespace LimeBox.Models.ViewModels
         [Phone]
         [Required(ErrorMessage = "Fyll i telefonnummer")]
         public string PhoneNumber { get; set; }
-
 
     }
 }

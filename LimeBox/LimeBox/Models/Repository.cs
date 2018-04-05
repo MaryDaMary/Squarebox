@@ -69,12 +69,14 @@ namespace LimeBox.Models
                     LastName = currentUser.LastName,
                     Address = currentUser.Address,
                     City = currentUser.City,
-                    PostalCode = currentUser.PostalCode
+                    PostalCode = currentUser.PostalCode,
+                    Sum = ShoppingCart.SumCart()
                 };
             }
             return new HomeCheckoutVM
             {
-                Boxes = ShoppingCart.GetCart()
+                Boxes = ShoppingCart.GetCart(),
+                Sum = ShoppingCart.SumCart()
             };
         }
 

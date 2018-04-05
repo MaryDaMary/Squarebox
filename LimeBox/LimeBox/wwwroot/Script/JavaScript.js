@@ -10,6 +10,13 @@ $(document).on("mouseout", ".OuterBox", function () {
     $(this).css("box-shadow", "none");
 });
 
+//$(document).on("mouseover", ".ShowBox", function () {
+//    $(this).css("box-shadow", "0 0 20px White");
+//});
+//$(document).on("mouseout", ".ShowBox", function () {
+//    $(this).css("box-shadow", "none");
+//});
+
 function AddToCart(id) {
     $.ajax({
         url: '/Cart/AddToCart',

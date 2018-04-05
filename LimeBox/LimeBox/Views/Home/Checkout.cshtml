@@ -5,9 +5,13 @@
     <div class="CheckOutBoxes">
         @foreach (var item in Model.Boxes)
         {
-            <div>
-                <img src="@item.BoxType.BoxImage" /> @item.BoxType.BoxType #@item.BoxId <br />
-                @item.BoxPrice :-
+            <div class="InnerCheckOut">
+                <img src="@item.BoxType.BoxImage" />
+                <div style="width: 200px">
+                    <lable>@item.BoxType.BoxType #@item.BoxId</lable>
+                    <br />
+                    @item.BoxPrice :-
+                </div>
                 <img style="height: 20px; width: 20px; padding:unset;" onclick="RemoveFromCart(@item.Id)" src="https://iaia.edu/wp-content/uploads/class_x_letter_icon.png" />
             </div>
         }
@@ -72,6 +76,7 @@
                 </div>
             </div>
         </form>
+        <label style="margin-left:5%">Totalt: @Model.Sum:-</label>
     </div>
 
 </div>
