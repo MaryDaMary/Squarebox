@@ -54,8 +54,7 @@ namespace LimeBox.Controllers
         }
 
         
-        [HttpPost]
-        
+         [HttpPost]
          public async Task<IActionResult> Login(AccountLoginVM viewModel)
          {
             string referer = Request.Headers["Referer"].ToString();
@@ -68,11 +67,9 @@ namespace LimeBox.Controllers
             {
                 // Show login error
                 ModelState.AddModelError(nameof(AccountLoginVM.Username), "Invalid credentials");
-                return View(referer);
+                return Redirect(referer);
             }
-
-            //string referer = Request.Headers["Referer"].ToString();
-
+            
                 return Redirect(referer);
          }
 
