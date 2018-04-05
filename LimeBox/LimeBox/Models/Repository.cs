@@ -130,7 +130,7 @@ namespace LimeBox.Models
                 PostalCode = model.PostalCode.Value
             };
             if (user.Identity.IsAuthenticated)
-                order.Id = currentUser.Id;
+                order.UserId = currentUser.Id;
 
             context.Orders.Add(order);
             foreach (var item in cart)
