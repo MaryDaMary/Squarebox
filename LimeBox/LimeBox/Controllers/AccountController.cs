@@ -27,7 +27,7 @@ namespace LimeBox.Controllers
         }
 
         [HttpGet]
-        public IActionResult Create(string returnUrl )
+        public IActionResult Create(string returnUrl)
         {
             return View(new AccountCreateVM
             {
@@ -47,17 +47,17 @@ namespace LimeBox.Controllers
         }
 
         [HttpGet]
-        public IActionResult Login(string returnUrl)
+        public IActionResult Login()
         {
-            var model = new AccountLoginVM { ReturnUrl = returnUrl };
-            return View(model);
+
+            return View();
         }
 
         
-        [HttpPost]
-        
+         [HttpPost]
          public async Task<IActionResult> Login(AccountLoginVM viewModel)
-        {
+         {
+            string referer = Request.Headers["Referer"].ToString();
 
             if (!ModelState.IsValid)
                 return View(viewModel);
@@ -67,15 +67,11 @@ namespace LimeBox.Controllers
             {
                 // Show login error
                 ModelState.AddModelError(nameof(AccountLoginVM.Username), "Invalid credentials");
-                return View(viewModel);
+                return Redirect(referer);
             }
-
-            // Redirect user
-            if (string.IsNullOrWhiteSpace(viewModel.ReturnUrl))
-                return RedirectToAction(nameof(AccountController.Login));
-            else
-                return Redirect(viewModel.ReturnUrl);
-        }
+            
+                return Redirect(referer);
+         }
 
 
 
@@ -86,11 +82,11 @@ namespace LimeBox.Controllers
             await accountRepository.TryLogOutAsync();
             //_logger.LogInformation("User logged out.");
 
-            return RedirectToAction(nameof(HomeController.Index), "Home");
-           
+            string referer = Request.Headers["Referer"].ToString();
+
+            return Redirect(referer);
+
         }
-
-
-       
+        
     }
 }

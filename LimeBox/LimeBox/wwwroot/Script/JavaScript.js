@@ -1,7 +1,14 @@
 ﻿$(document).on("click", "#ShowBox", function () {
-    $(this).fadeTo("slow", 0.5);
+    $(this).parent(this).addClass("SelectedBox");
+    $(this).parent(this).fadeTo("slow", 0.5);
 });
 
+$(document).on("mouseover", ".OuterBox", function () {
+    $(this).css("box-shadow", "0 0 20px White");
+});
+$(document).on("mouseout", ".OuterBox", function () {
+    $(this).css("box-shadow", "none");
+});
 
 function AddToCart(id) {
     $.ajax({

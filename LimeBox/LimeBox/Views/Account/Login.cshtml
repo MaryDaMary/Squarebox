@@ -1,6 +1,9 @@
-﻿@model AccountLoginVM
+﻿@*@model AccountLoginVM
 
 
-    Välkommen @Model.Username
+    @*Välkommen @Model.Username*@
+@*@if ()
+{
+    @await Component.InvokeAsync("Login")
 
- 
+}*@
