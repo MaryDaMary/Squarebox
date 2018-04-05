@@ -2,7 +2,7 @@
 
 
 
-<nav class="navbar navbar-custom">
+<nav style="margin-bottom:unset" class="navbar navbar-custom">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -26,9 +26,6 @@
                 @foreach (var item in Model)
                 {
                     <li><a asp-area="" asp-controller="Home" asp-action="ManyBoxes" asp-route-id="@item.Id">@item.Name</a></li>
-
-
-
                 }
             </ul>
         </div>

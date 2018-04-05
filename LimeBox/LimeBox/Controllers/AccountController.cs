@@ -27,7 +27,7 @@ namespace LimeBox.Controllers
         }
 
         [HttpGet]
-        public IActionResult Create(string returnUrl )
+        public IActionResult Create(string returnUrl)
         {
             return View(new AccountCreateVM
             {

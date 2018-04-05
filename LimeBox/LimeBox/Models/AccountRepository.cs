@@ -20,6 +20,9 @@ namespace LimeBox.Models
 
         UserManager<IdentityUser> userManager;
 
+        //public const string RoleName = "Admin";
+        //public const string UserRole = "User";
+
         public AccountLoginVM GetLoginVM(IIdentity user)
         {
             var ret = new AccountLoginVM
@@ -100,6 +103,57 @@ namespace LimeBox.Models
             var loginResult = await signInManager.PasswordSignInAsync(viewModel.Username, viewModel.Password, false, false);
             return loginResult.Succeeded;
         }
+
+        //public async Task RoleType(CreateFormVM model)
+        //{
+            
+        //    var result = await roleManager.CreateAsync(new IdentityRole(RoleName));
+        //    if (result.Succeeded)
+        //    {
+        //        await userManager.AddToRoleAsync(User, RoleName);
+        //    }
+        //    string userId = userManager.GetUserId(HttpContext.newUser);
+        //}
+
+        //public async Task<bool> TryLoginAsync(CreateFormVM model)
+        //{
+
+           
+        //    var createResult = await userManager.CreateAsync(new IdentityUser(model.UserName), model.PassWord);
+        //    if (createResult.Succeeded)
+        //    {
+        //        await CreateRoleAsync(model.UserName);
+        //    }
+        //    return createResult.Succeeded;
+
+        //}
+
+        //internal async Task CreateRoleAsync(string userName)
+        //{
+        //    var user = await userManager.FindByNameAsync(userName);
+        //    IdentityRole role = new IdentityRole();
+        //    role.Name = UserRole;
+        //    await roleManager.CreateAsync(role);
+        //    await userManager.AddToRoleAsync(user, UserRole);
+        //}
+
+        //public async Task<string> CheckUserRoleByIdAsync(AccountLoginVM viewModel)
+        //{
+        //    IdentityUser model = await userManager.FindByNameAsync(viewModel.Username);
+        //    var admin = await userManager.IsInRoleAsync(model, RoleName);
+        //    var user = await userManager.IsInRoleAsync(model, UserRole);
+        //    if (admin)
+        //    {
+        //        return "Admin";
+        //    }
+        //    else if (user)
+        //    {
+        //        return "User";
+        //    }
+        //    else
+        //        return "No user found";
+        //}
+
 
         //public async Task GetCurrentUser(HttpContext user)
         //{
