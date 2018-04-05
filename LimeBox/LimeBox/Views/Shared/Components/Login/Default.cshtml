@@ -2,35 +2,31 @@
 
 @if (!Model.IsLoggedIn)
 {
-<form asp-controller="Account" asp-action="Login" asp-route-returnUrl="@Model.ReturnUrl">
-	<div class="form-row">
-		<div class="form-group col-md-4">
-			<label for="inputUsername4"></label>
-			<input placeholder="Användarnamn" class="form-control" id="inputUsername4" asp-for="Username" />
-			<span asp-validation-for="Username"></span>
-		</div>
-		<div class="form-group col-md-4">
-			<label for="inputPassword4"></label>
-			<input class="form-control" id="inputPassword4" placeholder="Lösenord" asp-for="Password" />
-			<span asp-validation-for="Password"></span>
-		</div>
-
-		<div class="form-group col-md-4">
-				<input class="form-control" type="submit" value="Login" />
-		</div>
-	</div>	
-	<br />
-	
+<form asp-controller="Account" asp-action="Login">
+	<div class="dropdown">
+		<button class="btn btn-primary dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">
+			Logga in/ Gå med
+			<span class="caret"></span>
+		</button>
+		<ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+			<li role="presentation"><input placeholder="Användarnamn" id="inputUsername4" class="form-control" asp-for="Username" /><span asp-validation-for="Username"></span></li>
+			<li role="presentation"><input placeholder="Lösenord"class="form-control" id="inputPassword4" asp-for="Password" /><span asp-validation-for="Password"></span></li>
+			<li role="presentation"><input class="form-control" type="submit" value="Logga in" /></li>
+			<li role="presentation" class="divider"></li>
+			<li role="presentation"><input class="form-control" type="submit" value="Gå med" /></li>
+		</ul>
+	</div>
 </form>
+
 
 }
 else
 {
-    <div>You are logged in as @Model.Username
-        
-    <a asp-controller="Account" asp-action="Logout" asp-route-returnUrl="@Model.ReturnUrl">Logout</a>
-        </div>
+	<div>
+		You are logged in as @Model.Username
 
-    
+		<a asp-controller="Account" asp-action="Logout">Logout</a>
+	</div>
+
 }
 

@@ -27,7 +27,7 @@ namespace LimeBox.Controllers
         }
 
         [HttpGet]
-        public IActionResult Create(string returnUrl )
+        public IActionResult Create(string returnUrl)
         {
             return View(new AccountCreateVM
             {
@@ -54,7 +54,6 @@ namespace LimeBox.Controllers
         }
 
         [HttpPost]
-       
         public async Task<IActionResult> Login(AccountLoginVM viewModel)
         {
             if (!ModelState.IsValid)
@@ -70,19 +69,36 @@ namespace LimeBox.Controllers
 
             // Redirect user
             if (string.IsNullOrWhiteSpace(viewModel.ReturnUrl))
-                return RedirectToAction(nameof(HomeController.Index),"Home");
+            {
+                //var userRole = accountRepository.CheckUserRoleByIdAsync(viewModel);
+                //if (userRole.Result == "Admin")
+                //{
+                //    return RedirectToAction(nameof(AccountController.Index), "Home");
+                //}
+                //else if (userRole.Result == "User")
+                //{
+                //    return RedirectToAction(nameof(AccountController.Index), "Home");
+                //}
+                //else
+                    return RedirectToAction(nameof(HomeController.Index), "Home");
+
+            }
             else
                 return Redirect(viewModel.ReturnUrl);
+
+           
         }
+ 
 
         [HttpGet]
         public async Task<IActionResult> Logout()
         {
-             await accountRepository.TryLogOutAsync();
+            await accountRepository.TryLogOutAsync();
             //_logger.LogInformation("User logged out.");
-            return RedirectToAction(nameof(HomeController.Index),"Home");
+            return RedirectToAction(nameof(HomeController.Index), "Home");
+
         }
-
-
     }
+
+ 
 }

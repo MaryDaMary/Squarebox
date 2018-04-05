@@ -40,3 +40,14 @@ function RemoveFromCart(id) {
         }
     });
 };
+
+//function myFunction() {
+//	document.getElementById("myDropdown").classList.toggle("show");
+//}
+
+//$(document).ready(function () {
+//	$("#dropdown").click(function () {
+//		classList.toggle("show");
+//	});
+
+//});
