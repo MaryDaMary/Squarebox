@@ -87,7 +87,8 @@ a {
   background-color: rgba(0, 0, 0, 0.45); }
 
 a:hover {
-  color: #fff; }
+  color: #fff;
+  text-decoration: none; }
 
 #data-simplebar {
   border: 1px solid #292828;
@@ -115,7 +116,8 @@ a:hover {
   background-image: url(https://media.gettyimages.com/photos/blurred-silver-background-picture-id521203451?b=1&k=6&m=521203451&s=612x612&w=0&h=ctlNrH5ZOqdf5QTts4LivvVLK9aYlPiBm6WQLp1VMeo=);
   background-size: 100%;
   color: #292828;
-  border-radius: 20px; }
+  border-radius: 20px;
+  padding: 3px; }
 
 .boxinfo {
   border: 1px solid #292828;
@@ -139,7 +141,8 @@ a:hover {
   /*background-color: #d3c694;*/
   background-image: url(https://media.gettyimages.com/photos/blurred-silver-background-picture-id521203451?b=1&k=6&m=521203451&s=612x612&w=0&h=ctlNrH5ZOqdf5QTts4LivvVLK9aYlPiBm6WQLp1VMeo=);
   background-size: 100%;
-  border-radius: 20px; }
+  border-radius: 20px;
+  margin-top: 25px; }
   .boxinfo2 img {
     background-color: rgba(38, 25, 25, 0.29);
     box-shadow: 0 0 3px 0px black;
@@ -191,6 +194,14 @@ h2 {
 .logoDiv {
   width: 30%;
   display: flex; }
+
+.OuterBox {
+  border-radius: 20px;
+  margin: 2px; }
+
+.SelectedBox {
+  box-shadow: inset 0 0 20px black !important;
+  opacity: 0.5; }
 
 #ShowBox {
   cursor: -webkit-grab; }
