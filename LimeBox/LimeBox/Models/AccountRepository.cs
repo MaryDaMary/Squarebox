@@ -107,5 +107,7 @@ namespace LimeBox.Models
         //    var id = http.Connection.Id;
         //    userManager.GetUserId(http.Connection.Id);
         //}
+
+        
     }
 }
