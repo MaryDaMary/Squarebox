@@ -60,7 +60,7 @@ namespace LimeBox.Controllers
             string referer = Request.Headers["Referer"].ToString();
 
             if (!ModelState.IsValid)
-                return View(viewModel);
+                return Redirect(referer);
 
             // Check if credentials is valid (and set auth cookie)
             if (!await accountRepository.TryLoginAsync(viewModel))
@@ -69,9 +69,9 @@ namespace LimeBox.Controllers
                 ModelState.AddModelError(nameof(AccountLoginVM.Username), "Invalid credentials");
                 return Redirect(referer);
             }
-            
-                return Redirect(referer);
-         }
+
+            return Redirect(referer);
+        }
 
 
 
