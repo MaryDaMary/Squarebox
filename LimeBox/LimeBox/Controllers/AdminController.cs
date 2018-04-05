@@ -37,9 +37,9 @@ namespace LimeBox.Controllers
             if (!ModelState.IsValid)
                 return View(model);
 
-            int nr = repository.CreateBoxType(model.BoxType);
-            repository.GenerateBoxes(nr, (decimal)model.BoxPrice, model.BoxImage);
-            return RedirectToAction(nameof(Index));
+            int nr = repository.CreateBoxType(model.BoxType, model.BoxImage, model.BoxImageHeader, model.BoxDescription);
+            repository.GenerateBoxes(nr, (decimal)model.BoxPrice);
+            return RedirectToAction(nameof(HomeController.Index), "Home");
         }
     }
 }

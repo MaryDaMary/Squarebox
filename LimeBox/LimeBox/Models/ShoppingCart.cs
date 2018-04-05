@@ -33,7 +33,7 @@ namespace LimeBox.Models
 
         static public List<Boxes> GetCart()
         {
-            return cart;
+            return cart.OrderBy(b => b.BoxTypeId).ThenBy(b => b.BoxId).ToList();
         }
 
         internal static bool IsEmpty()

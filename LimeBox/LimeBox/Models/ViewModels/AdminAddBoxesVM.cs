@@ -21,5 +21,13 @@ namespace LimeBox.Models.ViewModels
         [Required(ErrorMessage = "Du måste ha en bild")]
         [Display(Name = "Bild Url")]
         public string BoxImage { get; set; }
+
+        [Required(ErrorMessage = "Du måste ha en bild")]
+        [Display(Name = "Header Bild Url")]
+        public string BoxImageHeader { get; set; }
+
+        [Required(ErrorMessage = "Du måste ha en beskrivning")]
+        [Display(Name = "Beskrivning")]
+        public string BoxDescription { get; set; }
     }
 }

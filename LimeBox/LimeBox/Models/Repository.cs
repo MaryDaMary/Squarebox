@@ -21,7 +21,7 @@ namespace LimeBox.Models
             this.userManager = userManager;
         }
 
-        public void GenerateBoxes(int boxTypeId, decimal price, string ImageUrl)
+        public void GenerateBoxes(int boxTypeId, decimal price)
         {
             //av 100 boxar så är:
             //standard 80st
@@ -38,19 +38,25 @@ namespace LimeBox.Models
                     valueNumber = 2;
                 context.Add(new Boxes
                 {
-                    Id = i,
+                    BoxId = i,
                     BoxTypeId = boxTypeId,
                     BoxValue = valueNumber,
                     BoxPrice = price,
-
+                    Bought = false,
                 });
             }
             context.SaveChanges();
         }
 
-        internal int CreateBoxType(string boxType)
+        internal int CreateBoxType(string boxType, string ImageUrl, string ImageUrlHeader, string description)
         {
-            BoxTypes box = new BoxTypes { BoxType = boxType };
+            BoxTypes box = new BoxTypes
+            {
+                BoxType = boxType,
+                BoxImage = ImageUrl,
+                BoxImageHeader = ImageUrlHeader,
+                BoxDescription = description
+            };
             context.BoxTypes.Add(box);
             context.SaveChanges();
             return box.Id;
@@ -221,7 +227,8 @@ namespace LimeBox.Models
                   BoxId = s.BoxId,
                   BoxTypeName = s.BoxType.BoxType,
                   BoxImg = s.BoxType.BoxImage,
-                  Id = s.Id
+                  Id = s.Id,
+                  Price = s.BoxPrice
               }).OrderBy(o => o.BoxId).ToArray()
             };
 

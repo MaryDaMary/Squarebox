@@ -16,5 +16,15 @@
     <br />
     <span asp-validation-for="@Model.BoxImage"></span>
     <br />
+    <label asp-for="@Model.BoxImageHeader"></label>
+    <input placeholder="Bild Url Header" asp-for="@Model.BoxImageHeader" />
+    <br />
+    <span asp-validation-for="@Model.BoxImageHeader"></span>
+    <br />
+    <label asp-for="@Model.BoxDescription"></label>
+    <input placeholder="Description" asp-for="@Model.BoxDescription" />
+    <br />
+    <span asp-validation-for="@Model.BoxDescription"></span>
+    <br />
     <button type="submit">Skapa</button>
 </form>

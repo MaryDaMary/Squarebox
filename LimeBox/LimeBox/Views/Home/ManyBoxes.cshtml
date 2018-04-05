@@ -7,10 +7,10 @@
     <div>
         <img src="@Model.BoxImageHeader">
     </div>
-    <div>
-        <br />
+    <div style="margin-right:20px; margin-top:20px;">
         <h2>@Model.Boxtype</h2>
-        @Model.BoxDescription
+        <div style="height: 80px;">@Model.BoxDescription</div>
+        <span style="text-decoration:underline;">Pris: @Model.Items.First().Price:-</span>
     </div>
 
 </div>

@@ -4,7 +4,7 @@
 });
 
 $(document).on("mouseover", ".OuterBox", function () {
-    $(this).css("box-shadow", "0 0 20px White");
+    $(this).css("box-shadow", "0 0 10px #292828");
 });
 $(document).on("mouseout", ".OuterBox", function () {
     $(this).css("box-shadow", "none");
