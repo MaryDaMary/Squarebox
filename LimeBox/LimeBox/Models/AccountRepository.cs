@@ -3,6 +3,7 @@ using LimeBox.Models.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,7 @@ using static Microsoft.AspNetCore.Hosting.Internal.HostingApplication;
 
 namespace LimeBox.Models
 {
-    public class AccountRepository
+    public class AccountRepository : Controller
     {
         LimeContext context;
 
@@ -22,7 +23,7 @@ namespace LimeBox.Models
         //public const string RoleName = "Admin";
         //public const string UserRole = "User";
 
-        internal AccountLoginVM GetLoginVM(IIdentity user)
+        public AccountLoginVM GetLoginVM(IIdentity user)
         {
             var ret = new AccountLoginVM
             {
@@ -35,7 +36,7 @@ namespace LimeBox.Models
             }
             else
             {
-
+                
             }
 
             return ret;
@@ -64,6 +65,7 @@ namespace LimeBox.Models
 
         public async Task<bool> TryLoginAsync()
         {
+
             var createSchemaResult = await identityDbContext.Database.EnsureCreatedAsync();
 
             return true;
@@ -152,5 +154,14 @@ namespace LimeBox.Models
         //        return "No user found";
         //}
 
+
+        //public async Task GetCurrentUser(HttpContext user)
+        //{
+        //    http = userManager.
+        //    var id = http.Connection.Id;
+        //    userManager.GetUserId(http.Connection.Id);
+        //}
+
+        
     }
 }

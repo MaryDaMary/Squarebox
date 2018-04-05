@@ -10,13 +10,14 @@ namespace LimeBox.Models.ViewModels
     {
         public bool IsLoggedIn { get; set; }
 
-        [Required]
+        
+        [Required(ErrorMessage = "Fyll i användarnamn")]
         public string Username { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Fyll i lösenord")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
-        public string ReturnUrl { get; set; }
+        
     }
 }

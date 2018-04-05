@@ -12,15 +12,15 @@ namespace LimeBox.Models
 
         static public void AddToCart(Boxes box)
         {
-            if (!ExistInList(box))
+            if (!ExistInList(box.Id))
                 cart.Add(box);
         }
 
-        private static bool ExistInList(Boxes box)
+        public static bool ExistInList(int id)
         {
             foreach (var item in cart)
             {
-                if (item.Id == box.Id)
+                if (item.Id == id)
                     return true;
             }
             return false;
@@ -34,6 +34,14 @@ namespace LimeBox.Models
         static public List<Boxes> GetCart()
         {
             return cart;
+        }
+
+        internal static bool IsEmpty()
+        {
+            if (cart.Count <= 0)
+                return true;
+            else
+                return false;
         }
     }
 }

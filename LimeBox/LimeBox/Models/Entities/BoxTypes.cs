@@ -14,6 +14,7 @@ namespace LimeBox.Models.Entities
         public string BoxType { get; set; }
         public string BoxImage { get; set; }
         public string BoxDescription { get; set; }
+        public string BoxImageHeader { get; set; }
 
         public ICollection<Boxes> Boxes { get; set; }
     }

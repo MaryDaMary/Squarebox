@@ -1,15 +1,12 @@
 ﻿@model ManyBoxesVM
-
-@*<button id="RemovFromCart">Remove from cart</button>
-<button id="AddToCart">Add to cart</button>
-<div id="divResult"></div>*@
+@using LimeBox.Models
 
 
 <div class="boxinfo2">
 
     <div>
-        <img src="@Model.BoxImage">
-        </div>       
+        <img src="@Model.BoxImageHeader">
+    </div>
     <div>
         <br />
         <h2>@Model.Boxtype</h2>
@@ -28,10 +25,21 @@
     @foreach (var item in Model.Items)
     {
 
-        <div>
+        @if (ShoppingCart.ExistInList(item.Id))
+        {
+            <div class="OuterBox SelectedBox">
                 <img id="ShowBox" onclick="AddToCart(@item.Id)" src="@item.BoxImg" />
                 <br />
                 <h2> # @item.BoxId</h2>
-        </div>
+            </div>
+        }
+        else
+        {
+            <div class="OuterBox">
+                <img id="ShowBox" onclick="AddToCart(@item.Id)" src="@item.BoxImg" />
+                <br />
+                <h2> # @item.BoxId</h2>
+            </div>
+        }
     }
 </div>

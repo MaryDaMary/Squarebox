@@ -14,7 +14,7 @@ namespace LimeBox.Controllers
     {
         Repository repository;
 
-        public HomeController(Repository repository) 
+        public HomeController(Repository repository)
         {
             this.repository = repository;
         }
@@ -32,10 +32,10 @@ namespace LimeBox.Controllers
         {
             var boxes = repository.GetManyBoxesVM(Id);
 
-            return View(boxes);    
+            return View(boxes);
         }
 
-       
+
 
 
         public IActionResult Test()
@@ -54,37 +54,34 @@ namespace LimeBox.Controllers
         {
             return View();
         }
-       
-        [HttpGet]
-        public IActionResult CheckOut()
-        {
-            var cart = ShoppingCart.GetCart();
 
-            return View(new HomeCheckoutVM { Boxes = cart});
+        [HttpGet]
+        public async Task<IActionResult> CheckOut()
+        {
+            return View(await repository.GetHomeCheckoutVM(User));
         }
 
         [HttpPost]
         public IActionResult CheckOut(HomeCheckoutVM model)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid || ShoppingCart.IsEmpty() )
             {
                 model.Boxes = ShoppingCart.GetCart();
                 return View(model);
             }
 
             model.Boxes = ShoppingCart.GetCart();
-            repository.CreateOrder(model);
-            return RedirectToAction(nameof(Conformation));
+            repository.CreateOrder(model, User);
+            return RedirectToAction(nameof(Confirmation));
         }
 
         [HttpGet]
-        public IActionResult Conformation()
+        public IActionResult Confirmation()
         {
-            
-            return Content("Tack för ditt köp");
+            return View();
         }
 
 
-        
+
     }
 }

@@ -18,15 +18,22 @@
 	</div>
 </form>
 
+            <div style="padding-top: 25.65px; height: 59.6px" class="form-group col-md-4">
+                <input class="form-control" type="submit" value="Login" />
+            </div>
+        </div>
+        <br />
+
+    </form>
 
 }
 else
 {
-	<div>
-		You are logged in as @Model.Username
+    <div>
+        Du är inloggad som:  @Model.Username
 
-		<a asp-controller="Account" asp-action="Logout">Logout</a>
-	</div>
+        <a style="color: lime" asp-controller="Account" asp-action="Logout" >Logga ut</a>
+    </div>
 
 }
 

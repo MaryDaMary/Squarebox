@@ -20,34 +20,34 @@ namespace LimeBox.Models.ViewModels
         //public string PassWord { get; set; }
 
         [Display(Name = "Förnamn")]
-        //[Required(ErrorMessage = "Fyll i förnamn")]
+        [Required(ErrorMessage = "Fyll i förnamn")]
         public string FirstName { get; set; }
 
         [Display(Name = "Efternamn")]
-        //[Required(ErrorMessage = "Fyll i efternamn")]
+        [Required(ErrorMessage = "Fyll i efternamn")]
         public string LastName { get; set; }
 
         [Display(Name = "Adress")]
-        //[Required(ErrorMessage = "Fyll i adress")]
+        [Required(ErrorMessage = "Fyll i adress")]
         public string Address { get; set; }
 
         [Display(Name = "Postnummer")]
-        //[Required(ErrorMessage = "Fyll i postnummer")]
+        [Required(ErrorMessage = "Fyll i postnummer")]
         public int? PostalCode { get; set; }
 
         [Display(Name = "Ort")]
-        //[Required(ErrorMessage = "Fyll i ort")]
+        [Required(ErrorMessage = "Fyll i ort")]
         public string City { get; set; }
 
         [Display(Name = "E-post")]
         [EmailAddress]
-        //[Required(ErrorMessage = "Fyll i mejladressen")]
+        [Required(ErrorMessage = "Fyll i mejladressen")]
         public string Email { get; set; }
 
         [Display(Name = "Telefonnummer")]
         [Phone]
-        //[Required(ErrorMessage = "Fyll i telefonnummer")]
-        public int? PhoneNumber { get; set; }
+        [Required(ErrorMessage = "Fyll i telefonnummer")]
+        public string PhoneNumber { get; set; }
 
 
     }
