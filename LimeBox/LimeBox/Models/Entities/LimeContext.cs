@@ -16,7 +16,6 @@ namespace LimeBox.Models.Entities
         {
             if (!optionsBuilder.IsConfigured)
             {
-//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
                 optionsBuilder.UseSqlServer(Startup.connString);
             }
         }
@@ -31,7 +30,7 @@ namespace LimeBox.Models.Entities
 
                 entity.Property(e => e.BoxPrice)
                     .HasColumnName("Box_Price")
-                    .HasColumnType("money");
+                    .HasColumnType("decimal(18, 0)");
 
                 entity.Property(e => e.BoxTypeId).HasColumnName("Box_Type_Id");
 
@@ -55,6 +54,10 @@ namespace LimeBox.Models.Entities
                 entity.Property(e => e.BoxImage)
                     .IsRequired()
                     .HasColumnName("Box_Image")
+                    .HasMaxLength(1000);
+
+                entity.Property(e => e.BoxImageHeader)
+                    .HasColumnName("Box_Image_Header")
                     .HasMaxLength(1000);
 
                 entity.Property(e => e.BoxType)
@@ -97,6 +100,10 @@ namespace LimeBox.Models.Entities
                     .HasMaxLength(50);
 
                 entity.Property(e => e.LastName)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.PhoneNumber)
                     .IsRequired()
                     .HasMaxLength(50);
 

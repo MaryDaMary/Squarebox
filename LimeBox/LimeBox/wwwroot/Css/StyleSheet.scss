@@ -3,6 +3,15 @@
     src: url('../Champagne & Limousines Bold.ttf');
 }
 
+::-webkit-scrollbar {
+    width: 0px; /* remove scrollbar space */
+    background: transparent; /* optional: just make scrollbar invisible */
+}
+
+::-webkit-scrollbar-thumb {
+    background: #FF0000;
+}
+
 body {
     background-color: #464545;
     color: white;
@@ -32,6 +41,7 @@ body {
         align-items: center;
         justify-content: space-around;
         box-shadow: inset 0 0 20px black;
+        background-color: rgba(0, 0, 0, 0.20);
     }
 }
 
@@ -40,7 +50,7 @@ body {
 
     div {
         margin-top: auto;
-        margin-bottom: auto;
+        margin-bottom: 2px;
     }
 }
 
@@ -112,6 +122,7 @@ a:hover {
     font-size: 28px;
     background-image: url(https://media.gettyimages.com/photos/blurred-silver-background-picture-id521203451?b=1&k=6&m=521203451&s=612x612&w=0&h=ctlNrH5ZOqdf5QTts4LivvVLK9aYlPiBm6WQLp1VMeo=);
     background-size: 100%;
+    border-radius: 20px;
 }
 
 #data-simplebar2 {
@@ -126,12 +137,13 @@ a:hover {
     background-image: url(https://media.gettyimages.com/photos/blurred-silver-background-picture-id521203451?b=1&k=6&m=521203451&s=612x612&w=0&h=ctlNrH5ZOqdf5QTts4LivvVLK9aYlPiBm6WQLp1VMeo=);
     background-size: 100%;
     color: #292828;
+    border-radius: 20px;
 }
 
 .boxinfo {
     border: 1px solid #292828;
     height: fit-content;
-    display: grid;
+    display: none;
     grid-template-columns: 33% 33% 33%;
     text-align: center;
     color: #292828;
@@ -151,57 +163,92 @@ a:hover {
     /*background-color: #d3c694;*/
     background-image: url(https://media.gettyimages.com/photos/blurred-silver-background-picture-id521203451?b=1&k=6&m=521203451&s=612x612&w=0&h=ctlNrH5ZOqdf5QTts4LivvVLK9aYlPiBm6WQLp1VMeo=);
     background-size: 100%;
-}
+    border-radius: 20px;
 
-.box {
-    width: 30%;
-    padding: 10px;
-    color: black;
-}
-
-input {
-    color: black;
-}
-
-img {
-    width: 45%;
-    padding: 10px;
-    /* change the color of active or hovered links */
-    .navbar-custom .nav-item.active .nav-link,
-    .navbar-custom .nav-item:hover .nav-link {
-        color: rgb(255, 106, 0);
+    img {
+        background-color: rgba(38, 25, 25, 0.29);
+        box-shadow: 0 0 3px 0px black;
+        border-radius: 25px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        height: 150px;
+        width: auto;
     }
 }
 
-footer {
-    margin-right: 30px;
-    margin-top: 50px;
-    margin-bottom: 20px;
-    word-spacing: 1px;
-    text-align: center;
-}
+    .box {
+        width: 30%;
+        padding: 10px;
+        color: black;
+    }
 
-li {
-    font-size: 20px;
-}
+    input {
+        color: black;
+    }
 
-.contactus {
-    padding: 10px;
-}
+    img {
+        width: 45%;
+        padding: 10px;
+        /* change the color of active or hovered links */
+        .navbar-custom .nav-item.active .nav-link,
+        .navbar-custom .nav-item:hover .nav-link {
+            color: rgb(255, 106, 0);
+        }
+    }
 
-h2 {
-    color: #464545;
-    margin: 0px;
-}
+    footer {
+        margin-right: 30px;
+        margin-top: 50px;
+        margin-bottom: 20px;
+        word-spacing: 1px;
+        text-align: center;
+    }
 
-.headerDiv {
-    display: flex;
-    flex-direction: row;
-    align-content: space-between;
-    justify-content: space-between;
-}
+    li {
+        font-size: 20px;
+    }
 
-.logoDiv {
-    width: 30%;
-    display: flex;
-}
+    .contactus {
+        padding: 10px;
+    }
+
+    h2 {
+        color: #464545;
+        margin: 0px;
+    }
+
+    .headerDiv {
+        display: flex;
+        flex-direction: row;
+        align-content: space-between;
+        justify-content: space-between;
+    }
+
+    .logoDiv {
+        width: 30%;
+        display: flex;
+    }
+
+    #ShowBox {
+        cursor: -webkit-grab;
+    }
+
+    .ConfDiv {
+        width: 70%;
+        background-color: rgba(0, 0, 0, 0.25);
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 50px;
+        box-shadow: 0 0 20px #ae8111;
+        padding: 40px;
+
+        h1 {
+            font-size: 80px;
+            text-shadow: 0 0 15px #ae8110;
+        }
+
+        img {
+            width: 40%;
+        }
+    }

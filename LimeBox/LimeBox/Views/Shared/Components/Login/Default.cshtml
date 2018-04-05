@@ -27,9 +27,9 @@
 else
 {
     <div>
-        You are logged in as @Model.Username
+        Du är inloggad som:  @Model.Username
 
-        <a asp-controller="Account" asp-action="Logout" asp-route-returnUrl="@Model.ReturnUrl">Logout</a>
+        <a style="color: lime" asp-controller="Account" asp-action="Logout" asp-route-returnUrl="@Model.ReturnUrl">Logga ut</a>
     </div>
 
 
