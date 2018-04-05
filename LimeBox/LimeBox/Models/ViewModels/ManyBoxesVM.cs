@@ -12,6 +12,7 @@ namespace LimeBox.Models.ViewModels
         public string BoxDescription { get; set; }
         public string Boxtype { get; set; }
         public string BoxImage { get; set; }
+        public string BoxImageHeader { get; set; }
 
         public ManyBoxesItemVM[] Items { get; set; }
 

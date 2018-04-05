@@ -208,6 +208,7 @@ namespace LimeBox.Models
                 BoxDescription = boxType.BoxDescription,
                 Boxtype = boxType.BoxType,
                 BoxImage = boxType.BoxImage,
+                BoxImageHeader = boxType.BoxImageHeader,
 
                 Items = context.Boxes
 
