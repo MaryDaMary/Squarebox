@@ -33,7 +33,7 @@ namespace LimeBox.Models
 
         static public List<Boxes> GetCart()
         {
-            return cart;
+            return cart.OrderBy(b => b.BoxTypeId).ThenBy(b => b.BoxId).ToList();
         }
 
         internal static bool IsEmpty()
@@ -42,6 +42,16 @@ namespace LimeBox.Models
                 return true;
             else
                 return false;
+        }
+
+        internal static decimal SumCart()
+        {
+            decimal sum = 0;
+            foreach (var item in cart)
+            {
+                sum += item.BoxPrice;
+            }
+            return sum;
         }
     }
 }

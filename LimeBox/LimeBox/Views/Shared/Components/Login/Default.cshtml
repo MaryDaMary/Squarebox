@@ -2,30 +2,21 @@
 
 @if (!Model.IsLoggedIn)
 {
-	<form asp-controller="Account" asp-action="Login">
-		<div class="dropdown">
-			<button class="btn btn-primary dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">
-				Logga in/ Gå med
-				<span class="caret"></span>
-			</button>
-			<ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-				<li role="presentation"><input placeholder="Användarnamn" id="inputUsername4" class="form-control" asp-for="Username" /><span asp-validation-for="Username"></span></li>
-				<li role="presentation"><input placeholder="Lösenord" class="form-control" id="inputPassword4" asp-for="Password" /><span asp-validation-for="Password"></span></li>
-				<li role="presentation"><input class="form-control" type="submit" value="Logga in" /></li>
-				<li role="presentation" class="divider"></li>
-				<li role="presentation"><a class="form-control" asp-action="create" asp-controller="account">Gå med</a></li>
-			</ul>
-		</div>
-	</form>
-
-
-	//        <div style="padding-top: 25.65px; height: 59.6px" class="form-group col-md-4">
-	//            <input class="form-control" type="submit" value="Login" />
-	//        </div>
-	//    </div>
-	//    <br />
-
-	//</form>
+<form asp-controller="Account" asp-action="Login">
+	<div class="dropdown">
+		<button class="btn dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">
+			Logga in/ Registrera
+			<span class="caret"></span>
+		</button>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+            <li role="presentation"><input placeholder="Användarnamn" id="inputUsername4" class="form-control" asp-for="Username" /><span asp-validation-for="Username"></span></li>
+            <li role="presentation"><input placeholder="Lösenord" class="form-control" id="inputPassword4" asp-for="Password" /><span asp-validation-for="Password"></span></li>
+            <li role="presentation"><input class="form-control" type="submit" value="Logga in" /></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a style="text-align:center" class="form-control" asp-action="create" asp-controller="account">Registrera dig</a></li>
+        </ul>
+	</div>
+</form>
 
 }
 else

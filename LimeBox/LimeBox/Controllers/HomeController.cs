@@ -35,13 +35,6 @@ namespace LimeBox.Controllers
             return View(boxes);
         }
 
-
-
-
-        public IActionResult Test()
-        {
-            return View();
-        }
         public IActionResult AboutUs()
         {
             return View();

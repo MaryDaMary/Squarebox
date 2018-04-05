@@ -12,5 +12,6 @@ namespace LimeBox.Models.ViewModels
         public int BoxId { get; set; }
         public string BoxImg { get; set; }
         public int Id { get; set; }
+        public decimal Price { get; set; }
     }
 }
