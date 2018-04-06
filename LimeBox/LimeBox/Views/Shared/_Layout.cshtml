@@ -11,33 +11,35 @@
 
 </head>
 <body>
-	<div id="wrap">
-		<header class="headerDiv">
+    <div id="wrap">
+        <header class="headerDiv">
             <div class="logoDiv">
                 <a href="/Home/">
                     <img class="Header" src="~/Images/SBLogoWhite.png" alt="loggan" />
                 </a>
             </div>
-			<div class="logInHeader">
-				@await Component.InvokeAsync("Login")
-			</div>
-			<div style="padding-top: 34px">
-				@await Component.InvokeAsync("CheckOut")
-			</div>
+            <div class="logInHeader">
+                @await Component.InvokeAsync("Login")
+            </div>
+            <div style="padding-top: 34px">
+                @await Component.InvokeAsync("CheckOut")
+            </div>
 
-		</header>
-		@await Component.InvokeAsync("BoxNav")
-		<div>
-			@RenderBody()
-		</div>
-		<div style="clear : both"></div>
-	</div>
-	@Html.Partial("_Footer")
-	<script src="https://code.jquery.com/jquery-3.3.1.min.js"
-			integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-			crossorigin="anonymous"></script>
-	<script src="~/Script/JavaScript.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<br />
+        </header>
+        @await Component.InvokeAsync("BoxNav")
+        <div>
+            @RenderBody()
+        </div>
+        <div style="clear : both"></div>
+    </div>
+    @Html.Partial("_Footer")
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+    <script src="~/Script/JavaScript.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/mvc/5.2.3/jquery.validate.unobtrusive.min.js"></script>
+    <br />
 </body>
 </html>

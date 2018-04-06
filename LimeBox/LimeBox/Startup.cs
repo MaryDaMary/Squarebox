@@ -52,6 +52,7 @@ namespace LimeBox
            .AddEntityFrameworkStores<IdentityDbContext>()
            .AddDefaultTokenProviders();
 
+            services.AddTransient<ShoppingCart>();
             services.AddTransient<Repository>();
             services.AddTransient<AccountRepository>();
             services.AddMvc();
