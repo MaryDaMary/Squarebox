@@ -80,9 +80,9 @@ namespace LimeBox.Models
         public async Task AddNewUserAsync(CreateFormVM model)
         {
             //var newUser = new IdentityUser(model.UserName);
-            var newUser = new IdentityUser { UserName = model.UserName, Email = model.Email, PhoneNumber = model.PhoneNumber };
+            var newUser = new IdentityUser { UserName = model.Username, Email = model.Email, PhoneNumber = model.PhoneNumber };
 
-            var createResult = await userManager.CreateAsync(newUser, model.PassWord);
+            var createResult = await userManager.CreateAsync(newUser, model.Password);
 
             context.Users.Add(new Users
             {

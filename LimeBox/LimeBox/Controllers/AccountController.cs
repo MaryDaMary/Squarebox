@@ -31,7 +31,7 @@ namespace LimeBox.Controllers
         {
             return View(new AccountCreateVM
             {
-                ReturnUrl = returnUrl
+                ReturnUrl = Request.Headers["Referer"].ToString()
             });
         }
 
@@ -43,20 +43,21 @@ namespace LimeBox.Controllers
 
             await accountRepository.AddNewUserAsync(model.CreateForm);
 
-            return RedirectToAction(nameof(Index));
+            await accountRepository.TryLoginAsync(new AccountLoginVM { Username = model.CreateForm.Username, Password = model.CreateForm.Password });
+
+            return Redirect(model.ReturnUrl);
         }
 
         [HttpGet]
         public IActionResult Login()
         {
-
             return View();
         }
 
-        
-         [HttpPost]
-         public async Task<IActionResult> Login(AccountLoginVM viewModel)
-         {
+
+        [HttpPost]
+        public async Task<IActionResult> Login(AccountLoginVM viewModel)
+        {
             string referer = Request.Headers["Referer"].ToString();
 
             if (!ModelState.IsValid)
@@ -78,7 +79,7 @@ namespace LimeBox.Controllers
         [HttpGet]
         public async Task<IActionResult> Logout()
         {
-            
+
             await accountRepository.TryLogOutAsync();
             //_logger.LogInformation("User logged out.");
 
@@ -87,6 +88,6 @@ namespace LimeBox.Controllers
             return Redirect(referer);
 
         }
-        
+
     }
 }

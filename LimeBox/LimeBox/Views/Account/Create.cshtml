@@ -2,16 +2,17 @@
 
 
 	<form asp-controller="Account" asp-action="Create">
+        <input style="display:none" asp-for="ReturnUrl" />
 		<div class="form-row">
 			<div class="form-group col-md-6">
-				<label for="inputUsername4" asp-for="CreateForm.UserName"></label>
-				<span asp-validation-for="CreateForm.UserName"></span>
-				<input placeholder="Användarnamn" class="form-control" id="inputUsername4" asp-for="CreateForm.UserName" />
+				<label for="inputUsername4" asp-for="CreateForm.Username"></label>
+				<span asp-validation-for="CreateForm.Username"></span>
+				<input placeholder="Användarnamn" class="form-control" id="inputUsername4" asp-for="CreateForm.Username" />
 			</div>
 			<div class="form-group col-md-6">
-				<label for="inputPassword4" asp-for="CreateForm.PassWord"></label>
-				<span asp-validation-for="CreateForm.PassWord"></span>
-				<input class="form-control" id="inputPassword4" placeholder="Lösenord" asp-for="CreateForm.PassWord" />
+				<label for="inputPassword4" asp-for="CreateForm.Password"></label>
+				<span asp-validation-for="CreateForm.Password"></span>
+				<input class="form-control" id="inputPassword4" placeholder="Lösenord" asp-for="CreateForm.Password" />
 			</div>
 			</div>
 			<br />

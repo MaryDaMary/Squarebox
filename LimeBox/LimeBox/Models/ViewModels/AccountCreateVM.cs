@@ -18,12 +18,12 @@ namespace LimeBox.Models.ViewModels
         {
             [Display(Name = "Användarnamn")]
             [Required(ErrorMessage = " <span style=\"color:red\">*</span>Fyll i användarnamn")]
-            public string UserName { get; set; }
+            public string Username { get; set; }
 
             [Display(Name = "Lösenord")]
             [DataType(DataType.Password)]
             [Required(ErrorMessage = " <span style=\"color:red\">*</span>Fyll i lösenord")]
-            public string PassWord { get; set; }
+            public string Password { get; set; }
 
             [Display(Name = "Förnamn")]
             [Required(ErrorMessage = " <span style=\"color:red\">*</span>Fyll i förnamn")]
