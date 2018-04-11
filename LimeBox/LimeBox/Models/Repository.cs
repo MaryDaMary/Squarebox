@@ -66,8 +66,8 @@ namespace LimeBox.Models
         {
             if (user.Identity.IsAuthenticated)
             {
-                var currentUserAspId = userManager.GetUserId(user);
-                var currentUser = await context.Users.SingleAsync(u => u.AspNetId == currentUserAspId);
+                var LoggedInUser = userManager.GetUserAsync(user).Result;
+                var currentUser = await context.Users.SingleAsync(u => u.AspNetId == LoggedInUser.Id);
                 return new HomeCheckoutVM
                 {
                     Boxes = ShoppingCart.GetCart(),
@@ -76,7 +76,9 @@ namespace LimeBox.Models
                     Address = currentUser.Address,
                     City = currentUser.City,
                     PostalCode = currentUser.PostalCode,
-                    Sum = ShoppingCart.SumCart()
+                    Sum = ShoppingCart.SumCart(),
+                    Email = LoggedInUser.Email,
+                    PhoneNumber = LoggedInUser.PhoneNumber
                 };
             }
             return new HomeCheckoutVM
