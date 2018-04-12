@@ -2,30 +2,38 @@
 
 @if (!Model.IsLoggedIn)
 {
-<form asp-controller="Account" asp-action="Login">
-	<div class="dropdown">
-		<button class="btn dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">
-			Logga in/ Registrera
-			<span class="caret"></span>
-		</button>
-        <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-            <li role="presentation"><input placeholder="Användarnamn" id="inputUsername4" class="form-control" asp-for="Username" /><span asp-validation-for="Username"></span></li>
-            <li role="presentation"><input placeholder="Lösenord" class="form-control" id="inputPassword4" asp-for="Password" /><span asp-validation-for="Password"></span></li>
-            <li role="presentation"><input class="form-control" type="submit" value="Logga in" /></li>
-            <li role="presentation" class="divider"></li>
-            <li role="presentation"><a style="text-align:center" class="form-control" asp-action="create" asp-controller="account">Registrera dig</a></li>
-        </ul>
-	</div>
-</form>
+    <form asp-controller="Account" asp-action="Login">
+        <div class="dropdown">
+            <button class="btn dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">
+                Logga in/ Registrera
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                <li role="presentation"><input placeholder="Användarnamn" id="inputUsername4" class="form-control" asp-for="Username" /><span asp-validation-for="Username"></span></li>
+                <li role="presentation"><input placeholder="Lösenord" class="form-control" id="inputPassword4" asp-for="Password" /><span asp-validation-for="Password"></span></li>
+                <li role="presentation"><input class="form-control" type="submit" value="Logga in" /></li>
+                <li role="presentation" class="divider"></li>
+                <li role="presentation"><a style="text-align:center" class="form-control" asp-action="create" asp-controller="account">Registrera dig</a></li>
+            </ul>
+        </div>
+    </form>
 
 }
 else
 {
-	<div>
-		Du är inloggad som:  @Model.Username
+    <div>
+        <div>
+            @if (User.IsInRole("Admin"))
+            {
+                <Form asp-controller="Admin" asp-action="Index" style="margin:auto; width:fit-content" method="get">
+                    <input style="width: 100px; border-radius: 15px;" type="submit" value="Admin" />
+                </Form>
+            }
+        </div>
+        Du är inloggad som:  @Model.Username
 
-		<a style="color: lime" asp-controller="Account" asp-action="Logout">Logga ut</a>
-	</div>
+        <a style="color: lime" asp-controller="Account" asp-action="Logout">Logga ut</a>
+    </div>
 
 }
 

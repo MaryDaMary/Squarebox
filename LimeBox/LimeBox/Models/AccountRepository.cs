@@ -63,6 +63,14 @@ namespace LimeBox.Models
             this.context = context;
         }
 
+        public async Task AddRoleAsync(string name)
+        {
+            IdentityRole role = new IdentityRole();
+            role.Name = name;
+            await roleManager.CreateAsync(role);
+            
+        }
+
         public async Task<bool> TryLoginAsync()
         {
 
@@ -83,6 +91,7 @@ namespace LimeBox.Models
             var newUser = new IdentityUser { UserName = model.Username, Email = model.Email, PhoneNumber = model.PhoneNumber };
 
             var createResult = await userManager.CreateAsync(newUser, model.Password);
+            await userManager.AddToRoleAsync(newUser, "Standard");
 
             context.Users.Add(new Users
             {

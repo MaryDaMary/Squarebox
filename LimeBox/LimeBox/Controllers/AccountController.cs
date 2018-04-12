@@ -19,11 +19,17 @@ namespace LimeBox.Controllers
             this.accountRepository = accountRepository;
         }
 
+
+        public IActionResult AccessDenied()
+        {
+            return View();
+        }
+
         // GET: /<controller>/
         public async Task<IActionResult> Index()
         {
-            var foo = await accountRepository.TryLoginAsync();
-            return View();
+            //await accountRepository.AddRoleAsync("Standard");
+            return Content("Success!");
         }
 
         [HttpGet]
@@ -45,13 +51,18 @@ namespace LimeBox.Controllers
 
             await accountRepository.TryLoginAsync(new AccountLoginVM { Username = model.CreateForm.Username, Password = model.CreateForm.Password });
 
+            if (model.ReturnUrl == null)
+                return RedirectToAction(nameof(HomeController.Index), "Home");
             return Redirect(model.ReturnUrl);
         }
 
         [HttpGet]
-        public IActionResult Login()
+        public IActionResult Login(string ReturnUrl)
         {
-            return View();
+            return View(new AccountLoginVM
+            {
+                ReturnUrl = ReturnUrl
+            });
         }
 
 
@@ -71,7 +82,9 @@ namespace LimeBox.Controllers
                 return Redirect(referer);
             }
 
-            return Redirect(referer);
+            if (viewModel.ReturnUrl == null)
+                return Redirect(referer);
+            return Redirect(viewModel.ReturnUrl);
         }
 
 
