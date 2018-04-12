@@ -13,10 +13,12 @@ namespace LimeBox.Controllers
     public class AccountController : Controller
     {
         AccountRepository accountRepository;
+        private readonly Repository repository;
 
-        public AccountController(AccountRepository accountRepository)
+        public AccountController(AccountRepository accountRepository, Repository repository)
         {
             this.accountRepository = accountRepository;
+            this.repository = repository;
         }
 
 
@@ -47,13 +49,15 @@ namespace LimeBox.Controllers
             if (!ModelState.IsValid)
                 return View(model);
 
-            await accountRepository.AddNewUserAsync(model.CreateForm);
+            if (await accountRepository.AddNewUserAsync(model.CreateForm))
+            {
+                await accountRepository.TryLoginAsync(new AccountLoginVM { Username = model.CreateForm.Username, Password = model.CreateForm.Password });
 
-            await accountRepository.TryLoginAsync(new AccountLoginVM { Username = model.CreateForm.Username, Password = model.CreateForm.Password });
-
-            if (model.ReturnUrl == null)
-                return RedirectToAction(nameof(HomeController.Index), "Home");
-            return Redirect(model.ReturnUrl);
+                if (model.ReturnUrl == null)
+                    return RedirectToAction(nameof(HomeController.Index), "Home");
+                return Redirect(model.ReturnUrl);
+            }
+            return View(model);
         }
 
         [HttpGet]
@@ -94,7 +98,6 @@ namespace LimeBox.Controllers
         {
 
             await accountRepository.TryLogOutAsync();
-            //_logger.LogInformation("User logged out.");
 
             string referer = Request.Headers["Referer"].ToString();
 
@@ -102,5 +105,32 @@ namespace LimeBox.Controllers
 
         }
 
+        [HttpGet]
+        public async Task<IActionResult> Settings()
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                return View(new AccountSettingsVM
+                {
+                    CreateForm = await repository.GetAccountSettingsVM(User),
+                    ReturnUrl = Request.Headers["Referer"].ToString()
+                });
+            }
+            else
+            {
+                return RedirectToAction(nameof(AccessDenied));
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Settings(AccountSettingsVM model)
+        {
+            if (!ModelState.IsValid)
+                return View(model);
+
+            await accountRepository.UpdateUser(model.CreateForm);
+
+            return View();
+        }
     }
 }

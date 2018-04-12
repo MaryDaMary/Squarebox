@@ -1,0 +1,81 @@
+﻿@model AccountSettingsVM
+
+
+<form asp-controller="Account" asp-action="Settings">
+    <input style="display:none" asp-for="ReturnUrl" />
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="inputUsername4" asp-for="CreateForm.Username"></label>
+            <span asp-validation-for="CreateForm.Username"></span>
+            <input readonly placeholder="Användarnamn" class="form-control" id="inputUsername4" asp-for="CreateForm.Username" />
+        </div>
+        <div class="form-group col-md-3">
+            <label for="inputPassword4" asp-for="CreateForm.OldPassword"></label>
+            <span style="font-size: 15px;" asp-validation-for="CreateForm.OldPassword"></span>
+            <input class="form-control" id="inputPassword4" placeholder="Gammalt Lösenord" asp-for="CreateForm.OldPassword" />
+        </div>
+        <div class="form-group col-md-3">
+            <label for="inputPassword4" asp-for="CreateForm.NewPassword"></label>
+            <span style="font-size: 15px;" asp-validation-for="CreateForm.NewPassword"></span>
+            <input class="form-control" id="inputPassword4" placeholder="Nytt Lösenord" asp-for="CreateForm.NewPassword" />
+        </div>
+    </div>
+    <br />
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="inputFirstName4" asp-for="CreateForm.FirstName"></label>
+            <span asp-validation-for="CreateForm.FirstName"></span>
+            <input class="form-control" id="inputFirstName4" placeholder="Förnamn" asp-for="CreateForm.FirstName" />
+        </div>
+        <div class="form-group col-md-6">
+            <label for="inputLastName4" asp-for="CreateForm.LastName"></label>
+            <span asp-validation-for="CreateForm.LastName"></span>
+            <input class="form-control" id="inputLastName4" placeholder="Efternamn" asp-for="CreateForm.LastName" />
+        </div>
+    </div>
+    <br />
+    <div class="form-group col-md-6">
+        <label for="inputAddress" asp-for="CreateForm.Address"></label>
+        <span asp-validation-for="CreateForm.Address"></span>
+        <input type="text" class="form-control" id="inputAddress" placeholder="Adress" asp-for="CreateForm.Address" />
+    </div>
+    <br />
+    <div class="form-group col-md-6">
+        <label for="inputZip" asp-for="CreateForm.PostalCode"></label>
+        <span asp-validation-for="CreateForm.PostalCode"></span>
+        <input type="text" class="form-control" id="inputZip" placeholder="Postnummer" asp-for="CreateForm.PostalCode" />
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="inputCity" asp-for="CreateForm.City"></label>
+            <span asp-validation-for="CreateForm.City"></span>
+            <input type="text" class="form-control" id="inputCity" placeholder="Ort" asp-for="CreateForm.City" />
+        </div>
+    </div>
+    <br />
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="inputEmail4" asp-for="CreateForm.Email"></label>
+            <span asp-validation-for="CreateForm.Email"></span>
+            <input class="form-control" id="inputEmail4" placeholder="E-post" asp-for="CreateForm.Email" />
+        </div>
+        <br />
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputPhone4" asp-for="CreateForm.PhoneNumber"></label>
+                <span asp-validation-for="CreateForm.PhoneNumber"></span>
+                <input class="form-control" id="inputPhone4" placeholder="Telefonnummer" asp-for="CreateForm.PhoneNumber" />
+                <br />
+            </div>
+        </div>
+        <br />
+        <div class="form-group col-md-6">
+            <div class="form-row">
+                <input class="form-control" id="knapp" type="submit" value="Uppdatera användare" />
+            </div>
+        </div>
+    </div>
+</form>
+
+
+

@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using static LimeBox.Models.ViewModels.AccountSettingsVM;
 
 namespace LimeBox.Models
 {
@@ -106,6 +107,23 @@ namespace LimeBox.Models
             }
 
             return numbers;
+        }
+
+        internal async Task<CreateFormVM> GetAccountSettingsVM(ClaimsPrincipal user)
+        {
+            var LoggedInUser = userManager.GetUserAsync(user).Result;
+            var currentUser = await context.Users.SingleAsync(u => u.AspNetId == LoggedInUser.Id);
+            return new CreateFormVM
+            {
+                FirstName = currentUser.FirstName,
+                LastName = currentUser.LastName,
+                Address = currentUser.Address,
+                City = currentUser.City,
+                PostalCode = (int)currentUser.PostalCode,
+                Email = LoggedInUser.Email,
+                PhoneNumber = LoggedInUser.PhoneNumber,
+                Username = LoggedInUser.UserName
+            };
         }
 
         internal void CreateOrder(HomeCheckoutVM model, ClaimsPrincipal user)

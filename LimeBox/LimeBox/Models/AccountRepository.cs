@@ -7,9 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Security.Principal;
 using System.Threading.Tasks;
-using static LimeBox.Models.ViewModels.AccountCreateVM;
 using static Microsoft.AspNetCore.Hosting.Internal.HostingApplication;
 
 namespace LimeBox.Models
@@ -36,7 +36,7 @@ namespace LimeBox.Models
             }
             else
             {
-                
+
             }
 
             return ret;
@@ -68,7 +68,7 @@ namespace LimeBox.Models
             IdentityRole role = new IdentityRole();
             role.Name = name;
             await roleManager.CreateAsync(role);
-            
+
         }
 
         public async Task<bool> TryLoginAsync()
@@ -85,25 +85,29 @@ namespace LimeBox.Models
 
         }
 
-        public async Task AddNewUserAsync(CreateFormVM model)
+        public async Task<bool> AddNewUserAsync(AccountCreateVM.CreateFormVM model)
         {
             //var newUser = new IdentityUser(model.UserName);
             var newUser = new IdentityUser { UserName = model.Username, Email = model.Email, PhoneNumber = model.PhoneNumber };
 
             var createResult = await userManager.CreateAsync(newUser, model.Password);
-            await userManager.AddToRoleAsync(newUser, "Standard");
-
-            context.Users.Add(new Users
+            if (createResult.Succeeded)
             {
-                FirstName = model.FirstName,
-                LastName = model.LastName,
-                Address = model.Address,
-                PostalCode = model.PostalCode,
-                City = model.City,
-                AspNetId = newUser.Id
+                context.Users.Add(new Users
+                {
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    Address = model.Address,
+                    PostalCode = model.PostalCode,
+                    City = model.City,
+                    AspNetId = newUser.Id
 
-            });
-            await context.SaveChangesAsync();
+                });
+                await context.SaveChangesAsync();
+                await userManager.AddToRoleAsync(newUser, "Standard");
+                return true;
+            }
+            else return false;
         }
 
         public async Task<bool> TryLoginAsync(AccountLoginVM viewModel)
@@ -113,9 +117,29 @@ namespace LimeBox.Models
             return loginResult.Succeeded;
         }
 
+        internal async Task UpdateUser(AccountSettingsVM.CreateFormVM createForm)
+        {
+            var aspUser = await userManager.FindByNameAsync(createForm.Username);
+            aspUser.Email = createForm.Email;
+            aspUser.PhoneNumber = createForm.PhoneNumber;
+            await userManager.UpdateAsync(aspUser);
+
+            if (createForm.OldPassword != null && createForm.NewPassword != null)
+            {
+                await userManager.ChangePasswordAsync(aspUser, createForm.OldPassword, createForm.NewPassword);
+            }
+            var user = context.Users.Single(u => u.AspNetId == aspUser.Id);
+            user.FirstName = createForm.FirstName;
+            user.LastName = createForm.LastName;
+            user.Address = createForm.Address;
+            user.City = createForm.City;
+            user.PostalCode = createForm.PostalCode;
+            context.SaveChanges();
+        }
+
         //public async Task RoleType(CreateFormVM model)
         //{
-            
+
         //    var result = await roleManager.CreateAsync(new IdentityRole(RoleName));
         //    if (result.Succeeded)
         //    {
@@ -127,7 +151,7 @@ namespace LimeBox.Models
         //public async Task<bool> TryLoginAsync(CreateFormVM model)
         //{
 
-           
+
         //    var createResult = await userManager.CreateAsync(new IdentityUser(model.UserName), model.PassWord);
         //    if (createResult.Succeeded)
         //    {
@@ -171,6 +195,6 @@ namespace LimeBox.Models
         //    userManager.GetUserId(http.Connection.Id);
         //}
 
-        
+
     }
 }
