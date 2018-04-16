@@ -132,5 +132,17 @@ namespace LimeBox.Controllers
 
             return View();
         }
+        [HttpGet]
+        public IActionResult Order(int id)
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                return View(repository.GetAccountOrderVM(id));
+            }
+            else
+            {
+                return RedirectToAction(nameof(AccessDenied));
+            }
+        }
     }
 }

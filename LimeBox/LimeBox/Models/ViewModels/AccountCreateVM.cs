@@ -22,6 +22,7 @@ namespace LimeBox.Models.ViewModels
 
             [Display(Name = "Lösenord")]
             [DataType(DataType.Password)]
+            [RegularExpression(@"^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,255}$", ErrorMessage = "<span style=\"color:red\">*</span>Otillåtet lösenord")]
             [Required(ErrorMessage = " <span style=\"color:red\">*</span>Fyll i lösenord")]
             public string Password { get; set; }
 

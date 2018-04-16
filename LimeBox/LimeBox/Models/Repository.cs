@@ -22,6 +22,47 @@ namespace LimeBox.Models
             this.userManager = userManager;
         }
 
+        internal List<BoughtBoxesVM> GetBoughtBoxesVM(string userName)
+        {
+            var aspUser = userManager.FindByNameAsync(userName).Result;
+            var currentUser = context.Users.Single(u => u.AspNetId == aspUser.Id);
+            List<BoughtBoxesVM> list = new List<BoughtBoxesVM>();
+
+            List<Orders> orderList = GetAllOrdersById(currentUser.Id);
+
+            foreach (var item in orderList)
+            {
+                list.Add(new BoughtBoxesVM
+                {
+                    Orders = item,
+                    Boxes = GetBoxesByOrderId(item.Id)
+                });
+            }
+
+            return list;
+        }
+
+        private List<Boxes> GetBoxesByOrderId(int id)
+        {
+            List<Boxes> boxes = new List<Boxes>();
+
+            var foo = context.OrderRows.Where(r => r.OrderId == id).Select(o => o.BoxId).ToArray();
+
+            foreach (var boxId in foo)
+            {
+                boxes.Add(FindBoxById(boxId));
+            }
+
+            return boxes;
+        }
+
+        private List<Orders> GetAllOrdersById(int id)
+        {
+            var order = context.Orders.Where(o => o.UserId == id).ToList();
+            
+            return order;
+        }
+
         public void GenerateBoxes(int boxTypeId, decimal price)
         {
             //av 100 boxar så är:
@@ -87,6 +128,21 @@ namespace LimeBox.Models
                 Boxes = ShoppingCart.GetCart(),
                 Sum = ShoppingCart.SumCart()
             };
+        }
+
+        internal AccountOrderVM GetAccountOrderVM(int id)
+        {
+            //var aspUser = userManager.FindByNameAsync(user.Identity.Name);
+            return new AccountOrderVM
+            {
+                Order = GetOrderById(id),
+                Boxes = GetBoxesByOrderId(id)
+            };
+        }
+
+        private Orders GetOrderById(int id)
+        {
+            return context.Orders.Find(id);
         }
 
         private int[] GenerateRandomNumbers(int amount)

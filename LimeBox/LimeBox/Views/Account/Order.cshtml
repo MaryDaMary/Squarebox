@@ -1,0 +1,55 @@
+﻿@model AccountOrderVM
+
+
+
+<div style="display:flex;">
+    <div class="CheckOutBoxes">
+        @foreach (var item in Model.Boxes)
+        {
+            <div class="InnerCheckOut">
+                <img src="@item.BoxType.BoxImage" />
+                <div style="width: 200px">
+                    <lable>@item.BoxType.BoxType #@item.BoxId</lable>
+                    <br />
+                    @item.BoxPrice :-
+                </div>
+            </div>
+        }
+    </div>
+    <div style="padding:20px; width: 50%">
+        <div style="background-color:rgba(0, 0, 0, 0.10); padding: 10px; border-radius: 20px; margin:auto; font-size: larger">
+            <h2 style="text-align: center">Leveransinformation</h2>
+            <hr />
+            <div style="display: flex">
+                <div style="margin-left:10px">
+                    <label>Namn:</label>
+                    <br />
+
+                    <label>Adress:</label>
+                    <br />
+                    <label>&nbsp</label>
+                    <br />
+                    <label>E-post:</label>
+                    <br />
+                    <label>Telefon:</label>
+                </div>
+                <div style="margin-left: 20px">
+                    <label>@Model.Order.FirstName</label>
+                    <label>@Model.Order.LastName</label>
+                    <br />
+
+                    <label>@Model.Order.Address</label>
+
+                    <br />
+                    <label>@Model.Order.PostalCode</label>
+                    <label>@Model.Order.City</label>
+                    <br />
+                    <label>@Model.Order.Email</label>
+                    <br />
+                    <label>@Model.Order.PhoneNumber</label>
+                    @*<label style="margin-left:5%">Totalt: @Model.Sum:-</label>*@
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

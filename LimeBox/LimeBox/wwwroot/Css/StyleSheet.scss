@@ -8,17 +8,12 @@
     background: transparent; /* optional: just make scrollbar invisible */
 }
 
-::-webkit-scrollbar-thumb {
-    background: #FF0000;
-}
-
 body {
     background-color: #464545;
     color: white;
     font-family: Champagne;
     /*font-family: 'Gill Sans Nova';*/
     font-size: 18px;
-    display: grid;
 }
 
 .CheckOutBoxes {
@@ -134,11 +129,11 @@ a:hover {
 }
 
 #data-simplebar {
-    height: 500px;
+    height: 650px;
     overflow: auto;
     display: grid;
     grid-template-columns: 33.3% 33.3% 33.3%;
-    grid-template-rows: 50% 50%;
+    grid-auto-rows: max-content;
     text-align: center;
     font-size: 28px;
     background-color: rgba(95, 95, 95, 0.62);
@@ -218,9 +213,10 @@ img {
 }
 
 footer {
-    margin-right: 30px;
+    position:absolute;
+    bottom: 20px;
+    width:100%;
     margin-top: 50px;
-    margin-bottom: 20px;
     word-spacing: 1px;
     text-align: center;
 }
@@ -314,4 +310,31 @@ margin-top:30px;
     box-shadow:0 0 20px #bc9126;
 }
 
+.SettingsForm{
+    width: 80%
+}
 
+.OrderList {
+    height: 500px;
+    width: 20%;
+    margin-left: 10px;
+    overflow: auto;
+
+    p {
+        margin-bottom: 0px;
+        text-align: center;
+    }
+
+    .OrderBox {
+        border-bottom: 2px solid #bc9126;
+        padding-bottom: 4px;
+        margin-bottom: 4px;
+    }
+
+    h4 {
+        margin: unset;
+        padding-bottom: 5px;
+        text-align: center;
+        text-decoration:underline;
+    }
+}

@@ -1,0 +1,13 @@
+﻿@model List<BoughtBoxesVM>
+
+<p style="font-size: 24px; text-align: center; border-bottom: 2px solid #bc9126;">Tidigare ordrar:</p>
+@foreach (var item in Model)
+{
+    <div class="OrderBox">
+        <a asp-controller="Account" asp-action="Order" asp-route-id="@item.Orders.Id"><h4>Order nr: @item.Orders.Id</h4></a>
+        @foreach (var box in item.Boxes)
+        {
+            <p>@box.BoxType.BoxType</p>
+        }
+    </div>
+}
