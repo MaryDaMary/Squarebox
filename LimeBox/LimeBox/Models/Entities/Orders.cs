@@ -19,6 +19,8 @@ namespace LimeBox.Models.Entities
         public int PostalCode { get; set; }
         public string City { get; set; }
         public string PhoneNumber { get; set; }
+        public DateTime OrderDate { get; set; }
+        public int Status { get; set; }
 
         public ICollection<OrderRows> OrderRows { get; set; }
     }

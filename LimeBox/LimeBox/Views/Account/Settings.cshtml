@@ -9,18 +9,17 @@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="inputUsername4" asp-for="CreateForm.Username"></label>
-                        <span asp-validation-for="CreateForm.Username"></span>
-                        <input readonly placeholder="Användarnamn" class="form-control" id="inputUsername4" asp-for="CreateForm.Username" />
+                        <span readonly class="form-control" id="inputUsername4">@Model.CreateForm.Username</span>
                     </div>
                     <div class="form-group col-md-3">
                         <label for="inputPassword4" asp-for="CreateForm.OldPassword"></label>
-                        <span style="font-size: 15px;" asp-validation-for="CreateForm.OldPassword"></span>
                         <input class="form-control" id="inputPassword4" placeholder="Gammalt Lösenord" asp-for="CreateForm.OldPassword" />
+                        <span style="font-size: 15px; position: absolute;" asp-validation-for="CreateForm.OldPassword"></span>
                     </div>
                     <div class="form-group col-md-3">
                         <label for="inputPassword4" asp-for="CreateForm.NewPassword"></label>
-                        <span style="font-size: 15px;" asp-validation-for="CreateForm.NewPassword"></span>
                         <input class="form-control" id="inputPassword4" placeholder="Nytt Lösenord" asp-for="CreateForm.NewPassword" />
+                        <span style="font-size: 15px; position: absolute;" asp-validation-for="CreateForm.NewPassword"></span>
                     </div>
                 </div>
                 <br />

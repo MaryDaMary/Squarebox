@@ -103,6 +103,8 @@ namespace LimeBox.Models.Entities
                     .IsRequired()
                     .HasMaxLength(50);
 
+                entity.Property(e => e.OrderDate).HasColumnType("date");
+
                 entity.Property(e => e.PhoneNumber)
                     .IsRequired()
                     .HasMaxLength(50);

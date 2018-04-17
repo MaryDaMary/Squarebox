@@ -41,5 +41,15 @@ namespace LimeBox.Controllers
             repository.GenerateBoxes(nr, (decimal)model.BoxPrice);
             return RedirectToAction(nameof(HomeController.Index), "Home");
         }
+
+        public IActionResult AllOrders()
+        {
+            return View(repository.GetAdminAllOrdersVM());
+        }
+
+        public IActionResult Order(int id)
+        {
+            return PartialView("_Order", repository.GetOrderVM(id));
+        }
     }
 }

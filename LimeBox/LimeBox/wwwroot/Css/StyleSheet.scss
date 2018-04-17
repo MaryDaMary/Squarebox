@@ -12,8 +12,23 @@ body {
     background-color: #464545;
     color: white;
     font-family: Champagne;
-    /*font-family: 'Gill Sans Nova';*/
     font-size: 18px;
+}
+
+.table {
+    background-color: rgba(41, 40, 40, 0.4);
+
+    thead {
+        background-color: #292828;
+    }
+
+
+    tbody:nth-of-type(odd) {
+        background-color: #464545
+    }
+    /*tr:nth-child(4n), tr:nth-child(4n-1) {
+        background: #464545;
+    }*/
 }
 
 .CheckOutBoxes {
@@ -44,6 +59,7 @@ body {
     width: 57%;
 
     button {
+        font-size: 19px;
         background-color: #464545;
         border: none;
     }
@@ -88,12 +104,10 @@ body {
         margin-top: auto;
         margin-bottom: auto;
     }
-    /*height: 50px;
-    width: 50px;
-    float: right;
-    position: relative;
-    right: -5px;
-    bottom: -70px;*/
+}
+
+.form-group {
+    margin-bottom: 20px;
 }
 
 input {
@@ -103,6 +117,8 @@ input {
 #wrap {
     width: 1200px;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
 }
 
 .navbar-custom {
@@ -213,28 +229,28 @@ img {
 }
 
 footer {
-    position:absolute;
+    position: relative;
     bottom: 20px;
-    width:100%;
+    width: 100%;
     margin-top: 50px;
     word-spacing: 1px;
     text-align: center;
+    justify-content: flex-end;
 }
 
-    li {
-        font-size: 20px;
-        
-    }
+li {
+    font-size: 20px;
+}
 
-    .contactus {
-        padding: 10px;
-        text-align:center;
-    }
+.contactus {
+    padding: 10px;
+    text-align: center;
+}
 
-    h2 {
-        color: white;
-        margin: 0px;
-    }
+h2 {
+    color: white;
+    margin: 0px;
+}
 
 .headerDiv {
     display: flex;
@@ -285,32 +301,32 @@ footer {
 
 
 .button {
-	padding: 20px;
-	background-color: gray;
-	margin-top: 20px;
-	width: 100px;
-	cursor: pointer;
+    padding: 20px;
+    background-color: gray;
+    margin-top: 20px;
+    width: 100px;
+    cursor: pointer;
 }
 
 #elementToAnimate {
-	padding: 20px;
-	background-color: red;
-	width: 100px;
-	margin-top: 20px;
+    padding: 20px;
+    background-color: red;
+    width: 100px;
+    margin-top: 20px;
 }
 
 #knapp {
-margin-top:30px;
+    margin-top: 30px;
 }
 
 .goldbar {
-    margin-top:20px;
+    margin-top: 20px;
     height: 2px;
     background-color: #bc9126;
-    box-shadow:0 0 20px #bc9126;
+    box-shadow: 0 0 20px #bc9126;
 }
 
-.SettingsForm{
+.SettingsForm {
     width: 80%
 }
 
@@ -335,6 +351,10 @@ margin-top:30px;
         margin: unset;
         padding-bottom: 5px;
         text-align: center;
-        text-decoration:underline;
+        text-decoration: underline;
     }
+}
+
+#Content {
+    background-color: #292828;
 }

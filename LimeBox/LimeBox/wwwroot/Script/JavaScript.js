@@ -10,6 +10,30 @@ $(document).on("mouseout", ".OuterBox", function () {
     $(this).css("box-shadow", "none");
 });
 
+$("#OrderTable").on("mouseover", "tr", function () {
+    $(this).css("background-color", "#292828");
+});
+$("#OrderTable").on("mouseout", "tr", function () {
+    $(this).css("background-color", "");
+});
+
+
+function SelectOrder(id, object) {
+    let element = $(object);
+    element.parent().find("tr:nth-child(2)").toggle();
+    $.ajax({
+        url: '/Admin/Order',
+        data: { "id": id },
+        success: function (result) {
+            element.parent().find("#Content").html(result);
+        },
+        error: function (e) {
+            console.log(e);
+            alert("Something went wrong!");
+        }
+    });
+}
+
 
 function AddToCart(id) {
     $.ajax({

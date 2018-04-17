@@ -56,10 +56,28 @@ namespace LimeBox.Models
             return boxes;
         }
 
+        internal OrderVM GetOrderVM(int id)
+        {
+            return new OrderVM
+            {
+                Order = context.Orders.Find(id),
+                Boxes = GetBoxesByOrderId(id)
+            };
+        }
+
+        internal AdminAllOrdersVM GetAdminAllOrdersVM()
+        {
+            return new AdminAllOrdersVM
+            {
+                Orders = context.Orders.OrderByDescending(o => o.Id).ToList()
+            };
+        }
+
+
         private List<Orders> GetAllOrdersById(int id)
         {
             var order = context.Orders.Where(o => o.UserId == id).ToList();
-            
+
             return order;
         }
 
@@ -132,7 +150,6 @@ namespace LimeBox.Models
 
         internal AccountOrderVM GetAccountOrderVM(int id)
         {
-            //var aspUser = userManager.FindByNameAsync(user.Identity.Name);
             return new AccountOrderVM
             {
                 Order = GetOrderById(id),
@@ -203,7 +220,9 @@ namespace LimeBox.Models
                 PhoneNumber = model.PhoneNumber,
                 Address = model.Address,
                 City = model.City,
-                PostalCode = model.PostalCode.Value
+                PostalCode = model.PostalCode.Value,
+                Status = 1,
+                OrderDate = DateTime.Now
             };
             if (user.Identity.IsAuthenticated)
                 order.UserId = currentUser.Id;

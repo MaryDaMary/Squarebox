@@ -1,0 +1,20 @@
+﻿@model OrderVM
+
+<div style="display: flex; justify-content: space-around; border-bottom:1px solid white">
+    <span>Order nr: @Model.Order.Id</span> <span>@Model.Order.OrderDate.ToShortDateString()</span> <span>Användar ID: @Model.Order.UserId</span> <span>Status: @Model.Order.Status</span>
+</div>
+<div style="display:flex; justify-content:space-around">
+    <div style="display: flex; flex-direction: column">
+        <span>@Model.Order.FirstName @Model.Order.LastName</span>
+        <span>@Model.Order.Address</span>
+        <span>@Model.Order.PostalCode @Model.Order.City</span>
+        <span>@Model.Order.PhoneNumber</span>
+        <span>@Model.Order.Email</span>
+    </div>
+    <div style="display: flex; flex-direction: column">
+        @foreach (var item in Model.Boxes)
+        {
+            <span>#@item.BoxId @item.BoxType.BoxType</span>
+        }
+    </div>
+</div>

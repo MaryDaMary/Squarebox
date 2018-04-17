@@ -1,0 +1,28 @@
+﻿@model AdminAllOrdersVM
+
+<table id="OrderTable" class="table">
+    <thead>
+        <tr>
+            <td>Order id</td>
+            <td>Namn</td>
+            <td>Status</td>
+            <td>Order datum</td>
+        </tr>
+    </thead>
+    @foreach (var item in Model.Orders)
+    {
+    <tbody>
+        <tr onclick="SelectOrder(@item.Id, this)" id="@item.Id">
+            <td>@item.Id</td>
+            <td>@item.FirstName @item.LastName</td>
+            <td>@item.Status</td>
+            <td>@item.OrderDate.ToShortDateString()</td>
+        </tr>
+        <tr hidden>
+            <td style="padding:0px" colspan="4">
+                <div id="Content"></div>
+            </td>
+        </tr>
+    </tbody>
+    }
+</table>
