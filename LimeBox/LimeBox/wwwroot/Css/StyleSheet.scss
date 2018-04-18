@@ -358,3 +358,12 @@ h2 {
 #Content {
     background-color: #292828;
 }
+
+.SelectedOrderHeader {
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 1px solid white;
+    select{
+        color:black;
+    }
+}

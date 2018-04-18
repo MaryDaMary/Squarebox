@@ -51,5 +51,9 @@ namespace LimeBox.Controllers
         {
             return PartialView("_Order", repository.GetOrderVM(id));
         }
+        public void ChangeOrderStatus(int id, int status)
+        {
+            repository.ChangeOrderStatus(id, status);
+        }
     }
 }

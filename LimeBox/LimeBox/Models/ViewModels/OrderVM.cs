@@ -10,5 +10,7 @@ namespace LimeBox.Models.ViewModels
     {
         public Orders Order { get; set; }
         public List<Boxes> Boxes { get; set; }
+        public String StatusName { get; set; }
+        public List<String> StatusNameList { get; set; }
     }
 }

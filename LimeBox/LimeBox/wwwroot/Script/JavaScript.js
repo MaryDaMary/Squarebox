@@ -34,6 +34,21 @@ function SelectOrder(id, object) {
     });
 }
 
+function ChangeStatus(element, orderId) {
+    var selectedTab = element.selectedOptions[0];
+    $.ajax({
+        url: '/Admin/ChangeOrderStatus',
+        data: { id: orderId, status: selectedTab.index },
+        success: function (result) {
+            $(element).parentsUntil("tbody").parent().first("tbody").first("tr").find("td:nth-child(3)").html(selectedTab.text);
+        },
+        error: function (e) {
+            console.log(e);
+            alert("Something went wrong!");
+        }
+    });
+}
+
 
 function AddToCart(id) {
     $.ajax({

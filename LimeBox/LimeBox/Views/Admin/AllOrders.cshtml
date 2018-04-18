@@ -1,4 +1,5 @@
-﻿@model AdminAllOrdersVM
+﻿@model List<AdminAllOrdersVM>
+
 
 <table id="OrderTable" class="table">
     <thead>
@@ -9,14 +10,14 @@
             <td>Order datum</td>
         </tr>
     </thead>
-    @foreach (var item in Model.Orders)
+    @foreach (var item in Model)
     {
     <tbody>
-        <tr onclick="SelectOrder(@item.Id, this)" id="@item.Id">
-            <td>@item.Id</td>
-            <td>@item.FirstName @item.LastName</td>
-            <td>@item.Status</td>
-            <td>@item.OrderDate.ToShortDateString()</td>
+        <tr onclick="SelectOrder(@item.Order.Id, this)" id="@item.Order.Id">
+            <td>@item.Order.Id</td>
+            <td>@item.Order.FirstName @item.Order.LastName</td>
+            <td>@item.StatusName</td>
+            <td>@item.Order.OrderDate.ToShortDateString()</td>
         </tr>
         <tr hidden>
             <td style="padding:0px" colspan="4">

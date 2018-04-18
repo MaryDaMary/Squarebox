@@ -1,6 +1,7 @@
 ﻿using LimeBox.Models.Entities;
 using LimeBox.Models.ViewModels;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -56,21 +57,60 @@ namespace LimeBox.Models
             return boxes;
         }
 
+        internal void ChangeOrderStatus(int id, int status)
+        {
+            var order = context.Orders.Find(id);
+            order.Status = status;
+            context.SaveChanges();
+        }
+
         internal OrderVM GetOrderVM(int id)
         {
+
+            var order = context.Orders.Find(id);
+            Status foo = (Status)Enum.ToObject(typeof(Status), order.Status);
+
             return new OrderVM
             {
-                Order = context.Orders.Find(id),
-                Boxes = GetBoxesByOrderId(id)
+                Order = order,
+                Boxes = GetBoxesByOrderId(id),
+                StatusName = foo.ToString(),
+                StatusNameList = GetListOfOptions()
             };
         }
 
-        internal AdminAllOrdersVM GetAdminAllOrdersVM()
+        private List<string> GetListOfOptions()
         {
-            return new AdminAllOrdersVM
+            List<string> list = new List<string>();
+
+            var foo = Enum.GetValues(typeof(Status));
+
+            foreach (var item in foo)
             {
-                Orders = context.Orders.OrderByDescending(o => o.Id).ToList()
-            };
+                list.Add(item.ToString());
+            }
+
+            return list; 
+        }
+
+        internal List<AdminAllOrdersVM> GetAdminAllOrdersVM()
+        {
+            List<AdminAllOrdersVM> orders = new List<AdminAllOrdersVM>();
+
+            var allOrders = context.Orders.OrderByDescending(o => o.Id).ToList();
+
+            foreach (var item in allOrders)
+            {
+                Status status = (Status)Enum.ToObject(typeof(Status), item.Status);
+                orders.Add(new AdminAllOrdersVM
+                {
+                    Order = item,
+                    StatusName = status.ToString(),
+                });
+            }
+            
+
+            return orders;
         }
 
 

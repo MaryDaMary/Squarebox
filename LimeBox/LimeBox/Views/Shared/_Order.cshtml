@@ -1,8 +1,33 @@
-﻿@model OrderVM
+﻿@using LimeBox.Models
+@model OrderVM
 
-<div style="display: flex; justify-content: space-around; border-bottom:1px solid white">
-    <span>Order nr: @Model.Order.Id</span> <span>@Model.Order.OrderDate.ToShortDateString()</span> <span>Användar ID: @Model.Order.UserId</span> <span>Status: @Model.Order.Status</span>
-</div>
+@using (Html.BeginForm("ChangeStatus"))
+{
+
+    <div class="SelectedOrderHeader">
+        <span>Order nr: @Model.Order.Id</span>
+        <span>@Model.Order.OrderDate.ToShortDateString()</span>
+        <span>@Model.Order.OrderDate.ToShortTimeString()</span>
+        <span>Användar ID: @Model.Order.UserId</span>
+        <span>
+            <select onchange = "ChangeStatus(this, @Model.Order.Id)" >
+                @for (int i = 0; i < Model.StatusNameList.Count(); i++)
+                {
+                    if (i == Model.Order.Status)
+                    {
+                        <option selected>@Model.StatusNameList[i]</option>
+                    }
+                    else
+                    {
+                        <option>@Model.StatusNameList[i]</option>
+                    }
+                }
+            </select>
+        </span>
+        @*<span>Status: @Html.DropDownList("Status", new SelectList(Enum.GetValues(typeof(Status))), new { onchange = $"ChangeStatus(this,{Model.Order.Id})" })</span>*@
+    </div>
+
+}
 <div style="display:flex; justify-content:space-around">
     <div style="display: flex; flex-direction: column">
         <span>@Model.Order.FirstName @Model.Order.LastName</span>

@@ -8,6 +8,7 @@ namespace LimeBox.Models.ViewModels
 {
     public class AdminAllOrdersVM
     {
-        public List<Orders> Orders { get; set; }
+        public Orders Order { get; set; }
+        public string StatusName { get; set; }
     }
 }
