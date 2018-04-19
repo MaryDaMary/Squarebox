@@ -10,7 +10,7 @@
         <span>@Model.Order.OrderDate.ToShortTimeString()</span>
         <span>Användar ID: @Model.Order.UserId</span>
         <span>
-            <select onchange = "ChangeStatus(this, @Model.Order.Id)" >
+            <select onchange="ChangeStatus(this, @Model.Order.Id)">
                 @for (int i = 0; i < Model.StatusNameList.Count(); i++)
                 {
                     if (i == Model.Order.Status)
@@ -24,7 +24,6 @@
                 }
             </select>
         </span>
-        @*<span>Status: @Html.DropDownList("Status", new SelectList(Enum.GetValues(typeof(Status))), new { onchange = $"ChangeStatus(this,{Model.Order.Id})" })</span>*@
     </div>
 
 }
