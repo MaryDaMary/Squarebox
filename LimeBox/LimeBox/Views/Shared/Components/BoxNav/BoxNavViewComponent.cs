@@ -9,9 +9,9 @@ namespace LimeBox.Views.Shared.Components.BoxList
 {
     public class BoxNavViewComponent : ViewComponent
     {
-        private Repository repository;
+        private IRepository repository;
 
-        public BoxNavViewComponent(Repository repository)
+        public BoxNavViewComponent(IRepository repository)
         {
             this.repository = repository;
         }

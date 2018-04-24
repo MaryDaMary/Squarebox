@@ -12,7 +12,7 @@ using static LimeBox.Models.ViewModels.AccountSettingsVM;
 
 namespace LimeBox.Models
 {
-    public class Repository
+    public class Repository : IRepository
     {
         public LimeContext context;
         private readonly UserManager<IdentityUser> userManager;
@@ -23,7 +23,7 @@ namespace LimeBox.Models
             this.userManager = userManager;
         }
 
-        internal List<BoughtBoxesVM> GetBoughtBoxesVM(string userName)
+        public List<BoughtBoxesVM> GetBoughtBoxesVM(string userName)
         {
             var aspUser = userManager.FindByNameAsync(userName).Result;
             var currentUser = context.Users.Single(u => u.AspNetId == aspUser.Id);
@@ -57,14 +57,14 @@ namespace LimeBox.Models
             return boxes;
         }
 
-        internal void ChangeOrderStatus(int id, int status)
+        public void ChangeOrderStatus(int id, int status)
         {
             var order = context.Orders.Find(id);
             order.Status = status;
             context.SaveChanges();
         }
 
-        internal OrderVM GetOrderVM(int id)
+        public OrderVM GetOrderVM(int id)
         {
 
             var order = context.Orders.Find(id);
@@ -93,7 +93,7 @@ namespace LimeBox.Models
             return list; 
         }
 
-        internal List<AdminAllOrdersVM> GetAdminAllOrdersVM()
+        public List<AdminAllOrdersVM> GetAdminAllOrdersVM()
         {
             List<AdminAllOrdersVM> orders = new List<AdminAllOrdersVM>();
 
@@ -148,7 +148,7 @@ namespace LimeBox.Models
             context.SaveChanges();
         }
 
-        internal int CreateBoxType(string boxType, string ImageUrl, string ImageUrlHeader, string description)
+        public int CreateBoxType(string boxType, string ImageUrl, string ImageUrlHeader, string description)
         {
             BoxTypes box = new BoxTypes
             {
@@ -162,7 +162,7 @@ namespace LimeBox.Models
             return box.Id;
         }
 
-        internal async Task<HomeCheckoutVM> GetHomeCheckoutVM(ClaimsPrincipal user)
+        public async Task<HomeCheckoutVM> GetHomeCheckoutVM(ClaimsPrincipal user)
         {
             if (user.Identity.IsAuthenticated)
             {
@@ -188,7 +188,7 @@ namespace LimeBox.Models
             };
         }
 
-        internal AccountOrderVM GetAccountOrderVM(int id)
+        public AccountOrderVM GetAccountOrderVM(int id)
         {
             return new AccountOrderVM
             {
@@ -222,7 +222,7 @@ namespace LimeBox.Models
             return numbers;
         }
 
-        internal async Task<CreateFormVM> GetAccountSettingsVM(ClaimsPrincipal user)
+        public async Task<CreateFormVM> GetAccountSettingsVM(ClaimsPrincipal user)
         {
             var LoggedInUser = userManager.GetUserAsync(user).Result;
             var currentUser = await context.Users.SingleAsync(u => u.AspNetId == LoggedInUser.Id);
@@ -239,7 +239,7 @@ namespace LimeBox.Models
             };
         }
 
-        internal void CreateOrder(HomeCheckoutVM model, ClaimsPrincipal user)
+        public void CreateOrder(HomeCheckoutVM model, ClaimsPrincipal user)
         {
             string currentUserAspId;
             Users currentUser;

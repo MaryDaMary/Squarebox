@@ -53,19 +53,18 @@ namespace LimeBox
            .AddDefaultTokenProviders();
 
             services.AddTransient<ShoppingCart>();
-            services.AddTransient<Repository>();
-            services.AddTransient<AccountRepository>();
+            services.AddTransient<IRepository, Repository>();
+            services.AddTransient<IAccountRepository, AccountRepository>();
             services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            //if (env.isdevelopment())
-            //{
-            //    app.usedeveloperexceptionpage();
-            //}
-            app.UseDeveloperExceptionPage();
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
             app.UseAuthentication();
             app.UseStaticFiles();
             app.UseMvcWithDefaultRoute();

@@ -9,9 +9,9 @@ namespace LimeBox.Views.Shared.Components.BoxScroll
 {
     public class LoginViewComponent : ViewComponent
     {
-        private AccountRepository repository;
+        private IAccountRepository repository;
 
-        public LoginViewComponent(AccountRepository repository)
+        public LoginViewComponent(IAccountRepository repository)
         {
             this.repository = repository;
         }

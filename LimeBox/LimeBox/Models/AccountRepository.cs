@@ -14,11 +14,30 @@ using static Microsoft.AspNetCore.Hosting.Internal.HostingApplication;
 
 namespace LimeBox.Models
 {
-    public class AccountRepository : Controller
+    public class AccountRepository : Controller, IAccountRepository
     {
         LimeContext context;
 
         UserManager<IdentityUser> userManager;
+        SignInManager<IdentityUser> signInManager;
+        RoleManager<IdentityRole> roleManager;
+        IdentityDbContext identityDbContext;
+
+
+        public AccountRepository(
+            LimeContext context,
+            UserManager<IdentityUser> userManager,
+            SignInManager<IdentityUser> signInManager,
+            RoleManager<IdentityRole> roleManager,
+            IdentityDbContext identityDbContext
+            )
+        {
+            this.userManager = userManager;
+            this.signInManager = signInManager;
+            this.roleManager = roleManager;
+            this.identityDbContext = identityDbContext;
+            this.context = context;
+        }
 
         public AccountLoginVM GetLoginVM(IIdentity user)
         {
@@ -37,27 +56,6 @@ namespace LimeBox.Models
             }
 
             return ret;
-        }
-
-        SignInManager<IdentityUser> signInManager;
-        RoleManager<IdentityRole> roleManager;
-        IdentityDbContext identityDbContext;
-
-
-        public AccountRepository(
-            LimeContext context,
-
-            UserManager<IdentityUser> userManager,
-            SignInManager<IdentityUser> signInManager,
-            RoleManager<IdentityRole> roleManager,
-            IdentityDbContext identityDbContext
-            )
-        {
-            this.userManager = userManager;
-            this.signInManager = signInManager;
-            this.roleManager = roleManager;
-            this.identityDbContext = identityDbContext;
-            this.context = context;
         }
 
         public async Task AddRoleAsync(string name)
@@ -79,7 +77,6 @@ namespace LimeBox.Models
         public async Task TryLogOutAsync()
         {
             await signInManager.SignOutAsync();
-
         }
 
         public async Task<bool> AddNewUserAsync(AccountCreateVM.CreateFormVM model)
@@ -113,7 +110,7 @@ namespace LimeBox.Models
             return loginResult.Succeeded;
         }
 
-        internal async Task UpdateUser(AccountSettingsVM.CreateFormVM createForm)
+        public async Task UpdateUser(AccountSettingsVM.CreateFormVM createForm)
         {
             var aspUser = await userManager.FindByNameAsync(createForm.Username);
             aspUser.Email = createForm.Email;
@@ -131,6 +128,16 @@ namespace LimeBox.Models
             user.City = createForm.City;
             user.PostalCode = createForm.PostalCode;
             context.SaveChanges();
+        }
+
+        public string GetReturnUrl(HttpRequest request)
+        {
+            return request.Headers["Referer"].ToString();
+        }
+
+        public bool UserIsLoggedIn(ClaimsPrincipal user)
+        {
+            return user.Identity.IsAuthenticated;
         }
     }
 }

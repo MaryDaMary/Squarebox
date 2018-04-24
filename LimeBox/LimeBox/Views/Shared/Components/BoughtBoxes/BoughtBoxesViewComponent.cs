@@ -9,9 +9,9 @@ namespace LimeBox.Views.Shared.Components.BoughtBoxes
 {
     public class BoughtBoxesViewComponent : ViewComponent
     {
-        private Repository repository;
+        private IRepository repository;
 
-        public BoughtBoxesViewComponent(Repository repository)
+        public BoughtBoxesViewComponent(IRepository repository)
         {
             this.repository = repository;
         }

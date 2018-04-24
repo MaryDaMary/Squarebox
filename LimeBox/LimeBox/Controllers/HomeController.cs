@@ -12,9 +12,9 @@ namespace LimeBox.Controllers
 {
     public class HomeController : Controller
     {
-        Repository repository;
+        IRepository repository;
 
-        public HomeController(Repository repository)
+        public HomeController(IRepository repository)
         {
             this.repository = repository;
         }
@@ -57,7 +57,7 @@ namespace LimeBox.Controllers
         [HttpPost]
         public IActionResult CheckOut(HomeCheckoutVM model)
         {
-            if (!ModelState.IsValid || ShoppingCart.IsEmpty() )
+            if (!ModelState.IsValid || ShoppingCart.IsEmpty())
             {
                 model.Boxes = ShoppingCart.GetCart();
                 return View(model);

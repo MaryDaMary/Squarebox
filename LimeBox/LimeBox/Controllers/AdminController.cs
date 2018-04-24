@@ -14,14 +14,13 @@ namespace LimeBox.Controllers
     [Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
-        Repository repository;
+        IRepository repository;
 
-        public AdminController(Repository repository)
+        public AdminController(IRepository repository)
         {
             this.repository = repository;
         }
 
-        // GET: /<controller>/
         public IActionResult Index()
         {
             return View();

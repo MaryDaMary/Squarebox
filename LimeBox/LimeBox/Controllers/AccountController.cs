@@ -12,10 +12,10 @@ namespace LimeBox.Controllers
 {
     public class AccountController : Controller
     {
-        AccountRepository accountRepository;
-        private readonly Repository repository;
+        IAccountRepository accountRepository;
+        private readonly IRepository repository;
 
-        public AccountController(AccountRepository accountRepository, Repository repository)
+        public AccountController(IAccountRepository accountRepository, IRepository repository)
         {
             this.accountRepository = accountRepository;
             this.repository = repository;
@@ -27,19 +27,18 @@ namespace LimeBox.Controllers
             return View();
         }
 
-        // GET: /<controller>/
-        public async Task<IActionResult> Index()
-        {
-            //await accountRepository.AddRoleAsync("Standard");
-            return Content("Success!");
-        }
+        //public async Task<IActionResult> Index()
+        //{
+        //    //await accountRepository.AddRoleAsync("Standard");
+        //    return Content("Success!");
+        //}
 
         [HttpGet]
         public IActionResult Create()
         {
             return View(new AccountCreateVM
             {
-                ReturnUrl = Request.Headers["Referer"].ToString()
+                ReturnUrl = accountRepository.GetReturnUrl(Request)
             });
         }
 
@@ -73,7 +72,7 @@ namespace LimeBox.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(AccountLoginVM viewModel)
         {
-            string referer = Request.Headers["Referer"].ToString();
+            string referer = accountRepository.GetReturnUrl(Request);
 
             if (!ModelState.IsValid)
                 return Redirect(referer);
@@ -99,7 +98,7 @@ namespace LimeBox.Controllers
 
             await accountRepository.TryLogOutAsync();
 
-            string referer = Request.Headers["Referer"].ToString();
+            string referer = accountRepository.GetReturnUrl(Request);
 
             return Redirect(referer);
 
@@ -108,12 +107,12 @@ namespace LimeBox.Controllers
         [HttpGet]
         public async Task<IActionResult> Settings()
         {
-            if (User.Identity.IsAuthenticated)
+            if (accountRepository.UserIsLoggedIn(User))
             {
                 return View(new AccountSettingsVM
                 {
                     CreateForm = await repository.GetAccountSettingsVM(User),
-                    ReturnUrl = Request.Headers["Referer"].ToString()
+                    ReturnUrl = accountRepository.GetReturnUrl(Request)
                 });
             }
             else
@@ -135,7 +134,7 @@ namespace LimeBox.Controllers
         [HttpGet]
         public IActionResult Order(int id)
         {
-            if (User.Identity.IsAuthenticated)
+            if (accountRepository.UserIsLoggedIn(User))
             {
                 return View(repository.GetAccountOrderVM(id));
             }

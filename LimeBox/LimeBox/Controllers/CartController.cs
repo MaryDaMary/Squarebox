@@ -11,9 +11,9 @@ namespace LimeBox.Controllers
 {
     public class CartController : Controller
     {
-        Repository repository;
+        IRepository repository;
 
-        public CartController(Repository repository)
+        public CartController(IRepository repository)
         {
             this.repository = repository;
         }

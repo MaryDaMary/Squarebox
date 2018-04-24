@@ -9,9 +9,9 @@ namespace LimeBox.Views.Shared.Components.BoxScroll
 {
     public class CheckOutViewComponent : ViewComponent
     {
-        private AccountRepository repository;
+        private IAccountRepository repository;
 
-        public CheckOutViewComponent(AccountRepository repository)
+        public CheckOutViewComponent(IAccountRepository repository)
         {
             this.repository = repository;
         }
